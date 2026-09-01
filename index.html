@@ -1,30 +1,69 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="violet">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digiflare Media — Portfolio</title>
+  <title>Digiflare Media — Full-Stack Growth Agency</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    /* THEME COLOR VARIABLES */
     :root {
-      --bg: #07070b;
-      --surface: #0e0e16;
-      --surface2: #141420;
+      --bg: #06070a;
+      --surface: #0c0d14;
+      --surface2: #121420;
+      --surface3: #181b2a;
       --border: rgba(255,255,255,0.08);
-      --border-glow: rgba(255, 60, 60, 0.25);
-      --accent: #FF4500;
-      --accent-gradient: linear-gradient(135deg, #FF5500 0%, #FF0055 100%);
-      --accent-gradient-hover: linear-gradient(135deg, #FF6611 0%, #FF1A66 100%);
-      --gold: #FFC700;
-      --gold-gradient: linear-gradient(135deg, #FFC700 0%, #FF8A00 100%);
-      --text: #f3f3f6;
-      --muted: #8e8e9f;
+      --border-hover: rgba(255,255,255,0.2);
+      --text: #f3f4f8;
+      --muted: #8c90a4;
       --white: #ffffff;
       --radius: 18px;
+      --radius-sm: 10px;
+
+      /* DEFAULT THEME: ELECTRIC VIOLET & CYBER CYAN */
+      --accent-1: #6366F1;
+      --accent-2: #06B6D4;
+      --accent-gradient: linear-gradient(135deg, #6366F1 0%, #06B6D4 100%);
+      --accent-glow: rgba(99, 102, 241, 0.25);
+      --accent-tag-bg: rgba(99, 102, 241, 0.12);
+      --accent-tag-border: rgba(99, 102, 241, 0.35);
+      --accent-tag-text: #818CF8;
     }
+
+    [data-theme="gold"] {
+      --accent-1: #F59E0B;
+      --accent-2: #FBBF24;
+      --accent-gradient: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
+      --accent-glow: rgba(245, 158, 11, 0.22);
+      --accent-tag-bg: rgba(245, 158, 11, 0.12);
+      --accent-tag-border: rgba(245, 158, 11, 0.35);
+      --accent-tag-text: #FCD34D;
+    }
+
+    [data-theme="crimson"] {
+      --accent-1: #FF0055;
+      --accent-2: #FF5500;
+      --accent-gradient: linear-gradient(135deg, #FF0055 0%, #FF5500 100%);
+      --accent-glow: rgba(255, 0, 85, 0.25);
+      --accent-tag-bg: rgba(255, 0, 85, 0.12);
+      --accent-tag-border: rgba(255, 0, 85, 0.35);
+      --accent-tag-text: #FF4D79;
+    }
+
+    [data-theme="emerald"] {
+      --accent-1: #10B981;
+      --accent-2: #06B6D4;
+      --accent-gradient: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
+      --accent-glow: rgba(16, 185, 129, 0.25);
+      --accent-tag-bg: rgba(16, 185, 129, 0.12);
+      --accent-tag-border: rgba(16, 185, 129, 0.35);
+      --accent-tag-text: #34D399;
+    }
+
     html { scroll-behavior: smooth; }
     body { font-family: 'Inter', sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
 
@@ -32,33 +71,54 @@
     body::before {
       content: ''; position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 0; opacity: 0.5;
+      pointer-events: none; z-index: 0; opacity: 0.6;
     }
 
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 18px 48px;
+      padding: 16px 48px;
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(7,7,11,0.85); backdrop-filter: blur(20px);
+      background: rgba(6,7,10,0.85); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
     }
-    .nav-logo { display: flex; align-items: center; gap: 12px; }
-    .nav-logo img { height: 32px; object-fit: contain; border-radius: 6px; }
+    .nav-logo { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+    .nav-logo-img { height: 26px; object-fit: contain; filter: brightness(1.1); }
     .nav-wordmark {
-      font-size: 15px; font-weight: 900; letter-spacing: 0.08em;
-      background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      text-transform: uppercase;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 16px; font-weight: 900; letter-spacing: 0.15em;
+      color: #ffffff; text-transform: uppercase;
     }
-    .nav-links { display: flex; gap: 36px; list-style: none; }
-    .nav-links a { color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600; letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.25s; }
+    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
+    .nav-links a {
+      color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600;
+      letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.25s;
+    }
     .nav-links a:hover { color: var(--white); }
+    
+    /* THEME SWITCHER */
+    .theme-picker {
+      display: flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+      padding: 4px 8px; border-radius: 100px;
+    }
+    .theme-dot {
+      width: 16px; height: 16px; border-radius: 50%; cursor: pointer;
+      border: 2px solid transparent; transition: transform 0.2s, border-color 0.2s;
+    }
+    .theme-dot:hover { transform: scale(1.2); }
+    .theme-dot.active { border-color: #fff; transform: scale(1.15); }
+    .theme-dot.t-violet { background: linear-gradient(135deg, #6366F1, #06B6D4); }
+    .theme-dot.t-gold { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+    .theme-dot.t-crimson { background: linear-gradient(135deg, #FF0055, #FF5500); }
+    .theme-dot.t-emerald { background: linear-gradient(135deg, #10B981, #06B6D4); }
+
     .nav-cta {
-      background: var(--accent-gradient) !important; color: #fff !important; padding: 10px 24px;
-      border-radius: 8px; font-weight: 700 !important; box-shadow: 0 4px 20px rgba(255, 0, 85, 0.3);
+      background: var(--accent-gradient) !important; color: #fff !important; padding: 9px 22px;
+      border-radius: 8px; font-weight: 700 !important; box-shadow: 0 4px 20px var(--accent-glow);
       transition: transform 0.2s, box-shadow 0.2s !important;
     }
-    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px rgba(255, 0, 85, 0.5); }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 28px var(--accent-glow); }
 
     /* HERO */
     .hero {
@@ -67,38 +127,46 @@
       padding: 130px 24px 80px; position: relative; overflow: hidden;
     }
     .hero-glow {
-      position: absolute; width: 850px; height: 850px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,0,85,0.18) 0%, rgba(255,85,0,0.12) 40%, transparent 70%);
+      position: absolute; width: 900px; height: 900px; border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
       top: 45%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
+      transition: background 0.5s ease;
     }
+    .hero-logo-badge {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 12px 28px; background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+      border-radius: 100px; margin-bottom: 30px; backdrop-filter: blur(12px);
+    }
+    .hero-logo-badge img { height: 22px; object-fit: contain; }
+
     .hero-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(255,0,85,0.08); border: 1px solid rgba(255,85,0,0.3);
-      border-radius: 100px; padding: 7px 20px; font-size: 12px; font-weight: 700;
-      color: #FF5566; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 32px;
-      backdrop-filter: blur(10px);
+      background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
+      border-radius: 100px; padding: 6px 18px; font-size: 12px; font-weight: 700;
+      color: var(--accent-tag-text); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px;
     }
     .hero h1 {
-      font-size: clamp(42px, 7.5vw, 96px); font-weight: 900; line-height: 1.02;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(40px, 7.2vw, 94px); font-weight: 900; line-height: 1.02;
       letter-spacing: -0.035em; color: var(--white); margin-bottom: 24px;
     }
     .hero h1 span {
       background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .hero p { font-size: clamp(16px, 2vw, 20px); color: var(--muted); max-width: 600px; margin-bottom: 48px; }
+    .hero p { font-size: clamp(16px, 2vw, 19px); color: var(--muted); max-width: 620px; margin-bottom: 44px; }
     .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
     .btn-primary {
       background: var(--accent-gradient); color: #fff; padding: 15px 36px; border-radius: 10px;
       font-weight: 800; font-size: 15px; text-decoration: none; transition: transform 0.25s, box-shadow 0.25s;
-      display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 25px rgba(255, 0, 85, 0.35);
+      display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 25px var(--accent-glow);
     }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 35px rgba(255, 0, 85, 0.55); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 35px var(--accent-glow); }
     .btn-secondary {
       background: rgba(255,255,255,0.03); color: var(--text); padding: 15px 36px; border-radius: 10px;
       font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid var(--border);
       transition: border-color 0.25s, transform 0.25s, background 0.25s; backdrop-filter: blur(10px);
     }
-    .btn-secondary:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); transform: translateY(-3px); }
+    .btn-secondary:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.06); transform: translateY(-3px); }
 
     /* STATS STRIP */
     .stats-strip {
@@ -107,36 +175,91 @@
     }
     .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; text-align: center; }
     .stat-item h3 {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: clamp(34px,4.5vw,54px); font-weight: 900;
       background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       letter-spacing: -0.03em;
     }
     .stat-item p { font-size: 12px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px; }
 
-    /* SECTION */
+    /* SECTION BASE */
     .section { padding: 110px 48px; max-width: 1200px; margin: 0 auto; }
     .section-tag {
       display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
-      color: #FF4560; margin-bottom: 14px; background: rgba(255,0,85,0.08); padding: 4px 12px; border-radius: 6px;
+      color: var(--accent-tag-text); margin-bottom: 14px; background: var(--accent-tag-bg);
+      border: 1px solid var(--accent-tag-border); padding: 5px 14px; border-radius: 6px;
     }
-    .section-title { font-size: clamp(30px,4.5vw,52px); font-weight: 900; color: var(--white); line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 18px; }
-    .section-sub { font-size: 17px; color: var(--muted); max-width: 580px; margin-bottom: 64px; }
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(30px,4.5vw,52px); font-weight: 900; color: var(--white);
+      line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 18px;
+    }
+    .section-sub { font-size: 17px; color: var(--muted); max-width: 600px; margin-bottom: 60px; }
+
+    /* BRANDS SHOWCASE SECTION */
+    .brands-section {
+      background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+      padding: 110px 0;
+    }
+    .brands-header-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; margin-bottom: 40px; }
+    .brands-count-badge {
+      font-size: 14px; font-weight: 800; color: #fff; background: var(--accent-gradient);
+      padding: 4px 12px; border-radius: 100px; display: inline-block; margin-left: 8px; vertical-align: middle;
+    }
+    .brands-filter {
+      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px;
+    }
+    .filter-btn {
+      background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted);
+      padding: 8px 18px; border-radius: 100px; font-size: 12px; font-weight: 700; cursor: pointer;
+      text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.25s;
+    }
+    .filter-btn:hover { color: #fff; border-color: var(--border-hover); background: rgba(255,255,255,0.08); }
+    .filter-btn.active {
+      background: var(--accent-gradient); color: #fff; border-color: transparent;
+      box-shadow: 0 2px 14px var(--accent-glow);
+    }
+
+    .brands-grid {
+      max-width: 1200px; margin: 0 auto; padding: 0 48px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+    }
+    .brand-card {
+      background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm);
+      padding: 24px 20px; transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
+      position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .brand-card:hover {
+      border-color: var(--accent-1); transform: translateY(-4px);
+      box-shadow: 0 10px 30px var(--accent-glow); background: var(--surface3);
+    }
+    .brand-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .brand-icon {
+      width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.04);
+      display: flex; align-items: center; justify-content: center; font-size: 18px; border: 1px solid var(--border);
+    }
+    .brand-tag {
+      font-size: 10px; font-weight: 800; color: var(--accent-tag-text);
+      background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
+      padding: 3px 8px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em;
+    }
+    .brand-name { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+    .brand-desc { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
 
     /* SERVICES */
     .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .service-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 38px 30px; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-      position: relative; overflow: hidden;
     }
     .service-card:hover {
-      border-color: rgba(255, 0, 85, 0.4); transform: translateY(-5px);
-      box-shadow: 0 10px 30px rgba(255, 0, 85, 0.12);
+      border-color: var(--accent-1); transform: translateY(-5px);
+      box-shadow: 0 10px 30px var(--accent-glow);
     }
     .service-icon {
-      width: 52px; height: 52px; background: rgba(255, 85, 0, 0.12); border-radius: 14px;
+      width: 52px; height: 52px; background: var(--accent-tag-bg); border-radius: 14px;
       display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 22px;
-      border: 1px solid rgba(255, 85, 0, 0.2);
+      border: 1px solid var(--accent-tag-border);
     }
     .service-card h3 { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
     .service-card p { font-size: 14px; color: var(--muted); line-height: 1.75; }
@@ -147,53 +270,53 @@
       background: var(--surface2); border: 1px solid var(--border); border-radius: 26px;
       overflow: hidden; margin-bottom: 64px; transition: border-color 0.3s;
     }
-    .case-study:hover { border-color: rgba(255, 255, 255, 0.15); }
+    .case-study:hover { border-color: var(--border-hover); }
     .case-study:last-child { margin-bottom: 0; }
     .case-header { padding: 52px 52px 0; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 28px; }
     .case-tag {
-      display: inline-block; background: rgba(255, 85, 0, 0.12); border: 1px solid rgba(255, 85, 0, 0.3);
-      color: #FF5566; font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
+      display: inline-block; background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
+      color: var(--accent-tag-text); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
       padding: 5px 16px; border-radius: 100px; margin-bottom: 14px;
     }
-    .gold .case-tag { background: rgba(255, 199, 0, 0.1); border-color: rgba(255, 199, 0, 0.3); color: var(--gold); }
-    .case-title { font-size: clamp(24px,3.2vw,36px); font-weight: 900; color: var(--white); letter-spacing: -0.02em; margin-bottom: 4px; }
+    .case-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(24px,3.2vw,36px); font-weight: 900; color: var(--white);
+      letter-spacing: -0.02em; margin-bottom: 4px;
+    }
     .case-subtitle { font-size: 14px; color: var(--muted); font-weight: 500; }
     .case-results-inline { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
     .stat-num {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 32px; font-weight: 900; letter-spacing: -0.02em; line-height: 1;
       background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .gold .stat-num { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .stat-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 5px; }
     .case-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 44px 52px 52px; }
-    .case-section-label { font-size: 11px; font-weight: 800; color: #FF4560; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; margin-top: 28px; }
+    .case-section-label { font-size: 11px; font-weight: 800; color: var(--accent-tag-text); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; margin-top: 28px; }
     .case-section-label:first-child { margin-top: 0; }
-    .gold .case-section-label { color: var(--gold); }
     .case-text { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 8px; }
     .case-bullet { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
-    .case-bullet::before { content: '➔'; color: #FF4560; font-weight: 800; flex-shrink: 0; margin-top: 2px; }
-    .gold .case-bullet::before { color: var(--gold); }
+    .case-bullet::before { content: '➔'; color: var(--accent-1); font-weight: 800; flex-shrink: 0; margin-top: 2px; }
     .case-bullet span { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.75; }
     .case-right { padding-left: 52px; }
     .result-callout {
-      background: rgba(255, 0, 85, 0.06); border: 1px solid rgba(255, 0, 85, 0.22);
+      background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
       border-radius: 14px; padding: 22px 26px; margin-top: 24px; backdrop-filter: blur(10px);
     }
-    .gold .result-callout { background: rgba(255, 199, 0, 0.06); border-color: rgba(255, 199, 0, 0.25); }
     .result-callout p { font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.75; }
     .result-callout strong { color: var(--white); }
     .result-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
     .result-stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
     .result-stat-box .num {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 28px; font-weight: 900; letter-spacing: -0.02em;
       background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
-    .gold .result-stat-box .num { background: var(--gold-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .result-stat-box .lbl { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 4px; line-height: 1.4; font-weight: 700; }
     .case-images { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
     .case-images img { width: 100%; border-radius: 14px; object-fit: cover; border: 1px solid var(--border); transition: transform 0.3s, border-color 0.3s; cursor: zoom-in; max-height: 240px; }
-    .case-images img:hover { transform: scale(1.025); border-color: rgba(255,255,255,0.3); }
-    .case-images img.wide { grid-column: span 2; max-height: 220px; object-fit: contain; background: #0a0a10; }
+    .case-images img:hover { transform: scale(1.025); border-color: var(--border-hover); }
+    .case-images img.wide { grid-column: span 2; max-height: 220px; object-fit: contain; background: #08090f; }
 
     /* WHY US */
     .why-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
@@ -201,8 +324,9 @@
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
       padding: 36px; display: flex; gap: 22px; align-items: flex-start; transition: border-color 0.3s, transform 0.3s;
     }
-    .why-card:hover { border-color: rgba(255,0,85,0.35); transform: translateY(-4px); }
+    .why-card:hover { border-color: var(--accent-1); transform: translateY(-4px); }
     .why-num {
+      font-family: 'Space Grotesk', sans-serif;
       font-size: 56px; font-weight: 900; line-height: 1; flex-shrink: 0; letter-spacing: -0.04em;
       background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.4;
     }
@@ -215,24 +339,36 @@
       padding: 110px 24px; position: relative; overflow: hidden;
     }
     .contact-glow {
-      position: absolute; width: 700px; height: 350px; border-radius: 50%;
-      background: radial-gradient(circle, rgba(255,0,85,0.15) 0%, rgba(255,85,0,0.08) 50%, transparent 70%);
+      position: absolute; width: 750px; height: 380px; border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
       bottom: -100px; left: 50%; transform: translateX(-50%); pointer-events: none;
     }
-    .contact-section h2 { font-size: clamp(32px,5vw,62px); font-weight: 900; color: var(--white); letter-spacing: -0.03em; margin-bottom: 18px; }
+    .contact-section h2 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px,5vw,62px); font-weight: 900; color: var(--white);
+      letter-spacing: -0.03em; margin-bottom: 18px;
+    }
     .contact-section h2 span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .contact-section > p { font-size: 17px; color: var(--muted); max-width: 480px; margin: 0 auto 44px; }
     .contact-links { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
     .contact-chip {
       display: inline-flex; align-items: center; gap: 10px; background: var(--surface2);
       border: 1px solid var(--border); border-radius: 100px; padding: 14px 28px; color: var(--text);
-      text-decoration: none; font-size: 14px; font-weight: 700; transition: border-color 0.25s, background 0.25s, transform 0.25s;
+      text-decoration: none; font-size: 14px; font-weight: 700; transition: all 0.25s;
     }
-    .contact-chip:hover { border-color: rgba(255,0,85,0.5); background: rgba(255,0,85,0.08); color: var(--white); transform: translateY(-2px); }
+    .contact-chip:hover { border-color: var(--accent-1); background: var(--accent-tag-bg); color: var(--white); transform: translateY(-2px); }
 
     /* FOOTER */
-    footer { background: var(--bg); border-top: 1px solid var(--border); padding: 32px 48px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; }
-    footer .footer-logo { font-size: 15px; font-weight: 900; letter-spacing: 0.08em; background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; text-transform: uppercase; }
+    footer {
+      background: var(--bg); border-top: 1px solid var(--border); padding: 36px 48px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
+    }
+    .footer-logo-wrap { display: flex; align-items: center; gap: 12px; }
+    .footer-logo-wrap img { height: 20px; object-fit: contain; }
+    .footer-wordmark {
+      font-family: 'Space Grotesk', sans-serif; font-size: 14px; font-weight: 900;
+      letter-spacing: 0.12em; color: #fff; text-transform: uppercase;
+    }
     footer p { font-size: 13px; color: var(--muted); }
 
     /* LIGHTBOX */
@@ -242,10 +378,13 @@
     .lightbox-close { position: absolute; top: 20px; right: 24px; font-size: 36px; color: white; cursor: pointer; line-height: 1; }
 
     /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      .brands-grid { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 900px) {
       nav { padding: 16px 20px; }
       .nav-links { display: none; }
-      .section { padding: 70px 20px; }
+      .section, .brands-header-wrap, .brands-grid { padding-left: 20px; padding-right: 20px; }
       .stats-grid { grid-template-columns: repeat(2,1fr); }
       .services-grid { grid-template-columns: 1fr 1fr; }
       .case-header { padding: 32px 24px 0; }
@@ -255,7 +394,8 @@
       .stats-strip { padding: 44px 20px; }
       footer { flex-direction: column; text-align: center; padding: 28px 20px; }
     }
-    @media (max-width: 560px) {
+    @media (max-width: 600px) {
+      .brands-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: 1fr; }
       .case-images { grid-template-columns: 1fr; }
       .case-images img.wide { grid-column: span 1; }
@@ -269,15 +409,25 @@
   <img id="lightbox-img" src="" alt="preview" onclick="event.stopPropagation()" />
 </div>
 
+<!-- NAV -->
 <nav>
-  <div class="nav-logo">
-    <img src="assets/logo/DFM_LOGO.jpeg" alt="Digiflare Media Logo" onerror="this.style.display='none'" />
-    <span class="nav-wordmark">Digiflare Media</span>
-  </div>
+  <a href="#about" class="nav-logo">
+    <img class="nav-logo-img" src="assets/logo/digiflare_logo_exact.jpg" alt="Digiflare Media" />
+  </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
+    <li><a href="#brands">Brands (15+)</a></li>
     <li><a href="#services">Services</a></li>
-    <li><a href="#case-studies">Work</a></li>
+    <li><a href="#case-studies">Case Studies</a></li>
+    <li>
+      <!-- Theme Switcher -->
+      <div class="theme-picker" title="Switch Theme Color">
+        <span class="theme-dot t-violet active" onclick="setTheme('violet')" title="Electric Violet"></span>
+        <span class="theme-dot t-gold" onclick="setTheme('gold')" title="Cyber Gold"></span>
+        <span class="theme-dot t-crimson" onclick="setTheme('crimson')" title="Sunset Flame"></span>
+        <span class="theme-dot t-emerald" onclick="setTheme('emerald')" title="Emerald Neon"></span>
+      </div>
+    </li>
     <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
   </ul>
 </nav>
@@ -285,31 +435,222 @@
 <!-- HERO -->
 <section class="hero" id="about">
   <div class="hero-glow"></div>
-  <div class="hero-badge">&#9679; Marketing Agency &middot; India</div>
+  <div class="hero-logo-badge">
+    <img src="assets/logo/digiflare_logo_exact.jpg" alt="Digiflare Media" />
+  </div>
+  <div class="hero-badge">&#9679; Performance &amp; Creative Growth Agency</div>
   <h1>We Don't Just<br />Market. We <span>Build<br />Movements.</span></h1>
-  <p>Digiflare Media is a full-stack digital marketing agency that turns brands into local legends &mdash; with zero fluff and maximum ROI.</p>
+  <p>Digiflare Media scales modern brands with high-retention content, precision ads, and aggressive organic distribution across India.</p>
   <div class="hero-btns">
-    <a href="#case-studies" class="btn-primary">View Our Work &rarr;</a>
-    <a href="#contact" class="btn-secondary">Get In Touch</a>
+    <a href="#case-studies" class="btn-primary">Explore Case Studies &rarr;</a>
+    <a href="#brands" class="btn-secondary">View 15+ Brands Worked With</a>
   </div>
 </section>
 
 <!-- STATS -->
 <div class="stats-strip">
   <div class="stats-grid">
+    <div class="stat-item"><h3>15+</h3><p>Brands Scaled</p></div>
     <div class="stat-item"><h3>500K+</h3><p>Organic Views / Month</p></div>
-    <div class="stat-item"><h3>3X</h3><p>Avg. Revenue Growth</p></div>
-    <div class="stat-item"><h3>4X</h3><p>Average ROAS on Ads</p></div>
+    <div class="stat-item"><h3>4X</h3><p>Average Ad ROAS</p></div>
     <div class="stat-item"><h3>100+</h3><p>Leads Per Campaign</p></div>
   </div>
 </div>
+
+<!-- ══════════ BRANDS WORKED WITH (15+ BRANDS) ══════════ -->
+<section class="brands-section" id="brands">
+  <div class="brands-header-wrap">
+    <span class="section-tag">Client Portfolio</span>
+    <h2 class="section-title">Brands We've Worked With <span class="brands-count-badge">15+ Brands</span></h2>
+    <p class="section-sub">From luxury perfumery and gourmet F&amp;B to premium modeling agencies and interior design firms &mdash; here are the brands we've helped scale.</p>
+    
+    <!-- Filter Tabs -->
+    <div class="brands-filter">
+      <button class="filter-btn active" onclick="filterBrands('all', this)">All Sectors</button>
+      <button class="filter-btn" onclick="filterBrands('fb', this)">Food &amp; Hospitality</button>
+      <button class="filter-btn" onclick="filterBrands('fashion', this)">Fashion &amp; Lifestyle</button>
+      <button class="filter-btn" onclick="filterBrands('interior', this)">Interiors &amp; Real Estate</button>
+      <button class="filter-btn" onclick="filterBrands('media', this)">Media &amp; Industry</button>
+    </div>
+  </div>
+
+  <div class="brands-grid" id="brands-container">
+    <!-- Brand 1 -->
+    <div class="brand-card" data-category="fashion">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#10024;</div>
+        <span class="brand-tag">Wellness</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Aura Organics</h4>
+        <p class="brand-desc">Natural organic wellness &amp; skincare brand built for sustainable daily lifestyle.</p>
+      </div>
+    </div>
+
+    <!-- Brand 2 -->
+    <div class="brand-card" data-category="fb">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#127860;</div>
+        <span class="brand-tag">Iconic F&amp;B</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Kake Da Hotel 104</h4>
+        <p class="brand-desc">Legendary culinary franchise driving massive local footfall through digital hype.</p>
+      </div>
+    </div>
+
+    <!-- Brand 3 -->
+    <div class="brand-card" data-category="fb">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#127830;</div>
+        <span class="brand-tag">Gourmet BBQ</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Meatster n Buffkinz</h4>
+        <p class="brand-desc">Premier BBQ &amp; Chinese destination — 3X footfall and &#8377;3L+ revenue growth.</p>
+      </div>
+    </div>
+
+    <!-- Brand 4 -->
+    <div class="brand-card" data-category="fashion">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#128142;</div>
+        <span class="brand-tag">Luxury Fragrance</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Ayaz Perfumes</h4>
+        <p class="brand-desc">High-end artisanal perfumery crafted with cinematic visual aesthetics.</p>
+      </div>
+    </div>
+
+    <!-- Brand 5 -->
+    <div class="brand-card" data-category="fashion">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#128248;</div>
+        <span class="brand-tag">Modeling Agency</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Dreams Maker Studio</h4>
+        <p class="brand-desc">Delhi modeling agency scaled to 100+ paying clients and 4X ROAS.</p>
+      </div>
+    </div>
+
+    <!-- Brand 6 -->
+    <div class="brand-card" data-category="fashion">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#128087;</div>
+        <span class="brand-tag">Textile Retail</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Rose Imported Fabrics</h4>
+        <p class="brand-desc">Premium imported designer textiles and high-fashion custom fabrications.</p>
+      </div>
+    </div>
+
+    <!-- Brand 7 -->
+    <div class="brand-card" data-category="media">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#127891;</div>
+        <span class="brand-tag">EdTech</span>
+      </div>
+      <div>
+        <h4 class="brand-name">RJ Academia</h4>
+        <p class="brand-desc">Academic excellence &amp; student training academy driving targeted enrollments.</p>
+      </div>
+    </div>
+
+    <!-- Brand 8 -->
+    <div class="brand-card" data-category="media">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#9881;&#65039;</div>
+        <span class="brand-tag">Manufacturing</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Kajwam Industries</h4>
+        <p class="brand-desc">Commercial manufacturing and industrial production digital presence.</p>
+      </div>
+    </div>
+
+    <!-- Brand 9 -->
+    <div class="brand-card" data-category="media">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#128240;</div>
+        <span class="brand-tag">Media Studio</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Generalist Company</h4>
+        <p class="brand-desc">Modern creative agency producing bold visual journalism &amp; digital media.</p>
+      </div>
+    </div>
+
+    <!-- Brand 10 -->
+    <div class="brand-card" data-category="fb">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#127864;</div>
+        <span class="brand-tag">Beverage Brand</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Golden Spirits</h4>
+        <p class="brand-desc">Premium spirits &amp; beverage brand marketing driven by energetic video edits.</p>
+      </div>
+    </div>
+
+    <!-- Brand 11 -->
+    <div class="brand-card" data-category="media">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#127916;</div>
+        <span class="brand-tag">Media Production</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Value4Media (V4M)</h4>
+        <p class="brand-desc">Full-scale digital video production and dynamic cross-platform content creation.</p>
+      </div>
+    </div>
+
+    <!-- Brand 12 -->
+    <div class="brand-card" data-category="fashion">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#127917;</div>
+        <span class="brand-tag">Creator Agency</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Swayye</h4>
+        <p class="brand-desc">Influencer management and high-impact brand collaboration studio.</p>
+      </div>
+    </div>
+
+    <!-- Brand 13 -->
+    <div class="brand-card" data-category="interior">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#127968;</div>
+        <span class="brand-tag">Luxury Interiors</span>
+      </div>
+      <div>
+        <h4 class="brand-name">UrSpace.in</h4>
+        <p class="brand-desc">Gurugram interior design firm scaled to 500K+ views and 400+ WhatsApp leads.</p>
+      </div>
+    </div>
+
+    <!-- Brand 14 -->
+    <div class="brand-card" data-category="media">
+      <div class="brand-card-top">
+        <div class="brand-icon">&#127806;</div>
+        <span class="brand-tag">Agri-Commodities</span>
+      </div>
+      <div>
+        <h4 class="brand-name">Hindanaaj</h4>
+        <p class="brand-desc">Agricultural commodities, grains, and wholesale food supply distribution.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- SERVICES -->
 <div id="services">
   <div class="section">
     <span class="section-tag">What We Do</span>
     <h2 class="section-title">Full-Stack Marketing.<br />End-to-End Execution.</h2>
-    <p class="section-sub">From content creation to ad campaigns to lead generation &mdash; we handle everything so you can focus on running your business.</p>
+    <p class="section-sub">From viral short-form content to conversion-optimized ad campaigns &mdash; we take care of the growth engine completely.</p>
     <div class="services-grid">
       <div class="service-card">
         <div class="service-icon">&#127916;</div>
@@ -348,9 +689,9 @@
 <!-- CASE STUDIES -->
 <div class="cs-wrap" id="case-studies">
   <div class="section">
-    <span class="section-tag">Case Studies</span>
-    <h2 class="section-title">Real Brands. Real Results.</h2>
-    <p class="section-sub">Three campaigns. Three industries. One consistent outcome: measurable growth that hits the bottom line.</p>
+    <span class="section-tag">Detailed Breakdowns</span>
+    <h2 class="section-title">Featured Case Studies</h2>
+    <p class="section-sub">Three selected campaigns proving our replicable system across restaurants, modeling agencies, and luxury interiors.</p>
 
     <!-- MEATSTER -->
     <div class="case-study" id="meatster">
@@ -398,7 +739,7 @@
     </div>
 
     <!-- DREAMS MAKER STUDIO -->
-    <div class="case-study gold" id="dms">
+    <div class="case-study" id="dms">
       <div class="case-header">
         <div class="case-meta">
           <div class="case-tag">Modeling Agency &middot; Delhi, Chhatarpur</div>
@@ -539,7 +880,7 @@
       <span>&#128241;</span>
       <span>+91 95203 44932</span>
     </a>
-    <a href="https://www.instagram.com/digiflare.media" class="contact-chip" target="_blank">
+    <a href="https://www.instagram.com/digiflare.media" target="_blank" rel="noopener noreferrer" class="contact-chip">
       <span>&#128247;</span>
       <span>@digiflare.media</span>
     </a>
@@ -548,12 +889,43 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Digiflare Media</div>
-  <p>&copy; 2025 Digiflare Media. All rights reserved.</p>
-  <p style="font-size:12px; color:#666;">At DFM, we don't just market &mdash; we create movements.</p>
+  <div class="footer-logo-wrap">
+    <img src="assets/logo/digiflare_logo_exact.jpg" alt="Digiflare Media Logo" />
+  </div>
+  <p>&copy; 2026 Digiflare Media. All rights reserved.</p>
+  <p style="font-size:12px; color:#777;">At DFM, we don't just market &mdash; we create movements.</p>
 </footer>
 
 <script>
+  // THEME SWITCHER
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    document.querySelectorAll('.theme-dot').forEach(dot => dot.classList.remove('active'));
+    const activeDot = document.querySelector(`.theme-dot.t-${theme}`);
+    if (activeDot) activeDot.classList.add('active');
+    localStorage.setItem('dfm-theme', theme);
+  }
+
+  // Restore Theme
+  const savedTheme = localStorage.getItem('dfm-theme');
+  if (savedTheme) { setTheme(savedTheme); }
+
+  // BRANDS FILTER
+  function filterBrands(category, btn) {
+    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    const cards = document.querySelectorAll('.brand-card');
+    cards.forEach(card => {
+      if (category === 'all' || card.getAttribute('data-category') === category) {
+        card.style.display = 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+
+  // LIGHTBOX
   function openLightbox(src) {
     document.getElementById('lightbox-img').src = src;
     document.getElementById('lightbox').classList.add('active');
