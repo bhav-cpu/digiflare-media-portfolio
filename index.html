@@ -6,7 +6,7 @@
   <title>Digiflare Media — Full-Stack Growth Agency</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;900&family=Michroma&family=Syncopate:wght@700;800&family=Orbitron:wght@800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -96,6 +96,31 @@
     }
     .nav-links a:hover { color: var(--white); }
     
+
+    /* EXACT GEOMETRIC TEXT LOGO */
+    .brand-logo-text {
+      font-family: 'Michroma', 'Syncopate', sans-serif;
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      color: #ffffff;
+      text-transform: uppercase;
+      display: inline-block;
+      transition: color 0.3s, text-shadow 0.3s;
+    }
+    .brand-logo-text:hover {
+      text-shadow: 0 0 16px var(--accent-glow);
+    }
+    .hero-text-logo {
+      font-family: 'Michroma', 'Syncopate', sans-serif;
+      font-size: clamp(14px, 2vw, 20px);
+      letter-spacing: 0.3em;
+      color: #ffffff;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+      opacity: 0.9;
+    }
+
     /* THEME SWITCHER */
     .theme-picker {
       display: flex; align-items: center; gap: 6px;
@@ -411,8 +436,8 @@
 
 <!-- NAV -->
 <nav>
-  <a href="#about" class="nav-logo">
-    <img class="nav-logo-img" src="assets/logo/digiflare_logo_exact.jpg" alt="Digiflare Media" />
+  <a href="#about" class="nav-logo" style="text-decoration:none;">
+    <span class="brand-logo-text">DIGIFLAREMEDIA</span>
   </a>
   <ul class="nav-links">
     <li><a href="#about">About</a></li>
@@ -435,9 +460,7 @@
 <!-- HERO -->
 <section class="hero" id="about">
   <div class="hero-glow"></div>
-  <div class="hero-logo-badge">
-    <img src="assets/logo/digiflare_logo_exact.jpg" alt="Digiflare Media" />
-  </div>
+  <div class="hero-text-logo">DIGIFLAREMEDIA</div>
   <div class="hero-badge">&#9679; Performance &amp; Creative Growth Agency</div>
   <h1>We Don't Just<br />Market. We <span>Build<br />Movements.</span></h1>
   <p>Digiflare Media scales modern brands with high-retention content, precision ads, and aggressive organic distribution across India.</p>
@@ -889,7 +912,7 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-logo-wrap">
-    <img src="assets/logo/digiflare_logo_exact.jpg" alt="Digiflare Media Logo" />
+    <span class="brand-logo-text" style="font-size:13px; opacity:0.8;">DIGIFLAREMEDIA</span>
   </div>
   <p>&copy; 2026 Digiflare Media. All rights reserved.</p>
   <p style="font-size:12px; color:#777;">At DFM, we don't just market &mdash; we create movements.</p>
