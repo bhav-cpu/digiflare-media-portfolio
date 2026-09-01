@@ -6,30 +6,29 @@
   <title>Digiflare Media — Full-Stack Growth Agency</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@500;700;900&family=Michroma&family=Syncopate:wght@700;800&family=Orbitron:wght@800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Michroma&family=Syncopate:wght@700&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* THEME VARIABLES */
+    /* THEME COLOR VARIABLES */
     :root {
-      --bg: #050609;
-      --surface: #0a0b12;
-      --surface2: #10121d;
-      --surface3: #161827;
+      --bg: #07070b;
+      --surface: #0e0e16;
+      --surface2: #141420;
+      --surface3: #1a1b28;
       --border: rgba(255,255,255,0.08);
-      --border-hover: rgba(255,255,255,0.22);
-      --text: #f3f4f8;
-      --muted: #8e93a7;
+      --border-hover: rgba(255,255,255,0.2);
+      --text: #f3f3f6;
+      --muted: #8e8e9f;
       --white: #ffffff;
-      --radius: 20px;
-      --radius-sm: 12px;
+      --radius: 18px;
+      --radius-sm: 10px;
 
       /* DEFAULT THEME: ELECTRIC VIOLET & CYBER CYAN */
       --accent-1: #6366F1;
       --accent-2: #06B6D4;
       --accent-gradient: linear-gradient(135deg, #6366F1 0%, #06B6D4 100%);
-      --accent-glow: rgba(99, 102, 241, 0.3);
-      --accent-glow-cyan: rgba(6, 182, 212, 0.25);
+      --accent-glow: rgba(99, 102, 241, 0.25);
       --accent-tag-bg: rgba(99, 102, 241, 0.12);
       --accent-tag-border: rgba(99, 102, 241, 0.35);
       --accent-tag-text: #818CF8;
@@ -39,8 +38,7 @@
       --accent-1: #F59E0B;
       --accent-2: #FBBF24;
       --accent-gradient: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
-      --accent-glow: rgba(245, 158, 11, 0.28);
-      --accent-glow-cyan: rgba(251, 191, 36, 0.2);
+      --accent-glow: rgba(245, 158, 11, 0.22);
       --accent-tag-bg: rgba(245, 158, 11, 0.12);
       --accent-tag-border: rgba(245, 158, 11, 0.35);
       --accent-tag-text: #FCD34D;
@@ -50,8 +48,7 @@
       --accent-1: #FF0055;
       --accent-2: #FF5500;
       --accent-gradient: linear-gradient(135deg, #FF0055 0%, #FF5500 100%);
-      --accent-glow: rgba(255, 0, 85, 0.3);
-      --accent-glow-cyan: rgba(255, 85, 0, 0.22);
+      --accent-glow: rgba(255, 0, 85, 0.25);
       --accent-tag-bg: rgba(255, 0, 85, 0.12);
       --accent-tag-border: rgba(255, 0, 85, 0.35);
       --accent-tag-text: #FF4D79;
@@ -61,8 +58,7 @@
       --accent-1: #10B981;
       --accent-2: #06B6D4;
       --accent-gradient: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
-      --accent-glow: rgba(16, 185, 129, 0.3);
-      --accent-glow-cyan: rgba(6, 182, 212, 0.22);
+      --accent-glow: rgba(16, 185, 129, 0.25);
       --accent-tag-bg: rgba(16, 185, 129, 0.12);
       --accent-tag-border: rgba(16, 185, 129, 0.35);
       --accent-tag-text: #34D399;
@@ -75,58 +71,14 @@
       color: var(--text);
       line-height: 1.6;
       overflow-x: hidden;
-      perspective: 1200px;
-    }
-
-    /* 3D FLOATING BACKGROUND ORBS */
-    .bg-orbs {
-      position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden;
-    }
-    .orb {
-      position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.35;
-      animation: floatOrb 18s ease-in-out infinite alternate;
-      transition: background 0.6s ease;
-    }
-    .orb-1 {
-      width: 600px; height: 600px; background: var(--accent-glow);
-      top: -100px; left: -100px; animation-duration: 22s;
-    }
-    .orb-2 {
-      width: 500px; height: 500px; background: var(--accent-glow-cyan);
-      bottom: 10%; right: -100px; animation-duration: 18s; animation-delay: -5s;
-    }
-    .orb-3 {
-      width: 400px; height: 400px; background: var(--accent-glow);
-      top: 50%; left: 30%; animation-duration: 26s; animation-delay: -10s; opacity: 0.2;
-    }
-    @keyframes floatOrb {
-      0% { transform: translate(0, 0) scale(1) rotate(0deg); }
-      50% { transform: translate(80px, 60px) scale(1.1) rotate(45deg); }
-      100% { transform: translate(-60px, 100px) scale(0.95) rotate(90deg); }
     }
 
     /* NOISE OVERLAY */
     body::before {
       content: ''; position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 1; opacity: 0.6;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none; z-index: 0; opacity: 0.5;
     }
-
-    /* SCROLL ANIMATION CLASSES */
-    .reveal {
-      opacity: 0;
-      transform: translateY(35px) scale(0.98);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-    .stagger-1 { transition-delay: 0.08s; }
-    .stagger-2 { transition-delay: 0.16s; }
-    .stagger-3 { transition-delay: 0.24s; }
-    .stagger-4 { transition-delay: 0.32s; }
 
     /* EXACT GEOMETRIC TEXT LOGO */
     .brand-logo-text {
@@ -137,78 +89,71 @@
       color: #ffffff;
       text-transform: uppercase;
       display: inline-block;
-      transition: color 0.3s, text-shadow 0.3s;
+      transition: color 0.25s, text-shadow 0.25s;
     }
     .brand-logo-text:hover {
       text-shadow: 0 0 16px var(--accent-glow);
     }
     .hero-text-logo {
       font-family: 'Michroma', 'Syncopate', sans-serif;
-      font-size: clamp(14px, 2vw, 20px);
-      letter-spacing: 0.32em;
+      font-size: 16px;
+      letter-spacing: 0.3em;
       color: #ffffff;
       text-transform: uppercase;
       margin-bottom: 24px;
-      opacity: 0.95;
-      text-shadow: 0 0 25px var(--accent-glow);
-      animation: pulseGlow 4s ease-in-out infinite alternate;
-    }
-    @keyframes pulseGlow {
-      0% { opacity: 0.85; text-shadow: 0 0 15px var(--accent-glow); }
-      100% { opacity: 1; text-shadow: 0 0 35px var(--accent-glow); }
+      opacity: 0.9;
     }
 
     /* NAV */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 16px 48px;
+      padding: 18px 48px;
       display: flex; align-items: center; justify-content: space-between;
-      background: rgba(5,6,9,0.75); backdrop-filter: blur(24px);
+      background: rgba(7,7,11,0.85); backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
-      transition: all 0.3s ease;
     }
     .nav-logo { display: flex; align-items: center; text-decoration: none; }
     .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
     .nav-links a {
       color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600;
-      letter-spacing: 0.05em; text-transform: uppercase; transition: all 0.25s; position: relative;
+      letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.25s;
     }
     .nav-links a:hover { color: var(--white); }
     
     /* THEME SWITCHER */
     .theme-picker {
-      display: flex; align-items: center; gap: 7px;
+      display: flex; align-items: center; gap: 6px;
       background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-      padding: 5px 9px; border-radius: 100px;
+      padding: 4px 8px; border-radius: 100px;
     }
     .theme-dot {
-      width: 15px; height: 15px; border-radius: 50%; cursor: pointer;
-      border: 2px solid transparent; transition: transform 0.25s, border-color 0.25s;
+      width: 16px; height: 16px; border-radius: 50%; cursor: pointer;
+      border: 2px solid transparent; transition: transform 0.2s, border-color 0.2s;
     }
-    .theme-dot:hover { transform: scale(1.25); }
-    .theme-dot.active { border-color: #fff; transform: scale(1.2); box-shadow: 0 0 10px rgba(255,255,255,0.5); }
+    .theme-dot:hover { transform: scale(1.2); }
+    .theme-dot.active { border-color: #fff; transform: scale(1.15); }
     .theme-dot.t-violet { background: linear-gradient(135deg, #6366F1, #06B6D4); }
     .theme-dot.t-gold { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
     .theme-dot.t-crimson { background: linear-gradient(135deg, #FF0055, #FF5500); }
     .theme-dot.t-emerald { background: linear-gradient(135deg, #10B981, #06B6D4); }
 
     .nav-cta {
-      background: var(--accent-gradient) !important; color: #fff !important; padding: 9px 24px;
+      background: var(--accent-gradient) !important; color: #fff !important; padding: 10px 24px;
       border-radius: 8px; font-weight: 700 !important; box-shadow: 0 4px 20px var(--accent-glow);
-      transition: transform 0.25s, box-shadow 0.25s !important;
+      transition: transform 0.2s, box-shadow 0.2s !important;
     }
-    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 8px 30px var(--accent-glow); }
+    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px var(--accent-glow); }
 
     /* HERO */
     .hero {
       min-height: 100vh; display: flex; flex-direction: column;
       align-items: center; justify-content: center; text-align: center;
-      padding: 140px 24px 80px; position: relative; z-index: 2;
+      padding: 130px 24px 80px; position: relative; overflow: hidden;
     }
     .hero-glow {
-      position: absolute; width: 900px; height: 900px; border-radius: 50%;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 65%);
-      top: 40%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
+      position: absolute; width: 850px; height: 850px; border-radius: 50%;
+      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
+      top: 45%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
       transition: background 0.5s ease;
     }
     .hero-badge {
@@ -216,64 +161,57 @@
       background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
       border-radius: 100px; padding: 7px 20px; font-size: 12px; font-weight: 700;
       color: var(--accent-tag-text); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px;
-      backdrop-filter: blur(12px); box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      backdrop-filter: blur(10px);
     }
     .hero h1 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(42px, 7.5vw, 98px); font-weight: 900; line-height: 1.02;
+      font-size: clamp(42px, 7.5vw, 96px); font-weight: 900; line-height: 1.02;
       letter-spacing: -0.035em; color: var(--white); margin-bottom: 24px;
     }
     .hero h1 span {
       background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      display: inline-block;
     }
-    .hero p { font-size: clamp(16px, 2vw, 20px); color: var(--muted); max-width: 620px; margin-bottom: 44px; }
+    .hero p { font-size: clamp(16px, 2vw, 20px); color: var(--muted); max-width: 600px; margin-bottom: 48px; }
     .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
     .btn-primary {
-      background: var(--accent-gradient); color: #fff; padding: 16px 38px; border-radius: 12px;
+      background: var(--accent-gradient); color: #fff; padding: 15px 36px; border-radius: 10px;
       font-weight: 800; font-size: 15px; text-decoration: none; transition: transform 0.25s, box-shadow 0.25s;
-      display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 6px 28px var(--accent-glow);
+      display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 25px var(--accent-glow);
     }
-    .btn-primary:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 12px 40px var(--accent-glow); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 35px var(--accent-glow); }
     .btn-secondary {
-      background: rgba(255,255,255,0.03); color: var(--text); padding: 16px 38px; border-radius: 12px;
+      background: rgba(255,255,255,0.03); color: var(--text); padding: 15px 36px; border-radius: 10px;
       font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid var(--border);
-      transition: border-color 0.25s, transform 0.25s, background 0.25s; backdrop-filter: blur(12px);
+      transition: border-color 0.25s, transform 0.25s, background 0.25s; backdrop-filter: blur(10px);
     }
-    .btn-secondary:hover { border-color: var(--border-hover); background: rgba(255,255,255,0.08); transform: translateY(-3px); }
+    .btn-secondary:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); transform: translateY(-3px); }
 
     /* STATS STRIP */
     .stats-strip {
       background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 56px 48px; position: relative; z-index: 2;
+      padding: 56px 48px; position: relative;
     }
     .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; text-align: center; }
     .stat-item h3 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(36px,4.8vw,56px); font-weight: 900;
+      font-size: clamp(34px,4.5vw,54px); font-weight: 900;
       background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
       letter-spacing: -0.03em;
     }
     .stat-item p { font-size: 12px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px; }
 
     /* SECTION BASE */
-    .section { padding: 110px 48px; max-width: 1200px; margin: 0 auto; position: relative; z-index: 2; }
+    .section { padding: 110px 48px; max-width: 1200px; margin: 0 auto; }
     .section-tag {
       display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
       color: var(--accent-tag-text); margin-bottom: 14px; background: var(--accent-tag-bg);
       border: 1px solid var(--accent-tag-border); padding: 5px 14px; border-radius: 6px;
     }
-    .section-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(30px,4.5vw,52px); font-weight: 900; color: var(--white);
-      line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 18px;
-    }
-    .section-sub { font-size: 17px; color: var(--muted); max-width: 600px; margin-bottom: 60px; }
+    .section-title { font-size: clamp(30px,4.5vw,52px); font-weight: 900; color: var(--white); line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 18px; }
+    .section-sub { font-size: 17px; color: var(--muted); max-width: 580px; margin-bottom: 64px; }
 
     /* BRANDS SHOWCASE SECTION */
     .brands-section {
       background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 110px 0; position: relative; z-index: 2;
+      padding: 110px 0;
     }
     .brands-header-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; margin-bottom: 40px; }
     .brands-count-badge {
@@ -289,73 +227,64 @@
       padding: 8px 18px; border-radius: 100px; font-size: 12px; font-weight: 700; cursor: pointer;
       text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.25s;
     }
-    .filter-btn:hover { color: #fff; border-color: var(--border-hover); background: rgba(255,255,255,0.08); transform: translateY(-2px); }
+    .filter-btn:hover { color: #fff; border-color: var(--border-hover); background: rgba(255,255,255,0.08); }
     .filter-btn.active {
       background: var(--accent-gradient); color: #fff; border-color: transparent;
-      box-shadow: 0 4px 16px var(--accent-glow);
+      box-shadow: 0 2px 14px var(--accent-glow);
     }
 
     .brands-grid {
       max-width: 1200px; margin: 0 auto; padding: 0 48px;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
     }
-    
-    /* 3D TILT CARDS */
-    .tilt-card {
-      transform-style: preserve-3d;
-      transition: transform 0.15s ease-out, border-color 0.3s, box-shadow 0.3s, background 0.3s;
-      will-change: transform;
-    }
-
     .brand-card {
       background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm);
-      padding: 26px 22px; position: relative; overflow: hidden; display: flex;
-      flex-direction: column; justify-content: space-between; text-decoration: none;
+      padding: 24px 20px; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+      position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
+      text-decoration: none;
     }
     .brand-card:hover {
-      border-color: var(--accent-1);
-      box-shadow: 0 15px 35px var(--accent-glow); background: var(--surface3);
+      border-color: var(--accent-1); transform: translateY(-4px);
+      box-shadow: 0 10px 30px var(--accent-glow); background: var(--surface3);
     }
-    .brand-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 14px; }
+    .brand-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
     .brand-icon {
-      width: 42px; height: 42px; border-radius: 12px; background: rgba(255,255,255,0.04);
-      display: flex; align-items: center; justify-content: center; font-size: 20px; border: 1px solid var(--border);
-      transition: transform 0.3s;
+      width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.04);
+      display: flex; align-items: center; justify-content: center; font-size: 18px; border: 1px solid var(--border);
     }
-    .brand-card:hover .brand-icon { transform: scale(1.15) rotate(5deg); }
     .brand-tag {
       font-size: 10px; font-weight: 800; color: var(--accent-tag-text);
       background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
-      padding: 4px 9px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em;
+      padding: 3px 8px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em;
     }
-    .brand-name { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 6px; display: flex; align-items: center; gap: 6px; }
-    .brand-desc { font-size: 12.5px; color: var(--muted); line-height: 1.55; }
+    .brand-name { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
+    .brand-desc { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
 
     /* SERVICES */
     .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
     .service-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 40px 32px; transition: all 0.3s; position: relative; overflow: hidden;
+      padding: 38px 30px; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
     }
     .service-card:hover {
-      border-color: var(--accent-1); box-shadow: 0 15px 35px var(--accent-glow);
+      border-color: var(--accent-1); transform: translateY(-5px);
+      box-shadow: 0 10px 30px var(--accent-glow);
     }
     .service-icon {
-      width: 54px; height: 54px; background: var(--accent-tag-bg); border-radius: 16px;
-      display: flex; align-items: center; justify-content: center; font-size: 26px; margin-bottom: 24px;
-      border: 1px solid var(--accent-tag-border); transition: transform 0.3s;
+      width: 52px; height: 52px; background: var(--accent-tag-bg); border-radius: 14px;
+      display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 22px;
+      border: 1px solid var(--accent-tag-border);
     }
-    .service-card:hover .service-icon { transform: scale(1.15) translateY(-3px); }
     .service-card h3 { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
     .service-card p { font-size: 14px; color: var(--muted); line-height: 1.75; }
 
     /* CASE STUDIES */
-    .cs-wrap { background: var(--surface); padding: 110px 0; border-top: 1px solid var(--border); position: relative; z-index: 2; }
+    .cs-wrap { background: var(--surface); padding: 110px 0; border-top: 1px solid var(--border); }
     .case-study {
-      background: var(--surface2); border: 1px solid var(--border); border-radius: 28px;
-      overflow: hidden; margin-bottom: 64px; transition: border-color 0.3s, box-shadow 0.3s;
+      background: var(--surface2); border: 1px solid var(--border); border-radius: 26px;
+      overflow: hidden; margin-bottom: 64px; transition: border-color 0.3s;
     }
-    .case-study:hover { border-color: var(--border-hover); box-shadow: 0 20px 45px rgba(0,0,0,0.5); }
+    .case-study:hover { border-color: var(--border-hover); }
     .case-study:last-child { margin-bottom: 0; }
     .case-header { padding: 52px 52px 0; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 28px; }
     .case-tag {
@@ -363,15 +292,10 @@
       color: var(--accent-tag-text); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
       padding: 5px 16px; border-radius: 100px; margin-bottom: 14px;
     }
-    .case-title {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(24px,3.2vw,36px); font-weight: 900; color: var(--white);
-      letter-spacing: -0.02em; margin-bottom: 4px;
-    }
+    .case-title { font-size: clamp(24px,3.2vw,36px); font-weight: 900; color: var(--white); letter-spacing: -0.02em; margin-bottom: 4px; }
     .case-subtitle { font-size: 14px; color: var(--muted); font-weight: 500; }
     .case-results-inline { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
     .stat-num {
-      font-family: 'Space Grotesk', sans-serif;
       font-size: 32px; font-weight: 900; letter-spacing: -0.02em; line-height: 1;
       background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
@@ -386,36 +310,30 @@
     .case-right { padding-left: 52px; }
     .result-callout {
       background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
-      border-radius: 16px; padding: 22px 26px; margin-top: 24px; backdrop-filter: blur(10px);
+      border-radius: 14px; padding: 22px 26px; margin-top: 24px; backdrop-filter: blur(10px);
     }
     .result-callout p { font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.75; }
     .result-callout strong { color: var(--white); }
     .result-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .result-stat-box {
-      background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
-      padding: 20px; text-align: center; transition: all 0.3s;
-    }
-    .result-stat-box:hover { border-color: var(--accent-1); transform: translateY(-3px); }
+    .result-stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
     .result-stat-box .num {
-      font-family: 'Space Grotesk', sans-serif;
       font-size: 28px; font-weight: 900; letter-spacing: -0.02em;
       background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
     }
     .result-stat-box .lbl { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 4px; line-height: 1.4; font-weight: 700; }
     .case-images { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
-    .case-images img { width: 100%; border-radius: 16px; object-fit: cover; border: 1px solid var(--border); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.35s; cursor: zoom-in; max-height: 240px; }
-    .case-images img:hover { transform: scale(1.035); border-color: var(--border-hover); box-shadow: 0 10px 25px rgba(0,0,0,0.5); }
+    .case-images img { width: 100%; border-radius: 14px; object-fit: cover; border: 1px solid var(--border); transition: transform 0.3s, border-color 0.3s; cursor: zoom-in; max-height: 240px; }
+    .case-images img:hover { transform: scale(1.025); border-color: var(--border-hover); }
     .case-images img.wide { grid-column: span 2; max-height: 220px; object-fit: contain; background: #08090f; }
 
     /* WHY US */
     .why-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
     .why-card {
       background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 38px; display: flex; gap: 22px; align-items: flex-start; transition: all 0.3s;
+      padding: 36px; display: flex; gap: 22px; align-items: flex-start; transition: border-color 0.3s, transform 0.3s;
     }
-    .why-card:hover { border-color: var(--accent-1); transform: translateY(-4px); box-shadow: 0 15px 35px var(--accent-glow); }
+    .why-card:hover { border-color: var(--accent-1); transform: translateY(-4px); }
     .why-num {
-      font-family: 'Space Grotesk', sans-serif;
       font-size: 56px; font-weight: 900; line-height: 1; flex-shrink: 0; letter-spacing: -0.04em;
       background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.4;
     }
@@ -425,18 +343,14 @@
     /* CONTACT */
     .contact-section {
       background: var(--surface); border-top: 1px solid var(--border); text-align: center;
-      padding: 120px 24px; position: relative; overflow: hidden; z-index: 2;
+      padding: 110px 24px; position: relative; overflow: hidden;
     }
     .contact-glow {
       position: absolute; width: 750px; height: 380px; border-radius: 50%;
       background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
       bottom: -100px; left: 50%; transform: translateX(-50%); pointer-events: none;
     }
-    .contact-section h2 {
-      font-family: 'Space Grotesk', sans-serif;
-      font-size: clamp(32px,5vw,64px); font-weight: 900; color: var(--white);
-      letter-spacing: -0.03em; margin-bottom: 18px;
-    }
+    .contact-section h2 { font-size: clamp(32px,5vw,62px); font-weight: 900; color: var(--white); letter-spacing: -0.03em; margin-bottom: 18px; }
     .contact-section h2 span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
     .contact-section > p { font-size: 17px; color: var(--muted); max-width: 480px; margin: 0 auto 44px; }
     .contact-links { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
@@ -445,22 +359,20 @@
       border: 1px solid var(--border); border-radius: 100px; padding: 14px 28px; color: var(--text);
       text-decoration: none; font-size: 14px; font-weight: 700; transition: all 0.25s;
     }
-    .contact-chip:hover { border-color: var(--accent-1); background: var(--accent-tag-bg); color: var(--white); transform: translateY(-3px); box-shadow: 0 8px 25px var(--accent-glow); }
+    .contact-chip:hover { border-color: var(--accent-1); background: var(--accent-tag-bg); color: var(--white); transform: translateY(-2px); }
 
     /* FOOTER */
     footer {
       background: var(--bg); border-top: 1px solid var(--border); padding: 36px 48px;
       display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
-      position: relative; z-index: 2;
     }
     .footer-logo-wrap { display: flex; align-items: center; gap: 12px; }
     footer p { font-size: 13px; color: var(--muted); }
 
     /* LIGHTBOX */
-    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(12px); }
-    .lightbox.active { display: flex; animation: fadeIn 0.25s ease; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    .lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 16px; object-fit: contain; border: 1px solid var(--border); box-shadow: 0 20px 60px rgba(0,0,0,0.8); }
+    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(10px); }
+    .lightbox.active { display: flex; }
+    .lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 14px; object-fit: contain; border: 1px solid var(--border); }
     .lightbox-close { position: absolute; top: 20px; right: 24px; font-size: 36px; color: white; cursor: pointer; line-height: 1; }
 
     /* RESPONSIVE */
@@ -489,13 +401,6 @@
   </style>
 </head>
 <body>
-
-<!-- 3D FLOATING BACKGROUND GLOW ORBS -->
-<div class="bg-orbs">
-  <div class="orb orb-1"></div>
-  <div class="orb orb-2"></div>
-  <div class="orb orb-3"></div>
-</div>
 
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close">&times;</span>
@@ -528,11 +433,11 @@
 <!-- HERO -->
 <section class="hero" id="about">
   <div class="hero-glow"></div>
-  <div class="hero-text-logo reveal">DIGIFLAREMEDIA</div>
-  <div class="hero-badge reveal stagger-1">&#9679; Performance &amp; Creative Growth Agency</div>
-  <h1 class="reveal stagger-2">We Don't Just<br />Market. We <span>Build<br />Movements.</span></h1>
-  <p class="reveal stagger-3">Digiflare Media scales modern brands with high-retention content, precision ads, and aggressive organic distribution across India.</p>
-  <div class="hero-btns reveal stagger-4">
+  <div class="hero-text-logo">DIGIFLAREMEDIA</div>
+  <div class="hero-badge">&#9679; Performance &amp; Creative Growth Agency</div>
+  <h1>We Don't Just<br />Market. We <span>Build<br />Movements.</span></h1>
+  <p>Digiflare Media scales modern brands with high-retention content, precision ads, and aggressive organic distribution across India.</p>
+  <div class="hero-btns">
     <a href="#case-studies" class="btn-primary">Explore Case Studies &rarr;</a>
     <a href="#brands" class="btn-secondary">View 15+ Brands Worked With</a>
   </div>
@@ -541,28 +446,16 @@
 <!-- STATS -->
 <div class="stats-strip">
   <div class="stats-grid">
-    <div class="stat-item reveal stagger-1">
-      <h3 class="counter" data-target="15" data-suffix="+">15+</h3>
-      <p>Brands Scaled</p>
-    </div>
-    <div class="stat-item reveal stagger-2">
-      <h3 class="counter" data-target="500" data-suffix="K+">500K+</h3>
-      <p>Organic Views / Month</p>
-    </div>
-    <div class="stat-item reveal stagger-3">
-      <h3 class="counter" data-target="4" data-suffix="X">4X</h3>
-      <p>Average Ad ROAS</p>
-    </div>
-    <div class="stat-item reveal stagger-4">
-      <h3 class="counter" data-target="100" data-suffix="+">100+</h3>
-      <p>Leads Per Campaign</p>
-    </div>
+    <div class="stat-item"><h3>15+</h3><p>Brands Scaled</p></div>
+    <div class="stat-item"><h3>500K+</h3><p>Organic Views / Month</p></div>
+    <div class="stat-item"><h3>4X</h3><p>Average Ad ROAS</p></div>
+    <div class="stat-item"><h3>100+</h3><p>Leads Per Campaign</p></div>
   </div>
 </div>
 
 <!-- ══════════ BRANDS WORKED WITH (15+ BRANDS) ══════════ -->
 <section class="brands-section" id="brands">
-  <div class="brands-header-wrap reveal">
+  <div class="brands-header-wrap">
     <span class="section-tag">Client Portfolio</span>
     <h2 class="section-title">Brands We've Worked With <span class="brands-count-badge">15+ Brands</span></h2>
     <p class="section-sub">From luxury perfumery and gourmet F&amp;B to premium modeling agencies and interior design firms &mdash; tap any brand to visit their live Instagram page.</p>
@@ -579,7 +472,7 @@
 
   <div class="brands-grid" id="brands-container">
     <!-- Brand 1: Aura Organics -->
-    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-1" data-category="fashion">
+    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fashion">
       <div class="brand-card-top">
         <div class="brand-icon">✨</div>
         <span class="brand-tag">Wellness</span>
@@ -591,7 +484,7 @@
     </a>
 
     <!-- Brand 2: Kake Da Hotel 104 -->
-    <a href="https://www.instagram.com/kakedahotel.noida104/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-2" data-category="fb">
+    <a href="https://www.instagram.com/kakedahotel.noida104/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fb">
       <div class="brand-card-top">
         <div class="brand-icon">🍽️</div>
         <span class="brand-tag">@kakedahotel.noida104</span>
@@ -603,7 +496,7 @@
     </a>
 
     <!-- Brand 3: Meatster n Buffkinz -->
-    <a href="https://www.instagram.com/meatstercafe/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-3" data-category="fb">
+    <a href="https://www.instagram.com/meatstercafe/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fb">
       <div class="brand-card-top">
         <div class="brand-icon">🥩</div>
         <span class="brand-tag">@meatstercafe</span>
@@ -615,7 +508,7 @@
     </a>
 
     <!-- Brand 4: Ayaz Perfumes -->
-    <a href="https://www.instagram.com/ayazperfume/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-4" data-category="fashion">
+    <a href="https://www.instagram.com/ayazperfume/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fashion">
       <div class="brand-card-top">
         <div class="brand-icon">💎</div>
         <span class="brand-tag">@ayazperfume</span>
@@ -627,7 +520,7 @@
     </a>
 
     <!-- Brand 5: Dreams Maker Studio -->
-    <a href="https://www.instagram.com/dreamsmakerstudio/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-1" data-category="fashion">
+    <a href="https://www.instagram.com/dreamsmakerstudio/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fashion">
       <div class="brand-card-top">
         <div class="brand-icon">📸</div>
         <span class="brand-tag">@dreamsmakerstudio</span>
@@ -639,7 +532,7 @@
     </a>
 
     <!-- Brand 6: The Plugged -->
-    <a href="https://www.instagram.com/plugged_founders/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-2" data-category="interior">
+    <a href="https://www.instagram.com/plugged_founders/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="interior">
       <div class="brand-card-top">
         <div class="brand-icon">🏢</div>
         <span class="brand-tag">@plugged_founders</span>
@@ -651,7 +544,7 @@
     </a>
 
     <!-- Brand 7: Golden Spirit Music -->
-    <a href="https://www.instagram.com/goldenspiritsmusic/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-3" data-category="media">
+    <a href="https://www.instagram.com/goldenspiritsmusic/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="media">
       <div class="brand-card-top">
         <div class="brand-icon">🎵</div>
         <span class="brand-tag">@goldenspiritsmusic</span>
@@ -663,7 +556,7 @@
     </a>
 
     <!-- Brand 8: Swayye -->
-    <a href="https://www.instagram.com/swayye.app/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-4" data-category="fashion">
+    <a href="https://www.instagram.com/swayye.app/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fashion">
       <div class="brand-card-top">
         <div class="brand-icon">🌙</div>
         <span class="brand-tag">@swayye.app</span>
@@ -675,7 +568,7 @@
     </a>
 
     <!-- Brand 9: Hindanaaj -->
-    <a href="https://www.instagram.com/hind.anaaj/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-1" data-category="media">
+    <a href="https://www.instagram.com/hind.anaaj/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="media">
       <div class="brand-card-top">
         <div class="brand-icon">🪔</div>
         <span class="brand-tag">@hind.anaaj</span>
@@ -687,7 +580,7 @@
     </a>
 
     <!-- Brand 10: Kajwam Industries -->
-    <a href="https://www.instagram.com/kajwamnutts/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-2" data-category="media">
+    <a href="https://www.instagram.com/kajwamnutts/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="media">
       <div class="brand-card-top">
         <div class="brand-icon">🌰</div>
         <span class="brand-tag">@kajwamnutts</span>
@@ -699,7 +592,7 @@
     </a>
 
     <!-- Brand 11: UrSpace.in -->
-    <a href="https://www.instagram.com/urspace_in/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-3" data-category="interior">
+    <a href="https://www.instagram.com/urspace_in/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="interior">
       <div class="brand-card-top">
         <div class="brand-icon">🏠</div>
         <span class="brand-tag">@urspace_in</span>
@@ -711,7 +604,7 @@
     </a>
 
     <!-- Brand 12: Rose Imported Fabrics -->
-    <a href="https://www.instagram.com/roseimportedfabric/" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-4" data-category="fashion">
+    <a href="https://www.instagram.com/roseimportedfabric/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fashion">
       <div class="brand-card-top">
         <div class="brand-icon">👗</div>
         <span class="brand-tag">@roseimportedfabric</span>
@@ -723,7 +616,7 @@
     </a>
 
     <!-- Brand 13: RJ Academia -->
-    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-1" data-category="media">
+    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="media">
       <div class="brand-card-top">
         <div class="brand-icon">🎓</div>
         <span class="brand-tag">EdTech</span>
@@ -735,7 +628,7 @@
     </a>
 
     <!-- Brand 14: Value4Media (V4M) -->
-    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card tilt-card reveal stagger-2" data-category="media">
+    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="media">
       <div class="brand-card-top">
         <div class="brand-icon">🎬</div>
         <span class="brand-tag">Media Studio</span>
@@ -751,38 +644,38 @@
 <!-- SERVICES -->
 <div id="services">
   <div class="section">
-    <div class="reveal">
+    <div>
       <span class="section-tag">What We Do</span>
       <h2 class="section-title">Full-Stack Marketing.<br />End-to-End Execution.</h2>
       <p class="section-sub">From viral short-form content to conversion-optimized ad campaigns &mdash; we take care of the growth engine completely.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card tilt-card reveal stagger-1">
+      <div class="service-card">
         <div class="service-icon">&#127916;</div>
         <h3>Viral Content &amp; Reels</h3>
         <p>High-retention video productions engineered to trigger desire, break past your existing audience bubble, and reach thousands of new local customers organically.</p>
       </div>
-      <div class="service-card tilt-card reveal stagger-2">
+      <div class="service-card">
         <div class="service-icon">&#127919;</div>
         <h3>Paid Ad Campaigns</h3>
         <p>Precision-targeted ads on Meta and Instagram optimized for maximum ROAS &mdash; turning every rupee of ad spend into real-world customers and revenue.</p>
       </div>
-      <div class="service-card tilt-card reveal stagger-3">
+      <div class="service-card">
         <div class="service-icon">&#127776;</div>
         <h3>Creative Direction</h3>
         <p>Custom motion graphics, meme-style marketing, and bold visual creatives designed to keep your brand top-of-mind every single day across the feed.</p>
       </div>
-      <div class="service-card tilt-card reveal stagger-1">
+      <div class="service-card">
         <div class="service-icon">&#128200;</div>
         <h3>Organic Growth Strategy</h3>
         <p>Algorithmic content strategies that push your brand to new audiences without paid spend &mdash; building a sustainable, compounding growth engine.</p>
       </div>
-      <div class="service-card tilt-card reveal stagger-2">
+      <div class="service-card">
         <div class="service-icon">&#128241;</div>
         <h3>Lead Generation Systems</h3>
         <p>Integrated WhatsApp and direct-response funnels that turn social media attention into qualified local inquiries loaded directly into your sales pipeline.</p>
       </div>
-      <div class="service-card tilt-card reveal stagger-3">
+      <div class="service-card">
         <div class="service-icon">&#127881;</div>
         <h3>Event &amp; Culture Hacking</h3>
         <p>We tap into local festivals and cultural moments to create campaigns that feel native to the community and drive peak footfall when it matters most.</p>
@@ -794,14 +687,14 @@
 <!-- CASE STUDIES -->
 <div class="cs-wrap" id="case-studies">
   <div class="section">
-    <div class="reveal">
+    <div>
       <span class="section-tag">Detailed Breakdowns</span>
       <h2 class="section-title">Featured Case Studies</h2>
       <p class="section-sub">Three selected campaigns proving our replicable system across restaurants, modeling agencies, and luxury interiors.</p>
     </div>
 
     <!-- MEATSTER -->
-    <div class="case-study reveal" id="meatster">
+    <div class="case-study" id="meatster">
       <div class="case-header">
         <div class="case-meta">
           <div class="case-tag">Food &amp; Beverage &middot; Aligarh</div>
@@ -846,7 +739,7 @@
     </div>
 
     <!-- DREAMS MAKER STUDIO -->
-    <div class="case-study reveal" id="dms">
+    <div class="case-study" id="dms">
       <div class="case-header">
         <div class="case-meta">
           <div class="case-tag">Modeling Agency &middot; Delhi, Chhatarpur</div>
@@ -889,7 +782,7 @@
     </div>
 
     <!-- YOURSPACE -->
-    <div class="case-study reveal" id="yourspace">
+    <div class="case-study" id="yourspace">
       <div class="case-header">
         <div class="case-meta">
           <div class="case-tag">Interior Design &middot; Gurugram</div>
@@ -937,34 +830,34 @@
 <!-- WHY US -->
 <div id="why">
   <div class="section">
-    <div class="reveal">
+    <div>
       <span class="section-tag">Why Digiflare Media</span>
       <h2 class="section-title">We Focus on What<br />Actually Matters.</h2>
       <p class="section-sub">Forget vanity metrics. Every strategy we build is engineered to drive footfall, leads, and revenue &mdash; not just likes.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card tilt-card reveal stagger-1">
+      <div class="why-card">
         <div class="why-num">01</div>
         <div>
           <h3>Results-First Mindset</h3>
           <p>Every piece of content and every ad is evaluated by one standard: does it make the cash register ring? We obsess over ROI, not follower counts or reach reports.</p>
         </div>
       </div>
-      <div class="why-card tilt-card reveal stagger-2">
+      <div class="why-card">
         <div class="why-num">02</div>
         <div>
           <h3>Deep Local Intelligence</h3>
           <p>We understand Indian markets, local culture, and festive buying behavior. We hack cultural moments to make your brand the talk of the town when it matters most.</p>
         </div>
       </div>
-      <div class="why-card tilt-card reveal stagger-3">
+      <div class="why-card">
         <div class="why-num">03</div>
         <div>
           <h3>Full Creative Control</h3>
           <p>From scripting to shooting to editing to publishing &mdash; we manage the entire creative pipeline. Premium output without managing ten different vendors.</p>
         </div>
       </div>
-      <div class="why-card tilt-card reveal stagger-4">
+      <div class="why-card">
         <div class="why-num">04</div>
         <div>
           <h3>Proven Across Industries</h3>
@@ -978,7 +871,7 @@
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="contact-glow"></div>
-  <div class="reveal">
+  <div>
     <span class="section-tag">Get In Touch</span>
     <h2>Ready to <span>Scale</span><br />Your Brand?</h2>
     <p>Let's build something that actually moves the needle. Reach out on WhatsApp or Instagram and let's get to work.</p>
@@ -1030,75 +923,11 @@
     cards.forEach(card => {
       if (category === 'all' || card.getAttribute('data-category') === category) {
         card.style.display = 'flex';
-        card.classList.add('active');
       } else {
         card.style.display = 'none';
       }
     });
   }
-
-  // SCROLL REVEAL (IntersectionObserver)
-  const revealObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('active');
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-  // 3D TILT EFFECT ON MOUSEMOVE
-  const tiltCards = document.querySelectorAll('.tilt-card');
-  tiltCards.forEach(card => {
-    card.addEventListener('mousemove', (e) => {
-      const rect = card.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const centerX = rect.width / 2;
-      const centerY = rect.height / 2;
-      
-      const rotateX = ((y - centerY) / centerY) * -7;
-      const rotateY = ((x - centerX) / centerX) * 7;
-      
-      card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-    });
-
-    card.addEventListener('mouseleave', () => {
-      card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0)';
-    });
-  });
-
-  // NUMBER COUNTER ANIMATION
-  let countersDone = false;
-  const countObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting && !countersDone) {
-        countersDone = true;
-        document.querySelectorAll('.counter').forEach(counter => {
-          const target = +counter.getAttribute('data-target');
-          const suffix = counter.getAttribute('data-suffix') || '';
-          let count = 0;
-          const speed = target > 50 ? 25 : 60;
-          const step = Math.ceil(target / speed);
-          
-          const update = () => {
-            count += step;
-            if (count < target) {
-              counter.innerText = count + suffix;
-              requestAnimationFrame(update);
-            } else {
-              counter.innerText = target + suffix;
-            }
-          };
-          update();
-        });
-      }
-    });
-  }, { threshold: 0.3 });
-
-  const statsStrip = document.querySelector('.stats-strip');
-  if (statsStrip) countObserver.observe(statsStrip);
 
   // LIGHTBOX
   function openLightbox(src) {
