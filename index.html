@@ -64,6 +64,31 @@
       --accent-tag-text: #34D399;
     }
 
+    /* MONOCHROME LUXURY WHITE & BLACK THEME */
+    [data-theme="monochrome"] {
+      --bg: #030303;
+      --surface: #0a0a0a;
+      --surface2: #121212;
+      --surface3: #181818;
+      --border: rgba(255,255,255,0.12);
+      --border-hover: rgba(255,255,255,0.35);
+      --accent-1: #ffffff;
+      --accent-2: #e2e2e2;
+      --accent-gradient: linear-gradient(135deg, #ffffff 0%, #a8a8a8 100%);
+      --accent-glow: rgba(255, 255, 255, 0.22);
+      --accent-tag-bg: rgba(255, 255, 255, 0.08);
+      --accent-tag-border: rgba(255, 255, 255, 0.3);
+      --accent-tag-text: #ffffff;
+    }
+
+    [data-theme="monochrome"] .btn-primary,
+    [data-theme="monochrome"] .nav-cta,
+    [data-theme="monochrome"] .filter-btn.active,
+    [data-theme="monochrome"] .brands-count-badge {
+      color: #000000 !important;
+      font-weight: 800 !important;
+    }
+
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
@@ -136,6 +161,7 @@
     .theme-dot.t-gold { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
     .theme-dot.t-crimson { background: linear-gradient(135deg, #FF0055, #FF5500); }
     .theme-dot.t-emerald { background: linear-gradient(135deg, #10B981, #06B6D4); }
+    .theme-dot.t-monochrome { background: linear-gradient(135deg, #ffffff 50%, #000000 50%); border: 1px solid rgba(255,255,255,0.4); }
 
     .nav-cta {
       background: var(--accent-gradient) !important; color: #fff !important; padding: 10px 24px;
@@ -143,6 +169,19 @@
       transition: transform 0.2s, box-shadow 0.2s !important;
     }
     .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px var(--accent-glow); }
+
+
+    /* SMOOTH SCROLL FADE TRANSITIONS (WITHOUT TYPOGRAPHY / SIZE ALTERATIONS) */
+    .fade-scroll {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+      will-change: opacity, transform;
+    }
+    .fade-scroll.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
 
     /* HERO */
     .hero {
@@ -424,6 +463,7 @@
         <span class="theme-dot t-gold" onclick="setTheme('gold')" title="Cyber Gold"></span>
         <span class="theme-dot t-crimson" onclick="setTheme('crimson')" title="Sunset Flame"></span>
         <span class="theme-dot t-emerald" onclick="setTheme('emerald')" title="Emerald Neon"></span>
+        <span class="theme-dot t-monochrome" onclick="setTheme('monochrome')" title="Monochrome (White with Black)"></span>
       </div>
     </li>
     <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
@@ -446,10 +486,10 @@
 <!-- STATS -->
 <div class="stats-strip">
   <div class="stats-grid">
-    <div class="stat-item"><h3>15+</h3><p>Brands Scaled</p></div>
-    <div class="stat-item"><h3>500K+</h3><p>Organic Views / Month</p></div>
-    <div class="stat-item"><h3>4X</h3><p>Average Ad ROAS</p></div>
-    <div class="stat-item"><h3>100+</h3><p>Leads Per Campaign</p></div>
+    <div class="stat-item fade-scroll"><h3>15+</h3><p>Brands Scaled</p></div>
+    <div class="stat-item fade-scroll"><h3>500K+</h3><p>Organic Views / Month</p></div>
+    <div class="stat-item fade-scroll"><h3>4X</h3><p>Average Ad ROAS</p></div>
+    <div class="stat-item fade-scroll"><h3>100+</h3><p>Leads Per Campaign</p></div>
   </div>
 </div>
 
@@ -472,7 +512,7 @@
 
   <div class="brands-grid" id="brands-container">
     <!-- Brand 1: Aura Organics -->
-    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fashion">
+    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fashion">
       <div class="brand-card-top">
         <div class="brand-icon">✨</div>
         <span class="brand-tag">Wellness</span>
@@ -484,7 +524,7 @@
     </a>
 
     <!-- Brand 2: Kake Da Hotel 104 -->
-    <a href="https://www.instagram.com/kakedahotel.noida104/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fb">
+    <a href="https://www.instagram.com/kakedahotel.noida104/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fb">
       <div class="brand-card-top">
         <div class="brand-icon">🍽️</div>
         <span class="brand-tag">@kakedahotel.noida104</span>
@@ -496,7 +536,7 @@
     </a>
 
     <!-- Brand 3: Meatster n Buffkinz -->
-    <a href="https://www.instagram.com/meatstercafe/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fb">
+    <a href="https://www.instagram.com/meatstercafe/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fb">
       <div class="brand-card-top">
         <div class="brand-icon">🥩</div>
         <span class="brand-tag">@meatstercafe</span>
@@ -508,7 +548,7 @@
     </a>
 
     <!-- Brand 4: Ayaz Perfumes -->
-    <a href="https://www.instagram.com/ayazperfume/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fashion">
+    <a href="https://www.instagram.com/ayazperfume/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fashion">
       <div class="brand-card-top">
         <div class="brand-icon">💎</div>
         <span class="brand-tag">@ayazperfume</span>
@@ -520,7 +560,7 @@
     </a>
 
     <!-- Brand 5: Dreams Maker Studio -->
-    <a href="https://www.instagram.com/dreamsmakerstudio/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fashion">
+    <a href="https://www.instagram.com/dreamsmakerstudio/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fashion">
       <div class="brand-card-top">
         <div class="brand-icon">📸</div>
         <span class="brand-tag">@dreamsmakerstudio</span>
@@ -532,7 +572,7 @@
     </a>
 
     <!-- Brand 6: The Plugged -->
-    <a href="https://www.instagram.com/plugged_founders/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="interior">
+    <a href="https://www.instagram.com/plugged_founders/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="interior">
       <div class="brand-card-top">
         <div class="brand-icon">🏢</div>
         <span class="brand-tag">@plugged_founders</span>
@@ -544,7 +584,7 @@
     </a>
 
     <!-- Brand 7: Golden Spirit Music -->
-    <a href="https://www.instagram.com/goldenspiritsmusic/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="media">
+    <a href="https://www.instagram.com/goldenspiritsmusic/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="media">
       <div class="brand-card-top">
         <div class="brand-icon">🎵</div>
         <span class="brand-tag">@goldenspiritsmusic</span>
@@ -556,7 +596,7 @@
     </a>
 
     <!-- Brand 8: Swayye -->
-    <a href="https://www.instagram.com/swayye.app/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fashion">
+    <a href="https://www.instagram.com/swayye.app/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fashion">
       <div class="brand-card-top">
         <div class="brand-icon">🌙</div>
         <span class="brand-tag">@swayye.app</span>
@@ -568,7 +608,7 @@
     </a>
 
     <!-- Brand 9: Hindanaaj -->
-    <a href="https://www.instagram.com/hind.anaaj/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="media">
+    <a href="https://www.instagram.com/hind.anaaj/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="media">
       <div class="brand-card-top">
         <div class="brand-icon">🪔</div>
         <span class="brand-tag">@hind.anaaj</span>
@@ -580,7 +620,7 @@
     </a>
 
     <!-- Brand 10: Kajwam Industries -->
-    <a href="https://www.instagram.com/kajwamnutts/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="media">
+    <a href="https://www.instagram.com/kajwamnutts/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="media">
       <div class="brand-card-top">
         <div class="brand-icon">🌰</div>
         <span class="brand-tag">@kajwamnutts</span>
@@ -592,7 +632,7 @@
     </a>
 
     <!-- Brand 11: UrSpace.in -->
-    <a href="https://www.instagram.com/urspace_in/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="interior">
+    <a href="https://www.instagram.com/urspace_in/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="interior">
       <div class="brand-card-top">
         <div class="brand-icon">🏠</div>
         <span class="brand-tag">@urspace_in</span>
@@ -604,7 +644,7 @@
     </a>
 
     <!-- Brand 12: Rose Imported Fabrics -->
-    <a href="https://www.instagram.com/roseimportedfabric/" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="fashion">
+    <a href="https://www.instagram.com/roseimportedfabric/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fashion">
       <div class="brand-card-top">
         <div class="brand-icon">👗</div>
         <span class="brand-tag">@roseimportedfabric</span>
@@ -616,7 +656,7 @@
     </a>
 
     <!-- Brand 13: RJ Academia -->
-    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="media">
+    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="media">
       <div class="brand-card-top">
         <div class="brand-icon">🎓</div>
         <span class="brand-tag">EdTech</span>
@@ -628,7 +668,7 @@
     </a>
 
     <!-- Brand 14: Value4Media (V4M) -->
-    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card" data-category="media">
+    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="media">
       <div class="brand-card-top">
         <div class="brand-icon">🎬</div>
         <span class="brand-tag">Media Studio</span>
@@ -650,32 +690,32 @@
       <p class="section-sub">From viral short-form content to conversion-optimized ad campaigns &mdash; we take care of the growth engine completely.</p>
     </div>
     <div class="services-grid">
-      <div class="service-card">
+      <div class="service-card fade-scroll">
         <div class="service-icon">&#127916;</div>
         <h3>Viral Content &amp; Reels</h3>
         <p>High-retention video productions engineered to trigger desire, break past your existing audience bubble, and reach thousands of new local customers organically.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card fade-scroll">
         <div class="service-icon">&#127919;</div>
         <h3>Paid Ad Campaigns</h3>
         <p>Precision-targeted ads on Meta and Instagram optimized for maximum ROAS &mdash; turning every rupee of ad spend into real-world customers and revenue.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card fade-scroll">
         <div class="service-icon">&#127776;</div>
         <h3>Creative Direction</h3>
         <p>Custom motion graphics, meme-style marketing, and bold visual creatives designed to keep your brand top-of-mind every single day across the feed.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card fade-scroll">
         <div class="service-icon">&#128200;</div>
         <h3>Organic Growth Strategy</h3>
         <p>Algorithmic content strategies that push your brand to new audiences without paid spend &mdash; building a sustainable, compounding growth engine.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card fade-scroll">
         <div class="service-icon">&#128241;</div>
         <h3>Lead Generation Systems</h3>
         <p>Integrated WhatsApp and direct-response funnels that turn social media attention into qualified local inquiries loaded directly into your sales pipeline.</p>
       </div>
-      <div class="service-card">
+      <div class="service-card fade-scroll">
         <div class="service-icon">&#127881;</div>
         <h3>Event &amp; Culture Hacking</h3>
         <p>We tap into local festivals and cultural moments to create campaigns that feel native to the community and drive peak footfall when it matters most.</p>
@@ -694,7 +734,7 @@
     </div>
 
     <!-- MEATSTER -->
-    <div class="case-study" id="meatster">
+    <div class="case-study fade-scroll" id="meatster">
       <div class="case-header">
         <div class="case-meta">
           <div class="case-tag">Food &amp; Beverage &middot; Aligarh</div>
@@ -739,7 +779,7 @@
     </div>
 
     <!-- DREAMS MAKER STUDIO -->
-    <div class="case-study" id="dms">
+    <div class="case-study fade-scroll" id="dms">
       <div class="case-header">
         <div class="case-meta">
           <div class="case-tag">Modeling Agency &middot; Delhi, Chhatarpur</div>
@@ -782,7 +822,7 @@
     </div>
 
     <!-- YOURSPACE -->
-    <div class="case-study" id="yourspace">
+    <div class="case-study fade-scroll" id="yourspace">
       <div class="case-header">
         <div class="case-meta">
           <div class="case-tag">Interior Design &middot; Gurugram</div>
@@ -836,28 +876,28 @@
       <p class="section-sub">Forget vanity metrics. Every strategy we build is engineered to drive footfall, leads, and revenue &mdash; not just likes.</p>
     </div>
     <div class="why-grid">
-      <div class="why-card">
+      <div class="why-card fade-scroll">
         <div class="why-num">01</div>
         <div>
           <h3>Results-First Mindset</h3>
           <p>Every piece of content and every ad is evaluated by one standard: does it make the cash register ring? We obsess over ROI, not follower counts or reach reports.</p>
         </div>
       </div>
-      <div class="why-card">
+      <div class="why-card fade-scroll">
         <div class="why-num">02</div>
         <div>
           <h3>Deep Local Intelligence</h3>
           <p>We understand Indian markets, local culture, and festive buying behavior. We hack cultural moments to make your brand the talk of the town when it matters most.</p>
         </div>
       </div>
-      <div class="why-card">
+      <div class="why-card fade-scroll">
         <div class="why-num">03</div>
         <div>
           <h3>Full Creative Control</h3>
           <p>From scripting to shooting to editing to publishing &mdash; we manage the entire creative pipeline. Premium output without managing ten different vendors.</p>
         </div>
       </div>
-      <div class="why-card">
+      <div class="why-card fade-scroll">
         <div class="why-num">04</div>
         <div>
           <h3>Proven Across Industries</h3>
@@ -942,6 +982,20 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeLightbox();
   });
+  // SMOOTH SCROLL FADE-IN OBSERVER
+  const scrollObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  document.querySelectorAll('.fade-scroll').forEach(el => scrollObserver.observe(el));
 </script>
 </body>
 </html>
