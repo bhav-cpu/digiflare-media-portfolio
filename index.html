@@ -218,6 +218,137 @@
       border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
     }
 
+    /* STEALTH MONOCHROME: PURE BLACK BACKGROUND, SOLID WHITE ELEMENTS, NO GRADIENTS */
+    [data-theme="darkmono"] {
+      --bg: #000000;
+      --surface: #0a0a0a;
+      --surface2: #121212;
+      --surface3: #1a1a1a;
+      --border: rgba(255, 255, 255, 0.12);
+      --border-hover: rgba(255, 255, 255, 0.35);
+      --text: #e5e5e7;
+      --muted: #86868b;
+      --white: #ffffff;
+      --accent-1: #ffffff;
+      --accent-2: #ffffff;
+      --accent-gradient: #ffffff;
+      --accent-glow: rgba(255, 255, 255, 0.08);
+      --accent-tag-bg: rgba(255, 255, 255, 0.08);
+      --accent-tag-border: rgba(255, 255, 255, 0.22);
+      --accent-tag-text: #ffffff;
+    }
+
+    /* DISABLE NOISE & GLOW GRADIENTS IN DARK MONOCHROME */
+    [data-theme="darkmono"] body::before,
+    [data-theme="darkmono"] .hero-glow,
+    [data-theme="darkmono"] .contact-glow {
+      display: none !important;
+    }
+
+    /* SOLID WHITE HEADINGS - NO GRADIENT */
+    [data-theme="darkmono"] .hero h1 span,
+    [data-theme="darkmono"] .stat-item h3,
+    [data-theme="darkmono"] .stat-num,
+    [data-theme="darkmono"] .result-stat-box .num,
+    [data-theme="darkmono"] .why-num,
+    [data-theme="darkmono"] .contact-section h2 span {
+      background: none !important;
+      -webkit-text-fill-color: #ffffff !important;
+      color: #ffffff !important;
+    }
+
+    /* NAV IN DARK MONOCHROME */
+    [data-theme="darkmono"] nav {
+      background: rgba(0, 0, 0, 0.88) !important;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+    }
+    [data-theme="darkmono"] .brand-logo-text,
+    [data-theme="darkmono"] .hero-text-logo {
+      color: #ffffff !important;
+      text-shadow: none !important;
+    }
+
+    /* BUTTONS IN DARK MONOCHROME: SOLID WHITE BTN WITH BLACK TEXT */
+    [data-theme="darkmono"] .btn-primary,
+    [data-theme="darkmono"] .nav-cta,
+    [data-theme="darkmono"] .filter-btn.active,
+    [data-theme="darkmono"] .brands-count-badge {
+      background: #ffffff !important;
+      color: #000000 !important;
+      font-weight: 800 !important;
+      box-shadow: none !important;
+    }
+    [data-theme="darkmono"] .btn-primary:hover,
+    [data-theme="darkmono"] .nav-cta:hover {
+      background: #e5e5e7 !important;
+      box-shadow: 0 6px 18px rgba(255, 255, 255, 0.15) !important;
+    }
+    [data-theme="darkmono"] .btn-secondary {
+      background: #000000 !important;
+      border: 1px solid rgba(255, 255, 255, 0.25) !important;
+      color: #ffffff !important;
+    }
+    [data-theme="darkmono"] .btn-secondary:hover {
+      background: #111111 !important;
+      border-color: #ffffff !important;
+    }
+    [data-theme="darkmono"] .filter-btn {
+      background: #121212 !important;
+      color: #86868b !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    [data-theme="darkmono"] .filter-btn:hover {
+      color: #ffffff !important;
+    }
+
+    /* CARDS IN DARK MONOCHROME */
+    [data-theme="darkmono"] .brand-card,
+    [data-theme="darkmono"] .service-card,
+    [data-theme="darkmono"] .why-card,
+    [data-theme="darkmono"] .case-study {
+      background: #0a0a0a !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    [data-theme="darkmono"] .brand-card:hover,
+    [data-theme="darkmono"] .service-card:hover,
+    [data-theme="darkmono"] .why-card:hover {
+      background: #121212 !important;
+      border-color: rgba(255, 255, 255, 0.35) !important;
+      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.04) !important;
+    }
+    [data-theme="darkmono"] .brand-icon,
+    [data-theme="darkmono"] .service-icon {
+      background: #161616 !important;
+      border-color: rgba(255, 255, 255, 0.12) !important;
+    }
+    [data-theme="darkmono"] .brand-tag {
+      background: #161616 !important;
+      border-color: rgba(255, 255, 255, 0.2) !important;
+      color: #ffffff !important;
+    }
+    [data-theme="darkmono"] .result-stat-box {
+      background: #121212 !important;
+      border-color: rgba(255, 255, 255, 0.1) !important;
+    }
+    [data-theme="darkmono"] .result-callout {
+      background: #121212 !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+    }
+    [data-theme="darkmono"] .contact-chip {
+      background: #121212 !important;
+      border-color: rgba(255, 255, 255, 0.15) !important;
+      color: #ffffff !important;
+    }
+    [data-theme="darkmono"] .contact-chip:hover {
+      background: #1a1a1a !important;
+      border-color: #ffffff !important;
+      color: #ffffff !important;
+    }
+    [data-theme="darkmono"] footer {
+      background: #050505 !important;
+      border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    }
+
     html { scroll-behavior: smooth; }
     body {
       font-family: 'Inter', sans-serif;
@@ -291,6 +422,7 @@
     .theme-dot.t-crimson { background: linear-gradient(135deg, #FF0055, #FF5500); }
     .theme-dot.t-emerald { background: linear-gradient(135deg, #10B981, #06B6D4); }
     .theme-dot.t-monochrome { background: #ffffff; border: 2px solid #000000; }
+    .theme-dot.t-darkmono { background: #000000; border: 2px solid #ffffff; }
 
     .nav-cta {
       background: var(--accent-gradient) !important; color: #fff !important; padding: 10px 24px;
@@ -592,7 +724,8 @@
         <span class="theme-dot t-gold" onclick="setTheme('gold')" title="Cyber Gold"></span>
         <span class="theme-dot t-crimson" onclick="setTheme('crimson')" title="Sunset Flame"></span>
         <span class="theme-dot t-emerald" onclick="setTheme('emerald')" title="Emerald Neon"></span>
-        <span class="theme-dot t-monochrome" onclick="setTheme('monochrome')" title="Monochrome (White with Black)"></span>
+        <span class="theme-dot t-monochrome" onclick="setTheme('monochrome')" title="Apple Light (White BG, Solid Black)"></span>
+        <span class="theme-dot t-darkmono" onclick="setTheme('darkmono')" title="Stealth Dark (Black BG, Solid White, No Gradient)"></span>
       </div>
     </li>
     <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
@@ -602,11 +735,11 @@
 <!-- HERO -->
 <section class="hero" id="about">
   <div class="hero-glow"></div>
-  <div class="hero-text-logo">DIGIFLAREMEDIA</div>
-  <div class="hero-badge">&#9679; Performance &amp; Creative Growth Agency</div>
-  <h1>We Don't Just<br />Market. We <span>Build<br />Movements.</span></h1>
-  <p>Digiflare Media scales modern brands with high-retention content, precision ads, and aggressive organic distribution across India.</p>
-  <div class="hero-btns">
+  <div class="hero-text-logo fade-scroll">DIGIFLAREMEDIA</div>
+  <div class="hero-badge fade-scroll">&#9679; Performance &amp; Creative Growth Agency</div>
+  <h1 class="fade-scroll">We Don't Just<br />Market. We <span>Build<br />Movements.</span></h1>
+  <p class="fade-scroll">Digiflare Media scales modern brands with high-retention content, precision ads, and aggressive organic distribution across India.</p>
+  <div class="hero-btns fade-scroll">
     <a href="#case-studies" class="btn-primary">Explore Case Studies &rarr;</a>
     <a href="#brands" class="btn-secondary">View 15+ Brands Worked With</a>
   </div>
@@ -624,7 +757,7 @@
 
 <!-- ══════════ BRANDS WORKED WITH (15+ BRANDS) ══════════ -->
 <section class="brands-section" id="brands">
-  <div class="brands-header-wrap">
+  <div class="brands-header-wrap fade-scroll">
     <span class="section-tag">Client Portfolio</span>
     <h2 class="section-title">Brands We've Worked With <span class="brands-count-badge">15+ Brands</span></h2>
     <p class="section-sub">From luxury perfumery and gourmet F&amp;B to premium modeling agencies and interior design firms &mdash; tap any brand to visit their live Instagram page.</p>
@@ -813,7 +946,7 @@
 <!-- SERVICES -->
 <div id="services">
   <div class="section">
-    <div>
+    <div class="fade-scroll">
       <span class="section-tag">What We Do</span>
       <h2 class="section-title">Full-Stack Marketing.<br />End-to-End Execution.</h2>
       <p class="section-sub">From viral short-form content to conversion-optimized ad campaigns &mdash; we take care of the growth engine completely.</p>
@@ -856,7 +989,7 @@
 <!-- CASE STUDIES -->
 <div class="cs-wrap" id="case-studies">
   <div class="section">
-    <div>
+    <div class="fade-scroll">
       <span class="section-tag">Detailed Breakdowns</span>
       <h2 class="section-title">Featured Case Studies</h2>
       <p class="section-sub">Three selected campaigns proving our replicable system across restaurants, modeling agencies, and luxury interiors.</p>
@@ -999,7 +1132,7 @@
 <!-- WHY US -->
 <div id="why">
   <div class="section">
-    <div>
+    <div class="fade-scroll">
       <span class="section-tag">Why Digiflare Media</span>
       <h2 class="section-title">We Focus on What<br />Actually Matters.</h2>
       <p class="section-sub">Forget vanity metrics. Every strategy we build is engineered to drive footfall, leads, and revenue &mdash; not just likes.</p>
@@ -1040,7 +1173,7 @@
 <!-- CONTACT -->
 <section class="contact-section" id="contact">
   <div class="contact-glow"></div>
-  <div>
+  <div class="fade-scroll">
     <span class="section-tag">Get In Touch</span>
     <h2>Ready to <span>Scale</span><br />Your Brand?</h2>
     <p>Let's build something that actually moves the needle. Reach out on WhatsApp or Instagram and let's get to work.</p>
