@@ -7,7 +7,7 @@
   <meta name="description" content="Digiflare Media scales modern brands with high-retention content, precision Meta Ads, GMB, SEO, and full-stack digital marketing across India." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Michroma&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&family=Michroma&display=swap" rel="stylesheet" />
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -64,7 +64,7 @@
 /* ─── BASE ──────────────────────────────────────────── */
 html { scroll-behavior: smooth; }
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
@@ -806,6 +806,137 @@ nav {
 }
 .contact-wa-big:hover { transform: translateY(-2px); opacity: 0.88; }
 
+
+/* ─── CONTACT REDESIGN ──────────────────────────────── */
+.contact-section { padding: 100px 0; border-top: 1px solid var(--line); }
+.contact-top { margin-bottom: 56px; }
+.contact-heading { font-size: clamp(38px, 5.5vw, 72px); margin: 12px 0 16px; line-height: 1.02; letter-spacing: -0.04em; }
+.contact-heading .hl { color: var(--accent); }
+.contact-tagline { font-size: 15px; color: var(--muted); max-width: 480px; line-height: 1.7; }
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 32px;
+}
+.contact-block {
+  background: var(--bg2);
+  border: 1px solid var(--line2);
+  border-radius: 16px;
+  padding: 28px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  transition: border-color 0.25s, transform 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.contact-block::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: transparent;
+  transition: background 0.3s;
+}
+.contact-block:hover { border-color: var(--accent); transform: translateY(-3px); }
+.contact-block:hover::before { background: var(--accent); }
+.contact-block-icon { font-size: 28px; margin-bottom: 4px; }
+.contact-block-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+.contact-block-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+  margin-bottom: 4px;
+}
+.contact-block-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  flex: 1;
+  margin-bottom: 16px;
+}
+.contact-block-cta {
+  display: inline-flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  transition: all 0.2s;
+  text-align: center;
+  justify-content: center;
+}
+.contact-block-cta.accent {
+  background: var(--accent);
+  color: #000;
+}
+.contact-block-cta.accent:hover { opacity: 0.85; transform: translateY(-1px); }
+.contact-block-cta.ghost {
+  border: 1px solid var(--line2);
+  color: var(--text);
+  background: transparent;
+}
+.contact-block-cta.ghost:hover { border-color: var(--accent); color: var(--accent); }
+.contact-block-cta:not(.accent):not(.ghost) {
+  background: var(--bg3);
+  color: var(--text);
+  border: 1px solid var(--line2);
+}
+.contact-block-cta:not(.accent):not(.ghost):hover { border-color: var(--text); }
+.contact-block-note {
+  font-size: 11px;
+  color: var(--faint);
+  margin-top: 8px;
+  font-weight: 500;
+}
+
+.cal-embed-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--line2);
+  border-radius: 16px;
+  overflow: hidden;
+  margin-top: 8px;
+}
+.cal-embed-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+.cal-embed-label {
+  font-family: 'Syne', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 4px;
+}
+.cal-embed-sub {
+  font-size: 12px;
+  color: var(--muted);
+}
+.cal-embed-wrap iframe {
+  display: block;
+  padding: 0;
+}
+
+@media (max-width: 900px) {
+  .contact-grid { grid-template-columns: 1fr; }
+  .cal-embed-wrap iframe { height: 700px; }
+}
+
 /* ─── FOOTER ────────────────────────────────────────── */
 footer {
   border-top: 1px solid var(--line);
@@ -1409,50 +1540,80 @@ footer {
 <!-- ═══════════════════════════════ CONTACT ═══════════ -->
 <section class="contact-section" id="contact">
   <div class="wrap">
-    <div class="contact-inner">
-      <div class="sf">
-        <span class="tag-pill">Get In Touch</span>
-        <h2 class="contact-heading">Ready to<br /><span class="hl">Scale</span><br />Your Brand?</h2>
-        <p class="contact-desc">Let's build something that actually moves the needle. Reach out on WhatsApp or Instagram and let's get to work.</p>
-      </div>
-      <div class="contact-actions sf d2">
-        <a href="https://wa.me/919520344932" target="_blank" rel="noopener" class="contact-wa-big">
-          <span>📲</span> WhatsApp Us Now
-        </a>
-        <a href="https://wa.me/919520344932" target="_blank" rel="noopener" class="contact-row">
-          <span class="contact-row-icon">📱</span>
-          <div class="contact-row-main">
-            <div class="contact-row-label">WhatsApp</div>
-            <div class="contact-row-val">+91 95203 44932</div>
-          </div>
-          <span class="contact-arrow">→</span>
-        </a>
-        <a href="https://wa.me/917668620961" target="_blank" rel="noopener" class="contact-row">
-          <span class="contact-row-icon">📱</span>
-          <div class="contact-row-main">
-            <div class="contact-row-label">WhatsApp</div>
-            <div class="contact-row-val">+91 76686 20961</div>
-          </div>
-          <span class="contact-arrow">→</span>
-        </a>
-        <a href="https://www.instagram.com/digiflare.media" target="_blank" rel="noopener" class="contact-row">
-          <span class="contact-row-icon">📸</span>
-          <div class="contact-row-main">
-            <div class="contact-row-label">Instagram</div>
-            <div class="contact-row-val">@digiflare.media</div>
-          </div>
-          <span class="contact-arrow">→</span>
-        </a>
-        <a href="https://digiflaremedia.in" target="_blank" rel="noopener" class="contact-row">
-          <span class="contact-row-icon">🌐</span>
-          <div class="contact-row-main">
-            <div class="contact-row-label">Official Website</div>
-            <div class="contact-row-val">digiflaremedia.in</div>
-          </div>
-          <span class="contact-arrow">→</span>
-        </a>
-      </div>
+
+    <!-- Section Header -->
+    <div class="contact-top sf">
+      <span class="tag-pill">Get In Touch</span>
+      <h2 class="headline contact-heading">Let's Build<br />Something<br /><span class="hl">That Converts.</span></h2>
+      <p class="contact-tagline">Book a free 15-min growth audit, drop a WhatsApp, or DM us on Instagram — whichever feels right.</p>
     </div>
+
+    <!-- 3-column contact grid -->
+    <div class="contact-grid">
+
+      <!-- COL 1: Book a Meeting (Cal.com) -->
+      <div class="contact-block sf d1">
+        <div class="contact-block-icon">🗓️</div>
+        <div class="contact-block-label">Book a Free Strategy Call</div>
+        <div class="contact-block-title">15-Min Growth Audit</div>
+        <p class="contact-block-desc">Schedule a no-obligation strategy call directly on our calendar. We'll audit your current presence and show you exactly what we'd do differently.</p>
+        <a href="https://cal.com/digiflaremedia" target="_blank" rel="noopener" class="contact-block-cta accent">
+          Book Free Call →
+        </a>
+        <div class="contact-block-note">📧 digiflaremedia.in@gmail.com</div>
+      </div>
+
+      <!-- COL 2: WhatsApp -->
+      <div class="contact-block sf d2">
+        <div class="contact-block-icon">💬</div>
+        <div class="contact-block-label">Fastest Response</div>
+        <div class="contact-block-title">WhatsApp Us</div>
+        <p class="contact-block-desc">Message us directly on WhatsApp. Most replies within the hour. Best for quick questions, project discussions, and urgent briefs.</p>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:auto;">
+          <a href="https://wa.me/919520344932" target="_blank" rel="noopener" class="contact-block-cta">
+            +91 95203 44932 →
+          </a>
+          <a href="https://wa.me/917668620961" target="_blank" rel="noopener" class="contact-block-cta ghost">
+            +91 76686 20961 →
+          </a>
+        </div>
+      </div>
+
+      <!-- COL 3: Social -->
+      <div class="contact-block sf d3">
+        <div class="contact-block-icon">🔗</div>
+        <div class="contact-block-label">Follow Our Work</div>
+        <div class="contact-block-title">Find Us Online</div>
+        <p class="contact-block-desc">Watch our latest campaigns, reels, and client results live. DM us on Instagram or visit the main site for detailed case studies.</p>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:auto;">
+          <a href="https://www.instagram.com/digiflare.media" target="_blank" rel="noopener" class="contact-block-cta ghost">
+            @digiflare.media ↗
+          </a>
+          <a href="https://digiflaremedia.in" target="_blank" rel="noopener" class="contact-block-cta ghost">
+            digiflaremedia.in ↗
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Cal.com Inline Embed -->
+    <div class="cal-embed-wrap sf d2">
+      <div class="cal-embed-header">
+        <div>
+          <div class="cal-embed-label">📅 Live Calendar — Pick a Slot That Works for You</div>
+          <div class="cal-embed-sub">Free 15-min Growth Audit · No commitment · digiflaremedia.in@gmail.com</div>
+        </div>
+        <a href="https://cal.com/digiflaremedia" target="_blank" rel="noopener" class="btn-outline" style="font-size:13px; padding:10px 20px; flex-shrink:0;">Open in New Tab ↗</a>
+      </div>
+      <iframe
+        src="https://cal.com/digiflaremedia?embed=true"
+        style="width:100%; height:560px; border:none; border-radius:12px;"
+        title="Book a meeting with Digiflare Media"
+        loading="lazy"
+      ></iframe>
+    </div>
+
   </div>
 </section>
 
