@@ -77,23 +77,52 @@ nav{
 .nav-btn:hover{transform:translateY(-2px);opacity:.9}
 
 /* ── HERO ─────────────────────────────────────────────── */
-.hero{padding:calc(var(--nav) + 96px) 0 80px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero{padding:calc(var(--nav) + 80px) 0 72px;position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
 .hero::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--acc),transparent);opacity:.4}
-.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);border-radius:100px;padding:6px 16px;margin-bottom:36px}
+.hero-inner{display:grid;grid-template-columns:1fr 420px;gap:48px;align-items:center}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);border:1px solid var(--line2);border-radius:100px;padding:6px 16px;margin-bottom:28px}
 .hero-tag-dot{width:6px;height:6px;border-radius:50%;background:var(--acc);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
-.hero h1{font-size:clamp(56px,9vw,118px);font-weight:900;line-height:.96;letter-spacing:-.05em;margin-bottom:36px;overflow:hidden}
-.hero h1 .wd{display:inline-block;opacity:0;transform:translateY(100%);transition:opacity .6s cubic-bezier(.22,1,.36,1),transform .6s cubic-bezier(.22,1,.36,1)}
-.hero h1 .wd.in{opacity:1;transform:none}
+.hero h1{font-size:clamp(48px,7.5vw,96px);font-weight:900;line-height:.97;letter-spacing:-.05em;margin-bottom:28px;opacity:0;transform:translateY(24px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
+.hero h1.in{opacity:1;transform:none}
 .hero h1 .acc{color:var(--acc)}
-.hero h1 br+.wd,.hero h1 .wd:first-child{margin-right:.25em}
-.hero-desc{font-size:17px;color:var(--muted);line-height:1.75;max-width:520px;margin-bottom:44px;font-weight:400;letter-spacing:-.01em}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:0}
-.btn-acc{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;background:var(--acc);color:#000;border-radius:100px;font-size:14px;font-weight:800;letter-spacing:.01em;transition:transform .22s,box-shadow .22s}
+.hero-desc{font-size:16px;color:var(--muted);line-height:1.75;max-width:520px;margin-bottom:36px;font-weight:400;letter-spacing:-.01em;opacity:0;transform:translateY(16px);transition:opacity .8s .2s cubic-bezier(.22,1,.36,1),transform .8s .2s cubic-bezier(.22,1,.36,1)}
+.hero-desc.in{opacity:1;transform:none}
+.hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:0;opacity:0;transform:translateY(12px);transition:opacity .8s .35s cubic-bezier(.22,1,.36,1),transform .8s .35s cubic-bezier(.22,1,.36,1)}
+.hero-actions.in{opacity:1;transform:none}
+.btn-acc{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--acc);color:#000;border-radius:100px;font-size:14px;font-weight:800;letter-spacing:.01em;transition:transform .22s,box-shadow .22s}
 .btn-acc:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(200,255,0,.22)}
 [data-theme="light"] .btn-acc:hover,[data-theme="violet"] .btn-acc:hover,[data-theme="red"] .btn-acc:hover{box-shadow:0 12px 32px rgba(0,0,0,.18)}
-.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:15px 30px;border:1px solid var(--line2);color:var(--text);border-radius:100px;font-size:14px;font-weight:600;letter-spacing:.01em;transition:border-color .2s,background .2s}
+.btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:1px solid var(--line2);color:var(--text);border-radius:100px;font-size:14px;font-weight:600;letter-spacing:.01em;transition:border-color .2s,background .2s}
 .btn-ghost:hover{border-color:var(--text);background:var(--s2)}
+
+/* 3D ORB */
+.hero-orb-wrap{display:flex;align-items:center;justify-content:center;opacity:0;transform:scale(.92);transition:opacity 1s .4s,transform 1s .4s cubic-bezier(.22,1,.36,1)}
+.hero-orb-wrap.in{opacity:1;transform:scale(1)}
+.orb-scene{width:320px;height:320px;perspective:800px;position:relative}
+.orb{width:100%;height:100%;position:relative;transform-style:preserve-3d;animation:orb-spin 12s linear infinite}
+@keyframes orb-spin{from{transform:rotateY(0deg) rotateX(15deg)} to{transform:rotateY(360deg) rotateX(15deg)}}
+.orb-face{position:absolute;width:100%;height:100%;border-radius:50%;background:conic-gradient(from 0deg, var(--acc), var(--s3), var(--acc));opacity:.18;border:1px solid rgba(200,255,0,.2)}
+.orb-face:nth-child(1){transform:rotateY(0deg)}
+.orb-face:nth-child(2){transform:rotateY(60deg)}
+.orb-face:nth-child(3){transform:rotateY(120deg)}
+.orb-face:nth-child(4){transform:rotateY(180deg)}
+.orb-face:nth-child(5){transform:rotateY(240deg)}
+.orb-face:nth-child(6){transform:rotateY(300deg)}
+.orb-core{position:absolute;inset:15%;border-radius:50%;background:radial-gradient(circle at 35% 35%, rgba(200,255,0,.28) 0%, rgba(200,255,0,.04) 60%, transparent 100%);animation:orb-pulse 4s ease-in-out infinite;box-shadow:0 0 60px rgba(200,255,0,.12)}
+@keyframes orb-pulse{0%,100%{transform:scale(1);opacity:.8}50%{transform:scale(1.07);opacity:1}}
+.orb-ring{position:absolute;inset:-12%;border-radius:50%;border:1px solid rgba(200,255,0,.1);animation:orb-ring 8s linear infinite}
+@keyframes orb-ring{from{transform:rotateX(75deg) rotateZ(0deg)}to{transform:rotateX(75deg) rotateZ(360deg)}}
+.orb-ring2{position:absolute;inset:-28%;border-radius:50%;border:1px solid rgba(200,255,0,.06);animation:orb-ring 14s linear infinite reverse}
+.orb-dots{position:absolute;inset:0;border-radius:50%;overflow:hidden}
+.orb-dot{position:absolute;width:4px;height:4px;border-radius:50%;background:var(--acc);opacity:.6;animation:twinkle 3s ease-in-out infinite}
+.orb-dot:nth-child(1){top:20%;left:60%;animation-delay:0s}
+.orb-dot:nth-child(2){top:70%;left:25%;animation-delay:.7s}
+.orb-dot:nth-child(3){top:45%;left:80%;animation-delay:1.4s}
+.orb-dot:nth-child(4){top:30%;left:15%;animation-delay:2.1s}
+.orb-dot:nth-child(5){top:80%;left:65%;animation-delay:.3s}
+@keyframes twinkle{0%,100%{opacity:.2;transform:scale(.8)}50%{opacity:1;transform:scale(1.4)}}
+.orb-label{position:absolute;bottom:-40px;left:50%;transform:translateX(-50%);font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--faint);white-space:nowrap}
 
 /* stats bar */
 .hero-stats{display:grid;grid-template-columns:repeat(4,1fr);margin-top:72px;border-top:1px solid var(--line)}
@@ -120,10 +149,10 @@ nav{
 .sec-sub{font-size:14px;color:var(--muted);line-height:1.75;max-width:380px;font-weight:400}
 
 /* bento grid for services */
-.srv-bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.srv{background:var(--bg);padding:28px 24px;display:flex;flex-direction:column;gap:10px;cursor:default;transition:background .2s;position:relative;overflow:hidden}
+.srv-bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:auto;gap:12px;border-radius:var(--r)}
+.srv{background:var(--s1);border:1px solid var(--line2);border-radius:calc(var(--r) - 2px);padding:28px 24px;display:flex;flex-direction:column;gap:10px;cursor:default;transition:background .2s,border-color .2s;position:relative;overflow:hidden}
 .srv::after{content:'';position:absolute;bottom:0;left:0;height:2px;width:0;background:var(--acc);transition:width .4s cubic-bezier(.22,1,.36,1)}
-.srv:hover{background:var(--s1)}
+.srv:hover{background:var(--s2);border-color:var(--acc)}
 .srv:hover::after{width:100%}
 .srv.wide{grid-column:span 2}
 .srv-no{font-size:10px;font-weight:800;letter-spacing:.14em;color:var(--faint);text-transform:uppercase}
@@ -141,9 +170,9 @@ nav{
 .fbtn{font-size:12px;font-weight:600;padding:8px 18px;border-radius:100px;border:1px solid var(--line2);background:transparent;color:var(--muted);cursor:pointer;font-family:var(--ff);transition:all .2s;letter-spacing:.01em}
 .fbtn:hover{border-color:var(--text);color:var(--text)}
 .fbtn.on{background:var(--acc);color:#000;border-color:var(--acc)}
-.brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
-.bc{background:var(--bg);padding:20px 18px;display:flex;flex-direction:column;gap:8px;transition:background .2s;position:relative}
-.bc:hover{background:var(--s1)}
+.brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-radius:var(--r);}
+.bc{background:var(--s1);border:1px solid var(--line2);border-radius:calc(var(--r) - 2px);padding:20px 18px;display:flex;flex-direction:column;gap:8px;transition:background .2s,border-color .2s,transform .2s;position:relative}
+.bc:hover{background:var(--s2);border-color:var(--acc);transform:translateY(-2px)}
 .bc-top{display:flex;align-items:center;justify-content:space-between}
 .bc-ico{font-size:20px}
 .bc-arr{font-size:14px;color:var(--faint);transition:color .2s,transform .2s}
@@ -182,9 +211,9 @@ nav{
 
 /* ── WHY US ───────────────────────────────────────────── */
 .why-sec{padding:96px 0;border-bottom:1px solid var(--line)}
-.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:52px}
-.wc{background:var(--bg);padding:36px 28px;display:flex;flex-direction:column;gap:10px;transition:background .2s}
-.wc:hover{background:var(--s1)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-radius:var(--r);margin-top:52px}
+.wc{background:var(--s1);border:1px solid var(--line2);border-radius:calc(var(--r) - 2px);padding:36px 28px;display:flex;flex-direction:column;gap:10px;transition:background .2s,border-color .2s}
+.wc:hover{background:var(--s2);border-color:var(--acc)}
 .wc-n{font-size:11px;font-weight:900;letter-spacing:.14em;color:var(--acc);text-transform:uppercase}
 .wc-t{font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--text)}
 .wc-d{font-size:13px;color:var(--muted);line-height:1.7}
@@ -249,6 +278,8 @@ footer{border-top:1px solid var(--line);padding:28px 0}
 }
 @media(max-width:768px){
   .nav-links{display:none}
+  .hero-inner{grid-template-columns:1fr}
+  .hero-orb-wrap{display:none}
   .sec-hdr{grid-template-columns:1fr}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
   .cs-body{grid-template-columns:1fr}
@@ -301,17 +332,39 @@ footer{border-top:1px solid var(--line);padding:28px 0}
 <!-- ════ HERO ════ -->
 <section class="hero" id="about">
   <div class="wrap">
-    <div class="hero-tag sf"><span class="hero-tag-dot"></span>Performance &amp; Creative Growth Agency · India</div>
-    <h1>
-      <span class="wd" style="transition-delay:.1s">We</span>&nbsp;<span class="wd" style="transition-delay:.18s">Don't</span><br/>
-      <span class="wd" style="transition-delay:.26s">Just</span>&nbsp;<span class="wd" style="transition-delay:.34s">Market.</span><br/>
-      <span class="wd" style="transition-delay:.42s">We</span>&nbsp;<span class="wd acc" style="transition-delay:.5s">Build</span><br/>
-      <span class="wd acc" style="transition-delay:.58s">Movements.</span>
-    </h1>
-    <p class="hero-desc sf" style="transition-delay:.7s">Digiflare Media scales modern brands with viral content, precision Meta Ads, Google My Business, SEO, and end-to-end digital growth. Built for India. Built for results.</p>
-    <div class="hero-actions sf" style="transition-delay:.82s">
-      <a href="#case-studies" class="btn-acc">Explore Our Work →</a>
-      <a href="#brands" class="btn-ghost">15+ Brands We've Scaled</a>
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag sf"><span class="hero-tag-dot"></span>Performance &amp; Creative Growth Agency · India</div>
+        <h1 id="hero-h1">We Build<br/>Brands That<br/><span class="acc">Move.</span></h1>
+        <p class="hero-desc" id="hero-desc">Digiflare Media scales modern brands with viral content, precision Meta Ads, Google My Business, SEO, and end-to-end digital growth. Built for India. Built for results.</p>
+        <div class="hero-actions" id="hero-actions">
+          <a href="#case-studies" class="btn-acc">Explore Our Work →</a>
+          <a href="#brands" class="btn-ghost">15+ Brands Scaled</a>
+        </div>
+      </div>
+      <div class="hero-orb-wrap" id="hero-orb">
+        <div class="orb-scene">
+          <div class="orb">
+            <div class="orb-face"></div>
+            <div class="orb-face"></div>
+            <div class="orb-face"></div>
+            <div class="orb-face"></div>
+            <div class="orb-face"></div>
+            <div class="orb-face"></div>
+          </div>
+          <div class="orb-core"></div>
+          <div class="orb-ring"></div>
+          <div class="orb-ring2"></div>
+          <div class="orb-dots">
+            <div class="orb-dot"></div>
+            <div class="orb-dot"></div>
+            <div class="orb-dot"></div>
+            <div class="orb-dot"></div>
+            <div class="orb-dot"></div>
+          </div>
+          <div class="orb-label">Digiflare Media ◆ 2026</div>
+        </div>
+      </div>
     </div>
 
     <div class="hero-stats sf" style="transition-delay:.9s">
@@ -754,7 +807,7 @@ footer{border-top:1px solid var(--line);padding:28px 0}
         </div>
         <a href="https://cal.com/digiflaremedia/growth-audit" target="_blank" rel="noopener" class="btn-ghost" style="font-size:13px;padding:10px 20px;flex-shrink:0">Open in New Tab ↗</a>
       </div>
-      <div id="cal-embed" style="min-height:580px"></div>
+      <div style="width:100%;height:100%;overflow:scroll;min-height:640px" id="my-cal-inline-15min"></div>
     </div>
   </div>
 </section>
@@ -770,50 +823,20 @@ footer{border-top:1px solid var(--line);padding:28px 0}
   </div>
 </footer>
 
-<!-- ════ CAL.COM EMBED (Official embed.js) ════ -->
-<script>
-(function(C,A,L){
-  let p=function(a,ar){a.q.push(ar)};
-  let d=C.document;
-  C.Cal=C.Cal||function(){
-    let cal=C.Cal;
-    let ar=arguments;
-    if(!cal.loaded){
-      cal.ns={};
-      cal.q=cal.q||[];
-      d.head.appendChild(d.createElement("script")).src=A;
-      cal.loaded=true;
-    }
-    if(ar[0]===L){
-      const api=function(){p(api,arguments)};
-      const namespace=ar[1];
-      api.q=api.q||[];
-      if(typeof namespace==="string"){
-        cal.ns[namespace]=cal.ns[namespace]||api;
-        p(cal.ns[namespace],ar);
-        p(cal,[L,namespace,ar[2]]);
-      } else p(cal,ar);
-      return;
-    }
-    p(cal,ar);
-  };
-})(window,"https://app.cal.com/embed/embed.js","init");
-
-Cal("init",{origin:"https://cal.com"});
-
-Cal("inline",{
-  elementOrSelector:"#cal-embed",
-  calLink:"digiflaremedia/growth-audit",
-  layout:"month_view"
-});
-
-Cal("ui",{
-  theme:"dark",
-  styles:{branding:{brandColor:"#c8ff00"}},
-  hideEventTypeDetails:false,
-  layout:"month_view"
-});
+<!-- Cal inline embed code begins -->
+<script type="text/javascript">
+  (function (C, A, L) { let p = function (a, ar) { a.q.push(ar); }; let d = C.document; C.Cal = C.Cal || function () { let cal = C.Cal; let ar = arguments; if (!cal.loaded) { cal.ns = {}; cal.q = cal.q || []; d.head.appendChild(d.createElement("script")).src = A; cal.loaded = true; } if (ar[0] === L) { const api = function () { p(api, arguments); }; const namespace = ar[1]; api.q = api.q || []; if(typeof namespace === "string"){cal.ns[namespace] = cal.ns[namespace] || api;p(cal.ns[namespace], ar);p(cal, ["initNamespace", namespace]);} else p(cal, ar); return;} p(cal, ar); }; })(window, "https://app.cal.com/embed/embed.js", "init");
+Cal("init", "15min", {origin:"https://app.cal.com"});
+Cal.config = Cal.config || {};
+Cal.config.forwardQueryParams = true;
+  Cal.ns["15min"]("inline", {
+    elementOrSelector:"#my-cal-inline-15min",
+    config: {"layout":"month_view","useSlotsViewOnSmallScreen":"true"},
+    calLink: "bhavya-lodhi-odo89r/15min",
+  });
+  Cal.ns["15min"]("ui", {"hideEventTypeDetails":false,"layout":"month_view"});
 </script>
+<!-- Cal inline embed code ends -->
 
 <script>
 /* ── CUSTOM CURSOR ── */
@@ -855,10 +878,13 @@ const io=new IntersectionObserver((entries,obs)=>{
 },{threshold:.07,rootMargin:'0px 0px -20px 0px'});
 document.querySelectorAll('.sf').forEach(el=>io.observe(el));
 
-/* ── HERO WORD REVEAL ── */
-document.querySelectorAll('.hero h1 .wd').forEach(wd=>{
-  setTimeout(()=>wd.classList.add('in'),200);
-});
+/* ── HERO REVEAL ── */
+setTimeout(()=>{
+  document.getElementById('hero-h1').classList.add('in');
+  document.getElementById('hero-desc').classList.add('in');
+  document.getElementById('hero-actions').classList.add('in');
+  document.getElementById('hero-orb').classList.add('in');
+},120);
 
 /* ── NUMBER COUNTER ── */
 function animateCount(el){
