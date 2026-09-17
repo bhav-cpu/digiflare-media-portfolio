@@ -1,1272 +1,1526 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="violet">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digiflare Media — Full-Stack Growth Agency</title>
+  <title>Digiflare Media — Performance & Creative Growth Agency</title>
+  <meta name="description" content="Digiflare Media scales modern brands with high-retention content, precision Meta Ads, GMB, SEO, and full-stack digital marketing across India." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Michroma&family=Syncopate:wght@700&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&family=Michroma&display=swap" rel="stylesheet" />
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* THEME COLOR VARIABLES */
-    :root {
-      --bg: #07070b;
-      --surface: #0e0e16;
-      --surface2: #141420;
-      --surface3: #1a1b28;
-      --border: rgba(255,255,255,0.08);
-      --border-hover: rgba(255,255,255,0.2);
-      --text: #f3f3f6;
-      --muted: #8e8e9f;
-      --white: #ffffff;
-      --radius: 18px;
-      --radius-sm: 10px;
+/* ─── THEME SYSTEM ──────────────────────────────────── */
+:root {
+  --bg:        #0a0a0a;
+  --bg2:       #111111;
+  --bg3:       #181818;
+  --line:      rgba(255,255,255,0.07);
+  --line2:     rgba(255,255,255,0.14);
+  --text:      #f0f0f0;
+  --muted:     #888;
+  --faint:     #555;
+  --accent:    #e8ff47;
+  --accent-dk: #b8cc20;
+  --radius:    12px;
+  --nav-h:     64px;
+}
+[data-theme="light"] {
+  --bg:        #f8f8f6;
+  --bg2:       #efefed;
+  --bg3:       #e5e5e3;
+  --line:      rgba(0,0,0,0.07);
+  --line2:     rgba(0,0,0,0.14);
+  --text:      #111111;
+  --muted:     #666;
+  --faint:     #aaa;
+  --accent:    #0a0a0a;
+  --accent-dk: #333;
+}
+[data-theme="purple"] {
+  --bg:        #0c0a14;
+  --bg2:       #13102a;
+  --bg3:       #1c1839;
+  --line:      rgba(160,120,255,0.1);
+  --line2:     rgba(160,120,255,0.2);
+  --text:      #f0eeff;
+  --muted:     #9980cc;
+  --accent:    #b088ff;
+  --accent-dk: #7c55cc;
+}
+[data-theme="red"] {
+  --bg:        #0d0808;
+  --bg2:       #1a0f0f;
+  --bg3:       #261515;
+  --line:      rgba(255,80,60,0.1);
+  --line2:     rgba(255,80,60,0.2);
+  --text:      #fff0ee;
+  --muted:     #cc8880;
+  --accent:    #ff4a38;
+  --accent-dk: #cc3020;
+}
 
-      /* DEFAULT THEME: ELECTRIC VIOLET & CYBER CYAN */
-      --accent-1: #6366F1;
-      --accent-2: #06B6D4;
-      --accent-gradient: linear-gradient(135deg, #6366F1 0%, #06B6D4 100%);
-      --accent-glow: rgba(99, 102, 241, 0.25);
-      --accent-tag-bg: rgba(99, 102, 241, 0.12);
-      --accent-tag-border: rgba(99, 102, 241, 0.35);
-      --accent-tag-text: #818CF8;
-    }
+/* ─── BASE ──────────────────────────────────────────── */
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; border-radius: var(--radius); }
 
-    [data-theme="gold"] {
-      --accent-1: #F59E0B;
-      --accent-2: #FBBF24;
-      --accent-gradient: linear-gradient(135deg, #F59E0B 0%, #FBBF24 100%);
-      --accent-glow: rgba(245, 158, 11, 0.22);
-      --accent-tag-bg: rgba(245, 158, 11, 0.12);
-      --accent-tag-border: rgba(245, 158, 11, 0.35);
-      --accent-tag-text: #FCD34D;
-    }
+/* ─── LAYOUT UTILITIES ─────────────────────────────── */
+.wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+}
+.section-gap { padding: 100px 0; }
+.section-gap-sm { padding: 64px 0; }
+.divider { width: 100%; height: 1px; background: var(--line); }
 
-    [data-theme="crimson"] {
-      --accent-1: #FF0055;
-      --accent-2: #FF5500;
-      --accent-gradient: linear-gradient(135deg, #FF0055 0%, #FF5500 100%);
-      --accent-glow: rgba(255, 0, 85, 0.25);
-      --accent-tag-bg: rgba(255, 0, 85, 0.12);
-      --accent-tag-border: rgba(255, 0, 85, 0.35);
-      --accent-tag-text: #FF4D79;
-    }
+/* ─── TYPOGRAPHY ───────────────────────────────────── */
+.headline {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+.tag-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+  border: 1px solid var(--line2);
+  border-radius: 100px;
+  padding: 5px 14px;
+  margin-bottom: 20px;
+}
+.tag-pill::before {
+  content: '';
+  display: block;
+  width: 6px; height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+}
 
-    [data-theme="emerald"] {
-      --accent-1: #10B981;
-      --accent-2: #06B6D4;
-      --accent-gradient: linear-gradient(135deg, #10B981 0%, #06B6D4 100%);
-      --accent-glow: rgba(16, 185, 129, 0.25);
-      --accent-tag-bg: rgba(16, 185, 129, 0.12);
-      --accent-tag-border: rgba(16, 185, 129, 0.35);
-      --accent-tag-text: #34D399;
-    }
+/* ─── SCROLL FADE ──────────────────────────────────── */
+.sf { opacity: 0; transform: translateY(28px); transition: opacity 0.65s cubic-bezier(0.22,1,0.36,1), transform 0.65s cubic-bezier(0.22,1,0.36,1); }
+.sf.in { opacity: 1; transform: none; }
+.sf.d1 { transition-delay: 0.08s; }
+.sf.d2 { transition-delay: 0.16s; }
+.sf.d3 { transition-delay: 0.24s; }
+.sf.d4 { transition-delay: 0.32s; }
 
-    /* APPLE-CLEAN MONOCHROME: PURE WHITE BACKGROUND, SOLID BLACK ELEMENTS, NO GRADIENTS */
-    [data-theme="monochrome"] {
-      --bg: #ffffff;
-      --surface: #fbfbfd;
-      --surface2: #f5f5f7;
-      --surface3: #ebebeb;
-      --border: rgba(0, 0, 0, 0.08);
-      --border-hover: rgba(0, 0, 0, 0.22);
-      --text: #1d1d1f;
-      --muted: #6e6e73;
-      --white: #000000;
-      --accent-1: #000000;
-      --accent-2: #000000;
-      --accent-gradient: #000000;
-      --accent-glow: rgba(0, 0, 0, 0.06);
-      --accent-tag-bg: #f0f0f2;
-      --accent-tag-border: rgba(0, 0, 0, 0.12);
-      --accent-tag-text: #000000;
-    }
+/* ─── CURSOR DOT (decorative) ──────────────────────── */
+.cursor-dot {
+  position: fixed;
+  width: 8px; height: 8px;
+  background: var(--accent);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.15s, opacity 0.3s;
+  opacity: 0;
+}
 
-    /* DISABLE NOISE & GLOW GRADIENTS IN MONOCHROME FOR ULTRA CLEAN APPLE LOOK */
-    [data-theme="monochrome"] body::before,
-    [data-theme="monochrome"] .hero-glow,
-    [data-theme="monochrome"] .contact-glow {
-      display: none !important;
-    }
+/* ─── NAV ───────────────────────────────────────────── */
+nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--nav-h);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  background: rgba(10,10,10,0.82);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  transition: background 0.3s;
+}
+[data-theme="light"] nav { background: rgba(248,248,246,0.85); }
+[data-theme="purple"] nav { background: rgba(12,10,20,0.85); }
+[data-theme="red"] nav { background: rgba(13,8,8,0.85); }
+.nav-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.nav-logo {
+  font-family: 'Michroma', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.18em;
+  color: var(--text);
+  flex-shrink: 0;
+}
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  list-style: none;
+}
+.nav-links a {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--muted);
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--bg3);
+  border: 1px solid var(--line2);
+  border-radius: 100px;
+  padding: 5px 10px;
+}
+.t-dot {
+  width: 16px; height: 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: transform 0.2s, border-color 0.2s;
+}
+.t-dot:hover { transform: scale(1.15); }
+.t-dot.active { border-color: var(--text); }
+.t-dot.td { background: #0a0a0a; border-color: #555; }
+.t-dot.tl { background: #f8f8f6; border-color: #ccc; }
+.t-dot.tp { background: #b088ff; }
+.t-dot.tr { background: #ff4a38; }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 600;
+  padding: 9px 22px;
+  background: var(--accent);
+  color: #000;
+  border-radius: 100px;
+  transition: opacity 0.2s, transform 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; transform: translateY(-1px); }
 
-    /* SOLID BLACK HEADINGS - REMOVE GRADIENT CLIPS */
-    [data-theme="monochrome"] .hero h1 span,
-    [data-theme="monochrome"] .stat-item h3,
-    [data-theme="monochrome"] .stat-num,
-    [data-theme="monochrome"] .result-stat-box .num,
-    [data-theme="monochrome"] .why-num,
-    [data-theme="monochrome"] .contact-section h2 span {
-      background: none !important;
-      -webkit-text-fill-color: #000000 !important;
-      color: #000000 !important;
-    }
+/* ─── HERO ──────────────────────────────────────────── */
+.hero {
+  padding-top: calc(var(--nav-h) + 90px);
+  padding-bottom: 90px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 32px;
+}
+.hero-eyebrow-line {
+  width: 40px;
+  height: 1px;
+  background: var(--accent);
+}
+.hero-eyebrow-text {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.hero h1 {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: clamp(54px, 8vw, 110px);
+  line-height: 1.0;
+  letter-spacing: -0.04em;
+  margin-bottom: 36px;
+}
+.hero h1 .accent-word {
+  color: var(--accent);
+}
+.hero-sub {
+  font-size: 17px;
+  color: var(--muted);
+  line-height: 1.7;
+  max-width: 520px;
+  margin-bottom: 44px;
+}
+.hero-actions {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  background: var(--accent);
+  color: #000;
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(232,255,71,0.22); }
+[data-theme="light"] .btn-primary:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.22); }
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 28px;
+  border: 1px solid var(--line2);
+  color: var(--text);
+  border-radius: 100px;
+  font-size: 14px;
+  font-weight: 600;
+  transition: border-color 0.2s, background 0.2s;
+}
+.btn-outline:hover { border-color: var(--text); background: var(--bg3); }
+.hero-stats-row {
+  display: flex;
+  gap: 0;
+  margin-top: 72px;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+.hero-stat {
+  flex: 1;
+  padding: 28px 0;
+  border-right: 1px solid var(--line);
+}
+.hero-stat:last-child { border-right: none; }
+.hero-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.hero-stat-num span {
+  color: var(--accent);
+}
+.hero-stat-label {
+  font-size: 12px;
+  color: var(--muted);
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.hero-marquee-wrap {
+  margin-top: 56px;
+  overflow: hidden;
+  border-top: 1px solid var(--line);
+  padding: 18px 0;
+}
+.marquee-track {
+  display: flex;
+  gap: 48px;
+  white-space: nowrap;
+  animation: marquee 22s linear infinite;
+}
+.marquee-item {
+  font-family: 'Syne', sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--faint);
+  flex-shrink: 0;
+}
+.marquee-item .dot { color: var(--accent); margin-right: 12px; }
+@keyframes marquee { to { transform: translateX(-50%); } }
 
-    /* CLEAN NAV IN MONOCHROME */
-    [data-theme="monochrome"] nav {
-      background: rgba(255, 255, 255, 0.88) !important;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
-    }
-    [data-theme="monochrome"] .brand-logo-text,
-    [data-theme="monochrome"] .hero-text-logo {
-      color: #000000 !important;
-      text-shadow: none !important;
-    }
-    [data-theme="monochrome"] .nav-links a {
-      color: #6e6e73 !important;
-    }
-    [data-theme="monochrome"] .nav-links a:hover {
-      color: #000000 !important;
-    }
-    [data-theme="monochrome"] .theme-picker {
-      background: #f0f0f2 !important;
-      border-color: rgba(0, 0, 0, 0.1) !important;
-    }
+/* ─── SERVICES ─────────────────────────────────────── */
+.services-section { border-bottom: 1px solid var(--line); }
+.services-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 64px;
+  align-items: end;
+}
+.services-header h2 {
+  font-size: clamp(36px, 4vw, 56px);
+}
+.services-header-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 16px;
+}
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.srv-card {
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  transition: background 0.25s;
+  position: relative;
+  overflow: hidden;
+}
+.srv-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0;
+  height: 2px;
+  width: 0;
+  background: var(--accent);
+  transition: width 0.4s cubic-bezier(0.22,1,0.36,1);
+}
+.srv-card:hover::after { width: 100%; }
+.srv-card:hover { background: var(--bg2); }
+.srv-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--faint);
+}
+.srv-icon {
+  font-size: 26px;
+  line-height: 1;
+}
+.srv-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: var(--text);
+}
+.srv-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.srv-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: auto;
+  padding-top: 8px;
+}
+.srv-tag {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: 100px;
+  background: var(--bg3);
+  color: var(--muted);
+  border: 1px solid var(--line2);
+}
 
-    /* BUTTONS: SOLID CRISP CONTRAST */
-    [data-theme="monochrome"] .btn-primary,
-    [data-theme="monochrome"] .nav-cta,
-    [data-theme="monochrome"] .filter-btn.active,
-    [data-theme="monochrome"] .brands-count-badge {
-      background: #000000 !important;
-      color: #ffffff !important;
-      box-shadow: none !important;
-    }
-    [data-theme="monochrome"] .btn-primary:hover,
-    [data-theme="monochrome"] .nav-cta:hover {
-      background: #222222 !important;
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15) !important;
-    }
-    [data-theme="monochrome"] .btn-secondary {
-      background: #ffffff !important;
-      border: 1px solid rgba(0, 0, 0, 0.18) !important;
-      color: #000000 !important;
-    }
-    [data-theme="monochrome"] .btn-secondary:hover {
-      background: #f5f5f7 !important;
-      border-color: #000000 !important;
-    }
-    [data-theme="monochrome"] .filter-btn {
-      background: #f0f0f2 !important;
-      color: #6e6e73 !important;
-      border-color: rgba(0, 0, 0, 0.08) !important;
-    }
-    [data-theme="monochrome"] .filter-btn:hover {
-      color: #000000 !important;
-    }
+/* ─── BRANDS ────────────────────────────────────────── */
+.brands-section { border-bottom: 1px solid var(--line); }
+.brands-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 40px;
+  flex-wrap: wrap;
+}
+.brands-header h2 { font-size: clamp(32px, 4vw, 52px); }
+.brands-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 7px 16px;
+  background: var(--accent);
+  color: #000;
+  border-radius: 100px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  flex-shrink: 0;
+}
+.filter-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+}
+.filter-btn {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 8px 18px;
+  border-radius: 100px;
+  border: 1px solid var(--line2);
+  background: transparent;
+  color: var(--muted);
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+.filter-btn:hover { border-color: var(--text); color: var(--text); }
+.filter-btn.active {
+  background: var(--accent);
+  color: #000;
+  border-color: var(--accent);
+}
+.brands-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+.brand-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 22px 20px;
+  background: var(--bg);
+  transition: background 0.22s;
+  position: relative;
+}
+.brand-card:hover { background: var(--bg2); }
+.brand-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.brand-emoji { font-size: 22px; }
+.brand-arrow {
+  font-size: 13px;
+  color: var(--faint);
+  transition: color 0.2s, transform 0.2s;
+}
+.brand-card:hover .brand-arrow { color: var(--accent); transform: translate(2px, -2px); }
+.brand-name {
+  font-family: 'Syne', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.brand-handle {
+  font-size: 11px;
+  color: var(--faint);
+  font-weight: 500;
+}
+.brand-sector {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  border-top: 1px solid var(--line);
+  padding-top: 10px;
+  margin-top: 4px;
+}
 
-    /* CARDS & CONTAINERS */
-    [data-theme="monochrome"] .brand-card,
-    [data-theme="monochrome"] .service-card,
-    [data-theme="monochrome"] .why-card,
-    [data-theme="monochrome"] .case-study {
-      background: #fbfbfd !important;
-      border-color: rgba(0, 0, 0, 0.08) !important;
-    }
-    [data-theme="monochrome"] .brand-card:hover,
-    [data-theme="monochrome"] .service-card:hover,
-    [data-theme="monochrome"] .why-card:hover {
-      background: #ffffff !important;
-      border-color: rgba(0, 0, 0, 0.25) !important;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05) !important;
-    }
-    [data-theme="monochrome"] .brand-icon,
-    [data-theme="monochrome"] .service-icon {
-      background: #f0f0f2 !important;
-      border-color: rgba(0, 0, 0, 0.08) !important;
-    }
-    [data-theme="monochrome"] .brand-tag {
-      background: #f0f0f2 !important;
-      border-color: rgba(0, 0, 0, 0.1) !important;
-      color: #000000 !important;
-    }
-    [data-theme="monochrome"] .brand-name,
-    [data-theme="monochrome"] .service-card h3,
-    [data-theme="monochrome"] .case-title,
-    [data-theme="monochrome"] .why-card h3 {
-      color: #000000 !important;
-    }
-    [data-theme="monochrome"] .result-stat-box {
-      background: #f5f5f7 !important;
-      border-color: rgba(0, 0, 0, 0.08) !important;
-    }
-    [data-theme="monochrome"] .result-callout {
-      background: #f5f5f7 !important;
-      border-color: rgba(0, 0, 0, 0.12) !important;
-    }
-    [data-theme="monochrome"] .case-text,
-    [data-theme="monochrome"] .case-bullet span,
-    [data-theme="monochrome"] .result-callout p {
-      color: #333336 !important;
-    }
-    [data-theme="monochrome"] .result-callout strong {
-      color: #000000 !important;
-    }
-    [data-theme="monochrome"] .contact-chip {
-      background: #f5f5f7 !important;
-      border-color: rgba(0, 0, 0, 0.12) !important;
-      color: #000000 !important;
-    }
-    [data-theme="monochrome"] .contact-chip:hover {
-      background: #e8e8ed !important;
-      border-color: #000000 !important;
-      color: #000000 !important;
-    }
-    [data-theme="monochrome"] footer {
-      background: #f5f5f7 !important;
-      border-top: 1px solid rgba(0, 0, 0, 0.08) !important;
-    }
+/* ─── CASE STUDIES ─────────────────────────────────── */
+.cs-section { border-bottom: 1px solid var(--line); }
+.cs-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  margin-bottom: 56px;
+  flex-wrap: wrap;
+}
+.cs-header h2 { font-size: clamp(32px, 4vw, 52px); }
+.cs-card {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-bottom: 24px;
+  transition: border-color 0.25s;
+}
+.cs-card:hover { border-color: var(--line2); }
+.cs-card-header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 24px;
+  align-items: center;
+  padding: 28px 32px;
+  background: var(--bg2);
+  border-bottom: 1px solid var(--line);
+}
+.cs-label {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  margin-bottom: 8px;
+}
+.cs-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.cs-subtitle {
+  font-size: 13px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+.cs-kpis {
+  display: flex;
+  gap: 20px;
+  flex-shrink: 0;
+}
+.kpi-box {
+  text-align: center;
+  background: var(--bg3);
+  border: 1px solid var(--line2);
+  border-radius: 10px;
+  padding: 12px 18px;
+  min-width: 80px;
+}
+.kpi-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+}
+.kpi-label {
+  font-size: 10px;
+  color: var(--muted);
+  margin-top: 4px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+.cs-body {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+}
+.cs-left {
+  padding: 32px;
+  border-right: 1px solid var(--line);
+}
+.cs-right { padding: 32px; }
+.cs-sec-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.cs-text {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-bottom: 16px;
+}
+.cs-bullet {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 10px;
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.65;
+}
+.cs-bullet::before {
+  content: '→';
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 1px;
+  font-weight: 700;
+}
+.cs-callout {
+  background: var(--bg3);
+  border-left: 2px solid var(--accent);
+  border-radius: 0 8px 8px 0;
+  padding: 14px 18px;
+  margin-top: 20px;
+  font-size: 13px;
+  color: var(--text);
+  line-height: 1.6;
+}
+.cs-stats-mini {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.cs-stat-box {
+  background: var(--bg3);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+}
+.cs-stat-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+.cs-stat-lbl {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 3px;
+  font-weight: 500;
+}
+.cs-images {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 16px;
+}
+.cs-images img { cursor: zoom-in; object-fit: cover; height: 120px; width: 100%; }
+.cs-images img.wide { grid-column: 1 / -1; height: 160px; object-fit: cover; }
 
-    /* STEALTH MONOCHROME: PURE BLACK BACKGROUND, SOLID WHITE ELEMENTS, NO GRADIENTS */
-    [data-theme="darkmono"] {
-      --bg: #000000;
-      --surface: #0a0a0a;
-      --surface2: #121212;
-      --surface3: #1a1a1a;
-      --border: rgba(255, 255, 255, 0.12);
-      --border-hover: rgba(255, 255, 255, 0.35);
-      --text: #e5e5e7;
-      --muted: #86868b;
-      --white: #ffffff;
-      --accent-1: #ffffff;
-      --accent-2: #ffffff;
-      --accent-gradient: #ffffff;
-      --accent-glow: rgba(255, 255, 255, 0.08);
-      --accent-tag-bg: rgba(255, 255, 255, 0.08);
-      --accent-tag-border: rgba(255, 255, 255, 0.22);
-      --accent-tag-text: #ffffff;
-    }
+/* ─── WHY US ────────────────────────────────────────── */
+.why-section { border-bottom: 1px solid var(--line); }
+.why-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  margin-top: 56px;
+}
+.why-card {
+  background: var(--bg);
+  padding: 36px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: background 0.22s;
+}
+.why-card:hover { background: var(--bg2); }
+.why-num {
+  font-family: 'Syne', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.1em;
+}
+.why-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+.why-desc {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+}
 
-    /* DISABLE NOISE & GLOW GRADIENTS IN DARK MONOCHROME */
-    [data-theme="darkmono"] body::before,
-    [data-theme="darkmono"] .hero-glow,
-    [data-theme="darkmono"] .contact-glow {
-      display: none !important;
-    }
+/* ─── CONTACT ───────────────────────────────────────── */
+.contact-section {
+  padding: 100px 0;
+}
+.contact-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+.contact-heading {
+  font-size: clamp(36px, 5vw, 72px);
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+.contact-heading .hl { color: var(--accent); }
+.contact-desc {
+  font-size: 15px;
+  color: var(--muted);
+  line-height: 1.75;
+  margin-top: 20px;
+  max-width: 420px;
+}
+.contact-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 12px;
+}
+.contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 18px 22px;
+  border: 1px solid var(--line2);
+  border-radius: var(--radius);
+  background: var(--bg2);
+  transition: border-color 0.2s, background 0.2s, transform 0.2s;
+  font-size: 14px;
+  color: var(--text);
+}
+.contact-row:hover {
+  border-color: var(--accent);
+  background: var(--bg3);
+  transform: translateX(4px);
+}
+.contact-row-icon { font-size: 20px; flex-shrink: 0; }
+.contact-row-main { flex: 1; }
+.contact-row-label { font-size: 10px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 2px; }
+.contact-row-val { font-size: 14px; font-weight: 600; color: var(--text); }
+.contact-arrow { color: var(--faint); font-size: 16px; transition: color 0.2s, transform 0.2s; }
+.contact-row:hover .contact-arrow { color: var(--accent); transform: translateX(3px); }
+.contact-wa-big {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 20px 26px;
+  background: var(--accent);
+  color: #000;
+  border-radius: var(--radius);
+  font-weight: 700;
+  font-size: 15px;
+  transition: transform 0.2s, opacity 0.2s;
+  margin-bottom: 4px;
+}
+.contact-wa-big:hover { transform: translateY(-2px); opacity: 0.88; }
 
-    /* SOLID WHITE HEADINGS - NO GRADIENT */
-    [data-theme="darkmono"] .hero h1 span,
-    [data-theme="darkmono"] .stat-item h3,
-    [data-theme="darkmono"] .stat-num,
-    [data-theme="darkmono"] .result-stat-box .num,
-    [data-theme="darkmono"] .why-num,
-    [data-theme="darkmono"] .contact-section h2 span {
-      background: none !important;
-      -webkit-text-fill-color: #ffffff !important;
-      color: #ffffff !important;
-    }
+/* ─── FOOTER ────────────────────────────────────────── */
+footer {
+  border-top: 1px solid var(--line);
+  padding: 32px 0;
+}
+.footer-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.footer-logo {
+  font-family: 'Michroma', sans-serif;
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  color: var(--muted);
+}
+.footer-copy {
+  font-size: 12px;
+  color: var(--faint);
+}
+.footer-link {
+  font-size: 12px;
+  color: var(--muted);
+  text-decoration: underline;
+  transition: color 0.2s;
+}
+.footer-link:hover { color: var(--text); }
 
-    /* NAV IN DARK MONOCHROME */
-    [data-theme="darkmono"] nav {
-      background: rgba(0, 0, 0, 0.88) !important;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
-    }
-    [data-theme="darkmono"] .brand-logo-text,
-    [data-theme="darkmono"] .hero-text-logo {
-      color: #ffffff !important;
-      text-shadow: none !important;
-    }
+/* ─── LIGHTBOX ──────────────────────────────────────── */
+.lightbox {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9000;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.lightbox.active { display: flex; }
+.lightbox img { max-height: 90vh; max-width: 90vw; object-fit: contain; border-radius: 8px; }
+.lightbox-close {
+  position: absolute;
+  top: 24px; right: 30px;
+  font-size: 32px;
+  color: #fff;
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.lightbox-close:hover { opacity: 1; }
 
-    /* BUTTONS IN DARK MONOCHROME: SOLID WHITE BTN WITH BLACK TEXT */
-    [data-theme="darkmono"] .btn-primary,
-    [data-theme="darkmono"] .nav-cta,
-    [data-theme="darkmono"] .filter-btn.active,
-    [data-theme="darkmono"] .brands-count-badge {
-      background: #ffffff !important;
-      color: #000000 !important;
-      font-weight: 800 !important;
-      box-shadow: none !important;
-    }
-    [data-theme="darkmono"] .btn-primary:hover,
-    [data-theme="darkmono"] .nav-cta:hover {
-      background: #e5e5e7 !important;
-      box-shadow: 0 6px 18px rgba(255, 255, 255, 0.15) !important;
-    }
-    [data-theme="darkmono"] .btn-secondary {
-      background: #000000 !important;
-      border: 1px solid rgba(255, 255, 255, 0.25) !important;
-      color: #ffffff !important;
-    }
-    [data-theme="darkmono"] .btn-secondary:hover {
-      background: #111111 !important;
-      border-color: #ffffff !important;
-    }
-    [data-theme="darkmono"] .filter-btn {
-      background: #121212 !important;
-      color: #86868b !important;
-      border-color: rgba(255, 255, 255, 0.1) !important;
-    }
-    [data-theme="darkmono"] .filter-btn:hover {
-      color: #ffffff !important;
-    }
-
-    /* CARDS IN DARK MONOCHROME */
-    [data-theme="darkmono"] .brand-card,
-    [data-theme="darkmono"] .service-card,
-    [data-theme="darkmono"] .why-card,
-    [data-theme="darkmono"] .case-study {
-      background: #0a0a0a !important;
-      border-color: rgba(255, 255, 255, 0.1) !important;
-    }
-    [data-theme="darkmono"] .brand-card:hover,
-    [data-theme="darkmono"] .service-card:hover,
-    [data-theme="darkmono"] .why-card:hover {
-      background: #121212 !important;
-      border-color: rgba(255, 255, 255, 0.35) !important;
-      box-shadow: 0 10px 25px rgba(255, 255, 255, 0.04) !important;
-    }
-    [data-theme="darkmono"] .brand-icon,
-    [data-theme="darkmono"] .service-icon {
-      background: #161616 !important;
-      border-color: rgba(255, 255, 255, 0.12) !important;
-    }
-    [data-theme="darkmono"] .brand-tag {
-      background: #161616 !important;
-      border-color: rgba(255, 255, 255, 0.2) !important;
-      color: #ffffff !important;
-    }
-    [data-theme="darkmono"] .result-stat-box {
-      background: #121212 !important;
-      border-color: rgba(255, 255, 255, 0.1) !important;
-    }
-    [data-theme="darkmono"] .result-callout {
-      background: #121212 !important;
-      border-color: rgba(255, 255, 255, 0.15) !important;
-    }
-    [data-theme="darkmono"] .contact-chip {
-      background: #121212 !important;
-      border-color: rgba(255, 255, 255, 0.15) !important;
-      color: #ffffff !important;
-    }
-    [data-theme="darkmono"] .contact-chip:hover {
-      background: #1a1a1a !important;
-      border-color: #ffffff !important;
-      color: #ffffff !important;
-    }
-    [data-theme="darkmono"] footer {
-      background: #050505 !important;
-      border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      overflow-x: hidden;
-    }
-
-    /* NOISE OVERLAY */
-    body::before {
-      content: ''; position: fixed; inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.035'/%3E%3C/svg%3E");
-      pointer-events: none; z-index: 0; opacity: 0.5;
-    }
-
-    /* EXACT GEOMETRIC TEXT LOGO */
-    .brand-logo-text {
-      font-family: 'Michroma', 'Syncopate', sans-serif;
-      font-size: 15px;
-      font-weight: 700;
-      letter-spacing: 0.22em;
-      color: #ffffff;
-      text-transform: uppercase;
-      display: inline-block;
-      transition: color 0.25s, text-shadow 0.25s;
-    }
-    .brand-logo-text:hover {
-      text-shadow: 0 0 16px var(--accent-glow);
-    }
-    .hero-text-logo {
-      font-family: 'Michroma', 'Syncopate', sans-serif;
-      font-size: 16px;
-      letter-spacing: 0.3em;
-      color: #ffffff;
-      text-transform: uppercase;
-      margin-bottom: 24px;
-      opacity: 0.9;
-    }
-
-    /* NAV */
-    nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      padding: 18px 48px;
-      display: flex; align-items: center; justify-content: space-between;
-      background: rgba(7,7,11,0.85); backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-    }
-    .nav-logo { display: flex; align-items: center; text-decoration: none; }
-    .nav-links { display: flex; gap: 32px; list-style: none; align-items: center; }
-    .nav-links a {
-      color: var(--muted); text-decoration: none; font-size: 13px; font-weight: 600;
-      letter-spacing: 0.05em; text-transform: uppercase; transition: color 0.25s;
-    }
-    .nav-links a:hover { color: var(--white); }
-    
-    /* THEME SWITCHER */
-    .theme-picker {
-      display: flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,0.04); border: 1px solid var(--border);
-      padding: 4px 8px; border-radius: 100px;
-    }
-    .theme-dot {
-      width: 16px; height: 16px; border-radius: 50%; cursor: pointer;
-      border: 2px solid transparent; transition: transform 0.2s, border-color 0.2s;
-    }
-    .theme-dot:hover { transform: scale(1.2); }
-    .theme-dot.active { border-color: #fff; transform: scale(1.15); }
-    .theme-dot.t-violet { background: linear-gradient(135deg, #6366F1, #06B6D4); }
-    .theme-dot.t-gold { background: linear-gradient(135deg, #F59E0B, #FBBF24); }
-    .theme-dot.t-crimson { background: linear-gradient(135deg, #FF0055, #FF5500); }
-    .theme-dot.t-emerald { background: linear-gradient(135deg, #10B981, #06B6D4); }
-    .theme-dot.t-monochrome { background: #ffffff; border: 2px solid #000000; }
-    .theme-dot.t-darkmono { background: #000000; border: 2px solid #ffffff; }
-
-    .nav-cta {
-      background: var(--accent-gradient) !important; color: #fff !important; padding: 10px 24px;
-      border-radius: 8px; font-weight: 700 !important; box-shadow: 0 4px 20px var(--accent-glow);
-      transition: transform 0.2s, box-shadow 0.2s !important;
-    }
-    .nav-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 28px var(--accent-glow); }
-
-
-    /* SMOOTH SCROLL FADE TRANSITIONS (WITHOUT TYPOGRAPHY / SIZE ALTERATIONS) */
-    .fade-scroll {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
-    }
-    .fade-scroll.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 100vh; display: flex; flex-direction: column;
-      align-items: center; justify-content: center; text-align: center;
-      padding: 130px 24px 80px; position: relative; overflow: hidden;
-    }
-    .hero-glow {
-      position: absolute; width: 850px; height: 850px; border-radius: 50%;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      top: 45%; left: 50%; transform: translate(-50%,-50%); pointer-events: none;
-      transition: background 0.5s ease;
-    }
-    .hero-badge {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
-      border-radius: 100px; padding: 7px 20px; font-size: 12px; font-weight: 700;
-      color: var(--accent-tag-text); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 24px;
-      backdrop-filter: blur(10px);
-    }
-    .hero h1 {
-      font-size: clamp(42px, 7.5vw, 96px); font-weight: 900; line-height: 1.02;
-      letter-spacing: -0.035em; color: var(--white); margin-bottom: 24px;
-    }
-    .hero h1 span {
-      background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .hero p { font-size: clamp(16px, 2vw, 20px); color: var(--muted); max-width: 600px; margin-bottom: 48px; }
-    .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
-    .btn-primary {
-      background: var(--accent-gradient); color: #fff; padding: 15px 36px; border-radius: 10px;
-      font-weight: 800; font-size: 15px; text-decoration: none; transition: transform 0.25s, box-shadow 0.25s;
-      display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 4px 25px var(--accent-glow);
-    }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 8px 35px var(--accent-glow); }
-    .btn-secondary {
-      background: rgba(255,255,255,0.03); color: var(--text); padding: 15px 36px; border-radius: 10px;
-      font-weight: 700; font-size: 15px; text-decoration: none; border: 1px solid var(--border);
-      transition: border-color 0.25s, transform 0.25s, background 0.25s; backdrop-filter: blur(10px);
-    }
-    .btn-secondary:hover { border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.06); transform: translateY(-3px); }
-
-    /* STATS STRIP */
-    .stats-strip {
-      background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 56px 48px; position: relative;
-    }
-    .stats-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4,1fr); gap: 32px; text-align: center; }
-    .stat-item h3 {
-      font-size: clamp(34px,4.5vw,54px); font-weight: 900;
-      background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-      letter-spacing: -0.03em;
-    }
-    .stat-item p { font-size: 12px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; margin-top: 6px; }
-
-    /* SECTION BASE */
-    .section { padding: 110px 48px; max-width: 1200px; margin: 0 auto; }
-    .section-tag {
-      display: inline-block; font-size: 11px; font-weight: 800; letter-spacing: 0.14em; text-transform: uppercase;
-      color: var(--accent-tag-text); margin-bottom: 14px; background: var(--accent-tag-bg);
-      border: 1px solid var(--accent-tag-border); padding: 5px 14px; border-radius: 6px;
-    }
-    .section-title { font-size: clamp(30px,4.5vw,52px); font-weight: 900; color: var(--white); line-height: 1.08; letter-spacing: -0.025em; margin-bottom: 18px; }
-    .section-sub { font-size: 17px; color: var(--muted); max-width: 580px; margin-bottom: 64px; }
-
-    /* BRANDS SHOWCASE SECTION */
-    .brands-section {
-      background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
-      padding: 110px 0;
-    }
-    .brands-header-wrap { max-width: 1200px; margin: 0 auto; padding: 0 48px; margin-bottom: 40px; }
-    .brands-count-badge {
-      font-size: 14px; font-weight: 800; color: #fff; background: var(--accent-gradient);
-      padding: 4px 12px; border-radius: 100px; display: inline-block; margin-left: 8px; vertical-align: middle;
-      box-shadow: 0 2px 10px var(--accent-glow);
-    }
-    .brands-filter {
-      display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px;
-    }
-    .filter-btn {
-      background: rgba(255,255,255,0.04); border: 1px solid var(--border); color: var(--muted);
-      padding: 8px 18px; border-radius: 100px; font-size: 12px; font-weight: 700; cursor: pointer;
-      text-transform: uppercase; letter-spacing: 0.05em; transition: all 0.25s;
-    }
-    .filter-btn:hover { color: #fff; border-color: var(--border-hover); background: rgba(255,255,255,0.08); }
-    .filter-btn.active {
-      background: var(--accent-gradient); color: #fff; border-color: transparent;
-      box-shadow: 0 2px 14px var(--accent-glow);
-    }
-
-    .brands-grid {
-      max-width: 1200px; margin: 0 auto; padding: 0 48px;
-      display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
-    }
-    .brand-card {
-      background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius-sm);
-      padding: 24px 20px; transition: border-color 0.25s, transform 0.25s, box-shadow 0.25s;
-      position: relative; overflow: hidden; display: flex; flex-direction: column; justify-content: space-between;
-      text-decoration: none;
-    }
-    .brand-card:hover {
-      border-color: var(--accent-1); transform: translateY(-4px);
-      box-shadow: 0 10px 30px var(--accent-glow); background: var(--surface3);
-    }
-    .brand-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
-    .brand-icon {
-      width: 40px; height: 40px; border-radius: 10px; background: rgba(255,255,255,0.04);
-      display: flex; align-items: center; justify-content: center; font-size: 18px; border: 1px solid var(--border);
-    }
-    .brand-tag {
-      font-size: 10px; font-weight: 800; color: var(--accent-tag-text);
-      background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
-      padding: 3px 8px; border-radius: 100px; text-transform: uppercase; letter-spacing: 0.06em;
-    }
-    .brand-name { font-size: 16px; font-weight: 800; color: var(--white); margin-bottom: 6px; }
-    .brand-desc { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
-
-    /* SERVICES */
-    .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
-    .service-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 38px 30px; transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
-    }
-    .service-card:hover {
-      border-color: var(--accent-1); transform: translateY(-5px);
-      box-shadow: 0 10px 30px var(--accent-glow);
-    }
-    .service-icon {
-      width: 52px; height: 52px; background: var(--accent-tag-bg); border-radius: 14px;
-      display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 22px;
-      border: 1px solid var(--accent-tag-border);
-    }
-    .service-card h3 { font-size: 18px; font-weight: 800; color: var(--white); margin-bottom: 12px; }
-    .service-card p { font-size: 14px; color: var(--muted); line-height: 1.75; }
-
-    /* CASE STUDIES */
-    .cs-wrap { background: var(--surface); padding: 110px 0; border-top: 1px solid var(--border); }
-    .case-study {
-      background: var(--surface2); border: 1px solid var(--border); border-radius: 26px;
-      overflow: hidden; margin-bottom: 64px; transition: border-color 0.3s;
-    }
-    .case-study:hover { border-color: var(--border-hover); }
-    .case-study:last-child { margin-bottom: 0; }
-    .case-header { padding: 52px 52px 0; display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 28px; }
-    .case-tag {
-      display: inline-block; background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
-      color: var(--accent-tag-text); font-size: 11px; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase;
-      padding: 5px 16px; border-radius: 100px; margin-bottom: 14px;
-    }
-    .case-title { font-size: clamp(24px,3.2vw,36px); font-weight: 900; color: var(--white); letter-spacing: -0.02em; margin-bottom: 4px; }
-    .case-subtitle { font-size: 14px; color: var(--muted); font-weight: 500; }
-    .case-results-inline { display: flex; gap: 32px; flex-wrap: wrap; align-items: flex-start; }
-    .stat-num {
-      font-size: 32px; font-weight: 900; letter-spacing: -0.02em; line-height: 1;
-      background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .stat-label { font-size: 11px; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; margin-top: 5px; }
-    .case-body { display: grid; grid-template-columns: 1fr 1fr; gap: 0; padding: 44px 52px 52px; }
-    .case-section-label { font-size: 11px; font-weight: 800; color: var(--accent-tag-text); letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 12px; margin-top: 28px; }
-    .case-section-label:first-child { margin-top: 0; }
-    .case-text { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.8; margin-bottom: 8px; }
-    .case-bullet { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 12px; }
-    .case-bullet::before { content: '➔'; color: var(--accent-1); font-weight: 800; flex-shrink: 0; margin-top: 2px; }
-    .case-bullet span { font-size: 14px; color: rgba(255,255,255,0.75); line-height: 1.75; }
-    .case-right { padding-left: 52px; }
-    .result-callout {
-      background: var(--accent-tag-bg); border: 1px solid var(--accent-tag-border);
-      border-radius: 14px; padding: 22px 26px; margin-top: 24px; backdrop-filter: blur(10px);
-    }
-    .result-callout p { font-size: 13.5px; color: rgba(255,255,255,0.85); line-height: 1.75; }
-    .result-callout strong { color: var(--white); }
-    .result-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .result-stat-box { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; text-align: center; }
-    .result-stat-box .num {
-      font-size: 28px; font-weight: 900; letter-spacing: -0.02em;
-      background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-    }
-    .result-stat-box .lbl { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.07em; margin-top: 4px; line-height: 1.4; font-weight: 700; }
-    .case-images { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 22px; }
-    .case-images img { width: 100%; border-radius: 14px; object-fit: cover; border: 1px solid var(--border); transition: transform 0.3s, border-color 0.3s; cursor: zoom-in; max-height: 240px; }
-    .case-images img:hover { transform: scale(1.025); border-color: var(--border-hover); }
-    .case-images img.wide { grid-column: span 2; max-height: 220px; object-fit: contain; background: #08090f; }
-
-    /* WHY US */
-    .why-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; }
-    .why-card {
-      background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-      padding: 36px; display: flex; gap: 22px; align-items: flex-start; transition: border-color 0.3s, transform 0.3s;
-    }
-    .why-card:hover { border-color: var(--accent-1); transform: translateY(-4px); }
-    .why-num {
-      font-size: 56px; font-weight: 900; line-height: 1; flex-shrink: 0; letter-spacing: -0.04em;
-      background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; opacity: 0.4;
-    }
-    .why-card h3 { font-size: 17px; font-weight: 800; color: var(--white); margin-bottom: 8px; }
-    .why-card p { font-size: 14px; color: var(--muted); line-height: 1.75; }
-
-    /* CONTACT */
-    .contact-section {
-      background: var(--surface); border-top: 1px solid var(--border); text-align: center;
-      padding: 110px 24px; position: relative; overflow: hidden;
-    }
-    .contact-glow {
-      position: absolute; width: 750px; height: 380px; border-radius: 50%;
-      background: radial-gradient(circle, var(--accent-glow) 0%, transparent 70%);
-      bottom: -100px; left: 50%; transform: translateX(-50%); pointer-events: none;
-    }
-    .contact-section h2 { font-size: clamp(32px,5vw,62px); font-weight: 900; color: var(--white); letter-spacing: -0.03em; margin-bottom: 18px; }
-    .contact-section h2 span { background: var(--accent-gradient); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-    .contact-section > p { font-size: 17px; color: var(--muted); max-width: 480px; margin: 0 auto 44px; }
-    .contact-links { display: flex; gap: 18px; justify-content: center; flex-wrap: wrap; margin-top: 28px; }
-    .contact-chip {
-      display: inline-flex; align-items: center; gap: 10px; background: var(--surface2);
-      border: 1px solid var(--border); border-radius: 100px; padding: 14px 28px; color: var(--text);
-      text-decoration: none; font-size: 14px; font-weight: 700; transition: all 0.25s;
-    }
-    .contact-chip:hover { border-color: var(--accent-1); background: var(--accent-tag-bg); color: var(--white); transform: translateY(-2px); }
-
-    /* FOOTER */
-    footer {
-      background: var(--bg); border-top: 1px solid var(--border); padding: 36px 48px;
-      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 16px;
-    }
-    .footer-logo-wrap { display: flex; align-items: center; gap: 12px; }
-    footer p { font-size: 13px; color: var(--muted); }
-
-    /* LIGHTBOX */
-    .lightbox { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 9999; align-items: center; justify-content: center; padding: 24px; backdrop-filter: blur(10px); }
-    .lightbox.active { display: flex; }
-    .lightbox img { max-width: 92vw; max-height: 92vh; border-radius: 14px; object-fit: contain; border: 1px solid var(--border); }
-    .lightbox-close { position: absolute; top: 20px; right: 24px; font-size: 36px; color: white; cursor: pointer; line-height: 1; }
-
-    /* RESPONSIVE */
-    @media (max-width: 1024px) {
-      .brands-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-    @media (max-width: 900px) {
-      nav { padding: 16px 20px; }
-      .nav-links { display: none; }
-      .section, .brands-header-wrap, .brands-grid { padding-left: 20px; padding-right: 20px; }
-      .stats-grid { grid-template-columns: repeat(2,1fr); }
-      .services-grid { grid-template-columns: 1fr 1fr; }
-      .case-header { padding: 32px 24px 0; }
-      .case-body { grid-template-columns: 1fr; padding: 28px 24px 36px; }
-      .case-right { padding-left: 0; margin-top: 28px; }
-      .why-grid { grid-template-columns: 1fr; }
-      .stats-strip { padding: 44px 20px; }
-      footer { flex-direction: column; text-align: center; padding: 28px 20px; }
-    }
-    @media (max-width: 600px) {
-      .brands-grid { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr; }
-      .case-images { grid-template-columns: 1fr; }
-      .case-images img.wide { grid-column: span 1; }
-    }
-  </style>
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 900px) {
+  .services-header { grid-template-columns: 1fr; }
+  .services-grid { grid-template-columns: repeat(2, 1fr); }
+  .brands-grid { grid-template-columns: repeat(2, 1fr); }
+  .cs-body { grid-template-columns: 1fr; }
+  .cs-left { border-right: none; border-bottom: 1px solid var(--line); }
+  .why-grid { grid-template-columns: repeat(2, 1fr); }
+  .contact-inner { grid-template-columns: 1fr; gap: 40px; }
+  .cs-kpis { flex-wrap: wrap; }
+  .cs-card-header { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .hero h1 { font-size: 42px; }
+  .nav-links { display: none; }
+  .services-grid { grid-template-columns: 1fr; }
+  .brands-grid { grid-template-columns: 1fr; }
+  .hero-stats-row { flex-wrap: wrap; }
+  .hero-stat { flex: 50%; }
+  .why-grid { grid-template-columns: 1fr; }
+}
+</style>
 </head>
 <body>
 
+<div class="cursor-dot" id="cursor"></div>
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close">&times;</span>
   <img id="lightbox-img" src="" alt="preview" onclick="event.stopPropagation()" />
 </div>
 
-<!-- NAV -->
+<!-- ═══════════════════════════════ NAV ═══════════════ -->
 <nav>
-  <a href="#about" class="nav-logo" style="text-decoration:none;">
-    <span class="brand-logo-text">DIGIFLAREMEDIA</span>
-  </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#brands">Brands (15+)</a></li>
-    <li><a href="#services">Services</a></li>
-    <li><a href="#case-studies">Case Studies</a></li>
-    <li><a href="https://digiflaremedia.in" target="_blank" rel="noopener noreferrer" style="color:var(--text); opacity:0.9;">Main Site ↗</a></li>
-    <li>
-      <!-- Theme Switcher -->
-      <div class="theme-picker" title="Switch Theme Color">
-        <span class="theme-dot t-violet active" onclick="setTheme('violet')" title="Electric Violet"></span>
-        <span class="theme-dot t-gold" onclick="setTheme('gold')" title="Cyber Gold"></span>
-        <span class="theme-dot t-crimson" onclick="setTheme('crimson')" title="Sunset Flame"></span>
-        <span class="theme-dot t-emerald" onclick="setTheme('emerald')" title="Emerald Neon"></span>
-        <span class="theme-dot t-monochrome" onclick="setTheme('monochrome')" title="Apple Light (White BG, Solid Black)"></span>
-        <span class="theme-dot t-darkmono" onclick="setTheme('darkmono')" title="Stealth Dark (Black BG, Solid White, No Gradient)"></span>
+  <div class="nav-inner">
+    <a href="#about" class="nav-logo">DIGIFLAREMEDIA</a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#brands">Clients</a></li>
+      <li><a href="#case-studies">Work</a></li>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="https://digiflaremedia.in" target="_blank" rel="noopener">Main Site ↗</a></li>
+    </ul>
+    <div class="nav-right">
+      <div class="theme-switcher" title="Switch theme">
+        <span class="t-dot td active" onclick="setTheme('dark')" title="Dark"></span>
+        <span class="t-dot tl" onclick="setTheme('light')" title="Light"></span>
+        <span class="t-dot tp" onclick="setTheme('purple')" title="Purple"></span>
+        <span class="t-dot tr" onclick="setTheme('red')" title="Red"></span>
       </div>
-    </li>
-    <li><a href="#contact" class="nav-cta">Let's Talk</a></li>
-  </ul>
+      <a href="#contact" class="nav-cta">Let's Talk →</a>
+    </div>
+  </div>
 </nav>
 
-<!-- HERO -->
+<!-- ═══════════════════════════════ HERO ══════════════ -->
 <section class="hero" id="about">
-  <div class="hero-glow"></div>
-  <div class="hero-text-logo fade-scroll">DIGIFLAREMEDIA</div>
-  <div class="hero-badge fade-scroll">&#9679; Performance &amp; Creative Growth Agency</div>
-  <h1 class="fade-scroll">We Don't Just<br />Market. We <span>Build<br />Movements.</span></h1>
-  <p class="fade-scroll">Digiflare Media scales modern brands with high-retention content, precision ads, and aggressive organic distribution across India.</p>
-  <div class="hero-btns fade-scroll">
-    <a href="#case-studies" class="btn-primary">Explore Case Studies &rarr;</a>
-    <a href="#brands" class="btn-secondary">View 15+ Brands Worked With</a>
+  <div class="wrap">
+    <div class="hero-eyebrow sf">
+      <div class="hero-eyebrow-line"></div>
+      <span class="hero-eyebrow-text">Performance &amp; Creative Growth Agency · India</span>
+    </div>
+    <h1 class="sf d1">
+      We Don't<br />
+      Just Market.<br />
+      We Build<br />
+      <span class="accent-word">Movements.</span>
+    </h1>
+    <p class="hero-sub sf d2">Digiflare Media scales modern brands with viral content, precision Meta Ads, Google My Business, SEO, and full-stack digital growth — built for results, not reports.</p>
+    <div class="hero-actions sf d3">
+      <a href="#case-studies" class="btn-primary">Explore Our Work →</a>
+      <a href="#brands" class="btn-outline">15+ Brands We've Scaled</a>
+    </div>
+
+    <div class="hero-stats-row sf d4">
+      <div class="hero-stat">
+        <div class="hero-stat-num">15<span>+</span></div>
+        <div class="hero-stat-label">Brands Scaled</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">500<span>K+</span></div>
+        <div class="hero-stat-label">Organic Views / Month</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">4<span>X</span></div>
+        <div class="hero-stat-label">Avg Ad ROAS</div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-num">100<span>+</span></div>
+        <div class="hero-stat-label">Leads / Campaign</div>
+      </div>
+    </div>
+
+    <div class="hero-marquee-wrap">
+      <div class="marquee-track">
+        <span class="marquee-item"><span class="dot">◆</span>META ADS</span>
+        <span class="marquee-item"><span class="dot">◆</span>REELS & SHORT FORM</span>
+        <span class="marquee-item"><span class="dot">◆</span>GOOGLE MY BUSINESS</span>
+        <span class="marquee-item"><span class="dot">◆</span>CONTENT STRATEGY</span>
+        <span class="marquee-item"><span class="dot">◆</span>SEO & SEM</span>
+        <span class="marquee-item"><span class="dot">◆</span>BRAND IDENTITY</span>
+        <span class="marquee-item"><span class="dot">◆</span>INFLUENCER MARKETING</span>
+        <span class="marquee-item"><span class="dot">◆</span>LEAD GENERATION</span>
+        <span class="marquee-item"><span class="dot">◆</span>META ADS</span>
+        <span class="marquee-item"><span class="dot">◆</span>REELS & SHORT FORM</span>
+        <span class="marquee-item"><span class="dot">◆</span>GOOGLE MY BUSINESS</span>
+        <span class="marquee-item"><span class="dot">◆</span>CONTENT STRATEGY</span>
+        <span class="marquee-item"><span class="dot">◆</span>SEO & SEM</span>
+        <span class="marquee-item"><span class="dot">◆</span>BRAND IDENTITY</span>
+        <span class="marquee-item"><span class="dot">◆</span>INFLUENCER MARKETING</span>
+        <span class="marquee-item"><span class="dot">◆</span>LEAD GENERATION</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- STATS -->
-<div class="stats-strip">
-  <div class="stats-grid">
-    <div class="stat-item fade-scroll"><h3>15+</h3><p>Brands Scaled</p></div>
-    <div class="stat-item fade-scroll"><h3>500K+</h3><p>Organic Views / Month</p></div>
-    <div class="stat-item fade-scroll"><h3>4X</h3><p>Average Ad ROAS</p></div>
-    <div class="stat-item fade-scroll"><h3>100+</h3><p>Leads Per Campaign</p></div>
-  </div>
-</div>
-
-<!-- ══════════ BRANDS WORKED WITH (15+ BRANDS) ══════════ -->
-<section class="brands-section" id="brands">
-  <div class="brands-header-wrap fade-scroll">
-    <span class="section-tag">Client Portfolio</span>
-    <h2 class="section-title">Brands We've Worked With <span class="brands-count-badge">15+ Brands</span></h2>
-    <p class="section-sub">From luxury perfumery and gourmet F&amp;B to premium modeling agencies and interior design firms &mdash; tap any brand to visit their live Instagram page.</p>
-    
-    <!-- Filter Tabs -->
-    <div class="brands-filter">
-      <button class="filter-btn active" onclick="filterBrands('all', this)">All Sectors</button>
-      <button class="filter-btn" onclick="filterBrands('fb', this)">Food &amp; Hospitality</button>
-      <button class="filter-btn" onclick="filterBrands('fashion', this)">Fashion &amp; Lifestyle</button>
-      <button class="filter-btn" onclick="filterBrands('interior', this)">Interiors &amp; Real Estate</button>
-      <button class="filter-btn" onclick="filterBrands('media', this)">Media &amp; Industry</button>
+<!-- ═══════════════════════════════ SERVICES ══════════ -->
+<section class="services-section section-gap" id="services">
+  <div class="wrap">
+    <div class="services-header">
+      <div>
+        <span class="tag-pill">What We Do</span>
+        <h2 class="headline sf">Full-Stack<br />Digital Marketing.</h2>
+      </div>
+      <div class="services-header-right">
+        <p style="font-size:14px; color:var(--muted); line-height:1.7; max-width:380px;" class="sf d1">From viral reels to Google search to paid performance — we run the complete growth engine so you never have to manage five different vendors.</p>
+        <a href="#contact" class="btn-outline sf d2" style="align-self:flex-start;">Start a Project →</a>
+      </div>
     </div>
-  </div>
 
-  <div class="brands-grid" id="brands-container">
-    <!-- Brand 1: Aura Organics -->
-    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fashion">
-      <div class="brand-card-top">
-        <div class="brand-icon">✨</div>
-        <span class="brand-tag">Wellness</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Aura Organics <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Natural organic wellness &amp; skincare brand built for sustainable daily lifestyle.</p>
-      </div>
-    </a>
-
-    <!-- Brand 2: Kake Da Hotel 104 -->
-    <a href="https://www.instagram.com/kakedahotel.noida104/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fb">
-      <div class="brand-card-top">
-        <div class="brand-icon">🍽️</div>
-        <span class="brand-tag">@kakedahotel.noida104</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Kake Da Hotel 104 <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Legendary culinary franchise driving massive local footfall in Noida through viral food reels.</p>
-      </div>
-    </a>
-
-    <!-- Brand 3: Meatster n Buffkinz -->
-    <a href="https://www.instagram.com/meatstercafe/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fb">
-      <div class="brand-card-top">
-        <div class="brand-icon">🥩</div>
-        <span class="brand-tag">@meatstercafe</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Meatster n Buffkinz <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Premier BBQ &amp; Chinese destination — 3X footfall and ₹3L+ revenue growth.</p>
-      </div>
-    </a>
-
-    <!-- Brand 4: Ayaz Perfumes -->
-    <a href="https://www.instagram.com/ayazperfume/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fashion">
-      <div class="brand-card-top">
-        <div class="brand-icon">💎</div>
-        <span class="brand-tag">@ayazperfume</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Ayaz Perfumes <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">High-end luxury artisanal fragrances crafted with cinematic visual aesthetics.</p>
-      </div>
-    </a>
-
-    <!-- Brand 5: Dreams Maker Studio -->
-    <a href="https://www.instagram.com/dreamsmakerstudio/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fashion">
-      <div class="brand-card-top">
-        <div class="brand-icon">📸</div>
-        <span class="brand-tag">@dreamsmakerstudio</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Dreams Maker Studio <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Delhi modeling agency scaled to 100+ paying clients and 4X ad ROAS.</p>
-      </div>
-    </a>
-
-    <!-- Brand 6: The Plugged -->
-    <a href="https://www.instagram.com/plugged_founders/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="interior">
-      <div class="brand-card-top">
-        <div class="brand-icon">🏢</div>
-        <span class="brand-tag">@plugged_founders</span>
-      </div>
-      <div>
-        <h4 class="brand-name">The Plugged <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Premium real estate coworking agency and vibrant workspace community for founders.</p>
-      </div>
-    </a>
-
-    <!-- Brand 7: Golden Spirit Music -->
-    <a href="https://www.instagram.com/goldenspiritsmusic/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="media">
-      <div class="brand-card-top">
-        <div class="brand-icon">🎵</div>
-        <span class="brand-tag">@goldenspiritsmusic</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Golden Spirit <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Curated music, viral beats &amp; audio label media page with high-engagement edits.</p>
-      </div>
-    </a>
-
-    <!-- Brand 8: Swayye -->
-    <a href="https://www.instagram.com/swayye.app/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fashion">
-      <div class="brand-card-top">
-        <div class="brand-icon">🌙</div>
-        <span class="brand-tag">@swayye.app</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Swayye <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Next-gen nightlife, party discovery &amp; club booking lifestyle application.</p>
-      </div>
-    </a>
-
-    <!-- Brand 9: Hindanaaj -->
-    <a href="https://www.instagram.com/hind.anaaj/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="media">
-      <div class="brand-card-top">
-        <div class="brand-icon">🪔</div>
-        <span class="brand-tag">@hind.anaaj</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Hindanaaj <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Authentic pooja samagri, havan essentials &amp; pure traditional spiritual goods.</p>
-      </div>
-    </a>
-
-    <!-- Brand 10: Kajwam Industries -->
-    <a href="https://www.instagram.com/kajwamnutts/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="media">
-      <div class="brand-card-top">
-        <div class="brand-icon">🌰</div>
-        <span class="brand-tag">@kajwamnutts</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Kajwam Industries <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Premium dry fruits, cashew nuts &amp; commercial processing digital brand expansion.</p>
-      </div>
-    </a>
-
-    <!-- Brand 11: UrSpace.in -->
-    <a href="https://www.instagram.com/urspace_in/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="interior">
-      <div class="brand-card-top">
-        <div class="brand-icon">🏠</div>
-        <span class="brand-tag">@urspace_in</span>
-      </div>
-      <div>
-        <h4 class="brand-name">UrSpace.in <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Gurugram interior design firm scaled to 500K+ views and 400+ WhatsApp leads.</p>
-      </div>
-    </a>
-
-    <!-- Brand 12: Rose Imported Fabrics -->
-    <a href="https://www.instagram.com/roseimportedfabric/" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="fashion">
-      <div class="brand-card-top">
-        <div class="brand-icon">👗</div>
-        <span class="brand-tag">@roseimportedfabric</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Rose Imported Fabrics <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Premium imported designer textiles and high-fashion custom fabrications.</p>
-      </div>
-    </a>
-
-    <!-- Brand 13: RJ Academia -->
-    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="media">
-      <div class="brand-card-top">
-        <div class="brand-icon">🎓</div>
-        <span class="brand-tag">EdTech</span>
-      </div>
-      <div>
-        <h4 class="brand-name">RJ Academia <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Academic excellence &amp; student training academy driving targeted enrollments.</p>
-      </div>
-    </a>
-
-    <!-- Brand 14: Value4Media (V4M) -->
-    <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer" class="brand-card fade-scroll" data-category="media">
-      <div class="brand-card-top">
-        <div class="brand-icon">🎬</div>
-        <span class="brand-tag">Media Studio</span>
-      </div>
-      <div>
-        <h4 class="brand-name">Value4Media (V4M) <span style="font-size:11px; opacity:0.6;">↗</span></h4>
-        <p class="brand-desc">Full-scale digital video production and dynamic cross-platform content creation.</p>
-      </div>
-    </a>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<div id="services">
-  <div class="section">
-    <div class="fade-scroll">
-      <span class="section-tag">What We Do</span>
-      <h2 class="section-title">Full-Stack Marketing.<br />End-to-End Execution.</h2>
-      <p class="section-sub">From viral short-form content to conversion-optimized ad campaigns &mdash; we take care of the growth engine completely.</p>
-    </div>
     <div class="services-grid">
-      <div class="service-card fade-scroll">
-        <div class="service-icon">&#127916;</div>
-        <h3>Viral Content &amp; Reels</h3>
-        <p>High-retention video productions engineered to trigger desire, break past your existing audience bubble, and reach thousands of new local customers organically.</p>
-      </div>
-      <div class="service-card fade-scroll">
-        <div class="service-icon">&#127919;</div>
-        <h3>Paid Ad Campaigns</h3>
-        <p>Precision-targeted ads on Meta and Instagram optimized for maximum ROAS &mdash; turning every rupee of ad spend into real-world customers and revenue.</p>
-      </div>
-      <div class="service-card fade-scroll">
-        <div class="service-icon">&#127776;</div>
-        <h3>Creative Direction</h3>
-        <p>Custom motion graphics, meme-style marketing, and bold visual creatives designed to keep your brand top-of-mind every single day across the feed.</p>
-      </div>
-      <div class="service-card fade-scroll">
-        <div class="service-icon">&#128200;</div>
-        <h3>Organic Growth Strategy</h3>
-        <p>Algorithmic content strategies that push your brand to new audiences without paid spend &mdash; building a sustainable, compounding growth engine.</p>
-      </div>
-      <div class="service-card fade-scroll">
-        <div class="service-icon">&#128241;</div>
-        <h3>Lead Generation Systems</h3>
-        <p>Integrated WhatsApp and direct-response funnels that turn social media attention into qualified local inquiries loaded directly into your sales pipeline.</p>
-      </div>
-      <div class="service-card fade-scroll">
-        <div class="service-icon">&#127881;</div>
-        <h3>Event &amp; Culture Hacking</h3>
-        <p>We tap into local festivals and cultural moments to create campaigns that feel native to the community and drive peak footfall when it matters most.</p>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- CASE STUDIES -->
-<div class="cs-wrap" id="case-studies">
-  <div class="section">
-    <div class="fade-scroll">
-      <span class="section-tag">Detailed Breakdowns</span>
-      <h2 class="section-title">Featured Case Studies</h2>
-      <p class="section-sub">Three selected campaigns proving our replicable system across restaurants, modeling agencies, and luxury interiors.</p>
-    </div>
-
-    <!-- MEATSTER -->
-    <div class="case-study fade-scroll" id="meatster">
-      <div class="case-header">
-        <div class="case-meta">
-          <div class="case-tag">Food &amp; Beverage &middot; Aligarh</div>
-          <h3 class="case-title">Meatster Cafe</h3>
-          <p class="case-subtitle">Organic Growth &mdash; Full-Stack Content Marketing Strategy</p>
-        </div>
-        <div class="case-results-inline">
-          <div class="inline-stat"><div class="stat-num">3X</div><div class="stat-label">Footfall Increase</div></div>
-          <div class="inline-stat"><div class="stat-num">&#8377;3L+</div><div class="stat-label">New Revenue</div></div>
-          <div class="inline-stat"><div class="stat-num">184K</div><div class="stat-label">Views / 90 Days</div></div>
+      <!-- 01 -->
+      <div class="srv-card sf">
+        <span class="srv-num">01</span>
+        <span class="srv-icon">🎬</span>
+        <div class="srv-title">Content Strategy & Planning</div>
+        <div class="srv-desc">Platform-specific content calendars, hook frameworks, trending audio research, monthly content blueprints that align with your audience's psychology — not guesswork.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">Instagram</span><span class="srv-tag">Reels</span><span class="srv-tag">YouTube Shorts</span>
         </div>
       </div>
-      <div class="case-body">
-        <div class="case-left">
-          <p class="case-section-label">The Challenge</p>
-          <p class="case-text">Meatster &mdash; Aligarh's premier BBQ and Chinese restaurant &mdash; needed to translate digital impressions into physical footfall and tangible revenue, while launching a new menu item and catering service, without a massive paid ad budget.</p>
-          <p class="case-section-label">Our Strategy</p>
-          <div class="case-bullet"><span><strong>Viral Reels:</strong> Engineered high-retention, close-up food videography designed to trigger cravings and encourage local sharing among friends.</span></div>
-          <div class="case-bullet"><span><strong>Ad &amp; Creatives:</strong> Deployed custom motion graphics, meme-style marketing, and bold static creatives to ensure the brand stayed top-of-mind daily.</span></div>
-          <div class="case-bullet"><span><strong>Cultural Hacking:</strong> Launched a &ldquo;Bring Your Own Raan&rdquo; campaign for Bakra-Eid, tying the restaurant to local festive culture and driving peak holiday footfall.</span></div>
-          <div class="case-bullet"><span><strong>Product Launch:</strong> Introduced Aligarh's first Creamy Chicken Roll with a viral &ldquo;Mimi Chicken Hoot&rdquo; reel &mdash; 30.8K highly targeted local views, driving immediate physical sales.</span></div>
-          <div class="result-callout">
-            <p>&#127919; <strong>95.2% of viewers were non-followers</strong> &mdash; the algorithm was aggressively pushing our content to fresh potential customers. Multiple reels consistently broke the 30K+ mark, proving a replicable system.</p>
-          </div>
-        </div>
-        <div class="case-right">
-          <div class="result-stats">
-            <div class="result-stat-box"><div class="num">184K</div><div class="lbl">Total Views in 90 Days</div></div>
-            <div class="result-stat-box"><div class="num">95.2%</div><div class="lbl">Non-Follower Reach</div></div>
-            <div class="result-stat-box"><div class="num">30.8K</div><div class="lbl">Single Reel Views</div></div>
-            <div class="result-stat-box"><div class="num">3X</div><div class="lbl">Footfall Increase</div></div>
-          </div>
-          <div class="case-images">
-            <img src="assets/meatster/Screenshot_2026-09-01_at_11.08.42_PM.png" class="wide" alt="Meatster Organic Growth Case Study slide" onclick="openLightbox(this.src)" />
-            <img src="assets/meatster/Screenshot_2026-09-01_at_11.08.54_PM.png" alt="Meatster full-stack approach" onclick="openLightbox(this.src)" />
-            <img src="assets/meatster/Screenshot_2026-09-01_at_11.09.09_PM.png" alt="Meatster unprecedented reach metrics" onclick="openLightbox(this.src)" />
-            <img src="assets/meatster/IMG_9784.PNG" alt="Meatster Instagram grid" onclick="openLightbox(this.src)" />
-            <img src="assets/meatster/IMG_9778.PNG" alt="Meatster viral reel 30.8K views" onclick="openLightbox(this.src)" />
-          </div>
+      <!-- 02 -->
+      <div class="srv-card sf d1">
+        <span class="srv-num">02</span>
+        <span class="srv-icon">📽️</span>
+        <div class="srv-title">Content Production (Video & Photo)</div>
+        <div class="srv-desc">End-to-end shoot management — scripting, on-ground direction, professional videography, editing, motion graphics, and platform-ready publishing. We own the whole pipeline.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">Reels</span><span class="srv-tag">Product Shoots</span><span class="srv-tag">Motion Design</span>
         </div>
       </div>
-    </div>
-
-    <!-- DREAMS MAKER STUDIO -->
-    <div class="case-study fade-scroll" id="dms">
-      <div class="case-header">
-        <div class="case-meta">
-          <div class="case-tag">Modeling Agency &middot; Delhi, Chhatarpur</div>
-          <h3 class="case-title">Dreams Maker Studio</h3>
-          <p class="case-subtitle">Scaling a Delhi Modeling Agency &mdash; Lead Generation &amp; Brand Authority</p>
-        </div>
-        <div class="case-results-inline">
-          <div class="inline-stat"><div class="stat-num">100+</div><div class="stat-label">Paying Clients</div></div>
-          <div class="inline-stat"><div class="stat-num">4X</div><div class="stat-label">ROAS on Ads</div></div>
-          <div class="inline-stat"><div class="stat-num">2X</div><div class="stat-label">Revenue Growth</div></div>
+      <!-- 03 -->
+      <div class="srv-card sf d2">
+        <span class="srv-num">03</span>
+        <span class="srv-icon">🎯</span>
+        <div class="srv-title">Meta Ads (Facebook & Instagram)</div>
+        <div class="srv-desc">Full-funnel paid campaigns — audience research, A/B tested creatives, campaign setup, optimization and daily tracking. Average 4X ROAS across clients.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">Lead Gen</span><span class="srv-tag">Conversions</span><span class="srv-tag">Retargeting</span>
         </div>
       </div>
-      <div class="case-body">
-        <div class="case-left">
-          <p class="case-section-label">The Challenge</p>
-          <p class="case-text">Dreams Maker Studio needed to rapidly scale its paying client base for portfolio shoots and elevate brand authority in a highly competitive Delhi fashion market &mdash; converting digital followers into physical, in-studio paying clients.</p>
-          <p class="case-section-label">Our Strategy</p>
-          <div class="case-bullet"><span><strong>Event-Driven Acquisition:</strong> Spearheaded a massive portfolio shoot featuring creator Yogesh Rawat, manufacturing digital urgency to drive offline event registrations &mdash; 100+ paying clients acquired in a single event.</span></div>
-          <div class="case-bullet"><span><strong>Precision Visual Direction:</strong> Managed end-to-end creative for 10+ independent shoots. Dictated framing, tight layouts, and high-contrast palettes to transform raw footage into premium assets.</span></div>
-          <div class="case-bullet"><span><strong>High-Converting Ad Campaigns:</strong> Scaled organic momentum with custom ad creatives optimized for lead conversion, consistently achieving 4X ROAS.</span></div>
-          <div class="case-bullet"><span><strong>Full-Funnel Content:</strong> Built a consistent content pipeline leveraging behind-the-scenes hype and FOMO marketing to keep the inbound lead engine running non-stop.</span></div>
-          <div class="result-callout">
-            <p>&#127942; <strong>The True Metric:</strong> The physical lead generation (100+ offline clients), 4X ad returns, and direct 2X revenue proved the strategy generated sustainable, real-world cash flow independent of platform algorithms.</p>
-          </div>
-        </div>
-        <div class="case-right">
-          <div class="result-stats">
-            <div class="result-stat-box"><div class="num">100+</div><div class="lbl">Paying Clients (Single Shoot)</div></div>
-            <div class="result-stat-box"><div class="num">2X</div><div class="lbl">Agency Revenue</div></div>
-            <div class="result-stat-box"><div class="num">3X</div><div class="lbl">Inbound Lead Volume</div></div>
-            <div class="result-stat-box"><div class="num">17.2K</div><div class="lbl">Followers (from 10K, 9 mos)</div></div>
-          </div>
-          <div class="case-images">
-            <img src="assets/dms/Screenshot_2026-09-01_at_11.14.44_PM.png" class="wide" alt="Dreams Maker Studio Case Study" onclick="openLightbox(this.src)" />
-            <img src="assets/dms/IMG_3221.PNG" alt="Dreams Maker Studio Instagram 17.2K followers" onclick="openLightbox(this.src)" />
-            <img src="assets/dms/IMG_2755.jpg" alt="Dreams Maker Studio profile growth" onclick="openLightbox(this.src)" />
-          </div>
+      <!-- 04 -->
+      <div class="srv-card sf d3">
+        <span class="srv-num">04</span>
+        <span class="srv-icon">📍</span>
+        <div class="srv-title">Google My Business (GMB)</div>
+        <div class="srv-desc">Profile optimization, keyword-rich descriptions, regular GMB posts, Q&A management, review strategies, and local SEO to ensure your brand dominates Google Maps searches.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">Local SEO</span><span class="srv-tag">Maps Visibility</span><span class="srv-tag">Reviews</span>
         </div>
       </div>
-    </div>
-
-    <!-- YOURSPACE -->
-    <div class="case-study fade-scroll" id="yourspace">
-      <div class="case-header">
-        <div class="case-meta">
-          <div class="case-tag">Interior Design &middot; Gurugram</div>
-          <h3 class="case-title">YourSpace.in</h3>
-          <p class="case-subtitle">Scaling a Premium Interior Design Brand &mdash; Organic Reach + WhatsApp Lead Machine</p>
-        </div>
-        <div class="case-results-inline">
-          <div class="inline-stat"><div class="stat-num">500K+</div><div class="stat-label">Organic Views / Mo</div></div>
-          <div class="inline-stat"><div class="stat-num">135K</div><div class="stat-label">Peak Reel Views</div></div>
-          <div class="inline-stat"><div class="stat-num">3.5X</div><div class="stat-label">WhatsApp ROAS</div></div>
+      <!-- 05 -->
+      <div class="srv-card sf">
+        <span class="srv-num">05</span>
+        <span class="srv-icon">🔍</span>
+        <div class="srv-title">SEO & Search Marketing</div>
+        <div class="srv-desc">On-page SEO, keyword research, website content optimization, technical audits, backlink building and Google Search Ads (SEM/PPC) for high-intent traffic capture.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">On-Page SEO</span><span class="srv-tag">Google Ads</span><span class="srv-tag">SEM</span>
         </div>
       </div>
-      <div class="case-body">
-        <div class="case-left">
-          <p class="case-section-label">The Challenge</p>
-          <p class="case-text">YourSpace.in &mdash; a Gurugram-based premium interior design firm &mdash; needed to establish a dominant digital footprint from scratch, generate massive organic awareness for their &#8377;599/sqft offers, and funnel qualified prospects directly into a WhatsApp lead-capture system.</p>
-          <p class="case-section-label">Our Strategy</p>
-          <div class="case-bullet"><span><strong>Consistent Content Engine:</strong> Executed a rigorous 6-month organic strategy &mdash; high-quality real estate tours and interior showcases creating a highly bingeable, aspirational feed.</span></div>
-          <div class="case-bullet"><span><strong>Advanced Visual Direction:</strong> Directed framing, room layouts, and smooth transitions to maximize viewer retention on property tour reels, highlighting precise architectural details.</span></div>
-          <div class="case-bullet"><span><strong>Viral Organic Reach:</strong> Engineered hook-driven reels (e.g., &ldquo;Simple Bedroom Design&rdquo;) that bypassed the local audience bubble to go entirely viral &mdash; 135K views organically.</span></div>
-          <div class="case-bullet"><span><strong>Integrated Lead-Gen Synergy:</strong> Amplified top-performing organic assets with targeted local ads, routing massive traffic directly into the sales team's WhatsApp pipeline.</span></div>
-          <div class="result-callout">
-            <p>&#128242; <strong>400+ qualified local inquiries</strong> loaded into the WhatsApp system within the campaign window &mdash; converting social reach directly into sales conversations and booked projects.</p>
-          </div>
-        </div>
-        <div class="case-right">
-          <div class="result-stats">
-            <div class="result-stat-box"><div class="num">500K+</div><div class="lbl">Organic Views / Month</div></div>
-            <div class="result-stat-box"><div class="num">2.7K</div><div class="lbl">Niche Followers Acquired</div></div>
-            <div class="result-stat-box"><div class="num">135K</div><div class="lbl">Peak Reel Views</div></div>
-            <div class="result-stat-box"><div class="num">400+</div><div class="lbl">WhatsApp Inquiries</div></div>
-          </div>
-          <div class="case-images">
-            <img src="assets/urspace/Screenshot_2026-09-01_at_11.15.50_PM.png" class="wide" alt="YourSpace.in Case Study" onclick="openLightbox(this.src)" />
-            <img src="assets/urspace/Screenshot_2026-08-22_at_11.29.35_AM.png" alt="YourSpace Instagram 2703 followers" onclick="openLightbox(this.src)" />
-            <img src="assets/urspace/Screenshot_2026-08-22_at_11.28.47_AM.png" alt="YourSpace 135K viral reel" onclick="openLightbox(this.src)" />
-          </div>
+      <!-- 06 -->
+      <div class="srv-card sf d1">
+        <span class="srv-num">06</span>
+        <span class="srv-icon">📊</span>
+        <div class="srv-title">Social Media Management</div>
+        <div class="srv-desc">Complete account management across Instagram, Facebook, LinkedIn — posting, community management, DM handling, story strategies, polls, and audience engagement daily.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">Instagram</span><span class="srv-tag">Facebook</span><span class="srv-tag">LinkedIn</span>
         </div>
       </div>
-    </div>
-
-  </div>
-</div>
-
-<!-- WHY US -->
-<div id="why">
-  <div class="section">
-    <div class="fade-scroll">
-      <span class="section-tag">Why Digiflare Media</span>
-      <h2 class="section-title">We Focus on What<br />Actually Matters.</h2>
-      <p class="section-sub">Forget vanity metrics. Every strategy we build is engineered to drive footfall, leads, and revenue &mdash; not just likes.</p>
-    </div>
-    <div class="why-grid">
-      <div class="why-card fade-scroll">
-        <div class="why-num">01</div>
-        <div>
-          <h3>Results-First Mindset</h3>
-          <p>Every piece of content and every ad is evaluated by one standard: does it make the cash register ring? We obsess over ROI, not follower counts or reach reports.</p>
+      <!-- 07 -->
+      <div class="srv-card sf d2">
+        <span class="srv-num">07</span>
+        <span class="srv-icon">🖌️</span>
+        <div class="srv-title">Creative Direction & Branding</div>
+        <div class="srv-desc">Visual identity systems, logo refinement, brand voice guidelines, color system, feed aesthetics, branded templates, and creative strategy — so your brand looks premium everywhere.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">Brand Identity</span><span class="srv-tag">Graphic Design</span><span class="srv-tag">Feed Aesthetics</span>
         </div>
       </div>
-      <div class="why-card fade-scroll">
-        <div class="why-num">02</div>
-        <div>
-          <h3>Deep Local Intelligence</h3>
-          <p>We understand Indian markets, local culture, and festive buying behavior. We hack cultural moments to make your brand the talk of the town when it matters most.</p>
+      <!-- 08 -->
+      <div class="srv-card sf d3">
+        <span class="srv-num">08</span>
+        <span class="srv-icon">📱</span>
+        <div class="srv-title">WhatsApp & Lead Generation Systems</div>
+        <div class="srv-desc">Integrated lead funnels using WhatsApp Business API, CRM setup, click-to-WhatsApp ads, automated response flows, and follow-up sequences that convert traffic into qualified buyers.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">WhatsApp API</span><span class="srv-tag">Lead Funnels</span><span class="srv-tag">CRM</span>
         </div>
       </div>
-      <div class="why-card fade-scroll">
-        <div class="why-num">03</div>
-        <div>
-          <h3>Full Creative Control</h3>
-          <p>From scripting to shooting to editing to publishing &mdash; we manage the entire creative pipeline. Premium output without managing ten different vendors.</p>
+      <!-- 09 -->
+      <div class="srv-card sf">
+        <span class="srv-num">09</span>
+        <span class="srv-icon">🤝</span>
+        <div class="srv-title">Influencer & UGC Marketing</div>
+        <div class="srv-desc">Sourcing, briefing, and managing relevant local and national creators for authentic UGC campaigns that build trust and drive conversions far better than brand-run creatives.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">UGC</span><span class="srv-tag">Nano Influencers</span><span class="srv-tag">Collabs</span>
         </div>
       </div>
-      <div class="why-card fade-scroll">
-        <div class="why-num">04</div>
-        <div>
-          <h3>Proven Across Industries</h3>
-          <p>Food, fashion, interior design &mdash; our strategies adapt to any sector. Build authority, generate reach, convert into revenue. The methodology scales.</p>
+      <!-- 10 -->
+      <div class="srv-card sf d1">
+        <span class="srv-num">10</span>
+        <span class="srv-icon">⚡</span>
+        <div class="srv-title">Performance Analytics & Reporting</div>
+        <div class="srv-desc">Weekly and monthly dashboards tracking reach, engagement, ROAS, cost-per-lead, conversion rates and customer acquisition cost — transparent, data-first reporting with zero vanity metrics.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">Analytics</span><span class="srv-tag">ROAS Tracking</span><span class="srv-tag">Reporting</span>
         </div>
       </div>
-    </div>
-  </div>
-</div>
-
-<!-- CONTACT -->
-<section class="contact-section" id="contact">
-  <div class="contact-glow"></div>
-  <div class="fade-scroll">
-    <span class="section-tag">Get In Touch</span>
-    <h2>Ready to <span>Scale</span><br />Your Brand?</h2>
-    <p>Let's build something that actually moves the needle. Reach out on WhatsApp or Instagram and let's get to work.</p>
-    <a href="https://wa.me/919520344932" target="_blank" rel="noopener noreferrer" class="btn-primary" style="margin-bottom:0;">
-      &#128242; &nbsp;WhatsApp Us Now
-    </a>
-    <div class="contact-links">
-      <a href="https://wa.me/919520344932" target="_blank" rel="noopener noreferrer" class="contact-chip">
-        <span>&#128241;</span>
-        <span>+91 95203 44932</span>
-      </a>
-      <a href="https://wa.me/917668620961" target="_blank" rel="noopener noreferrer" class="contact-chip">
-        <span>&#128241;</span>
-        <span>+91 76686 20961</span>
-      </a>
-      <a href="https://www.instagram.com/digiflare.media" target="_blank" rel="noopener noreferrer" class="contact-chip">
-        <span>&#128247;</span>
-        <span>@digiflare.media</span>
-      </a>
-      <a href="https://digiflaremedia.in" target="_blank" rel="noopener noreferrer" class="contact-chip">
-        <span>🌐</span>
-        <span>digiflaremedia.in ↗</span>
-      </a>
+      <!-- 11 -->
+      <div class="srv-card sf d2">
+        <span class="srv-num">11</span>
+        <span class="srv-icon">🌐</span>
+        <div class="srv-title">Website & Landing Page Design</div>
+        <div class="srv-desc">Fast-loading, mobile-first websites and conversion-optimized landing pages designed to capture and convert ad traffic directly into leads, bookings, and calls — zero bounce.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">Web Design</span><span class="srv-tag">Landing Pages</span><span class="srv-tag">CRO</span>
+        </div>
+      </div>
+      <!-- 12 -->
+      <div class="srv-card sf d3">
+        <span class="srv-num">12</span>
+        <span class="srv-icon">🎉</span>
+        <div class="srv-title">Event & Cultural Marketing</div>
+        <div class="srv-desc">Campaigns tied to festivals, cultural moments, local events and product launches — hyper-relevant storytelling that makes your brand feel native to the community and drives peak engagement.</div>
+        <div class="srv-tags">
+          <span class="srv-tag">Event Launches</span><span class="srv-tag">Festival Campaigns</span><span class="srv-tag">PR</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-logo-wrap">
-    <span class="brand-logo-text" style="font-size:13px; opacity:0.8;">DIGIFLAREMEDIA</span>
+<!-- ═══════════════════════════════ BRANDS ════════════ -->
+<section class="brands-section section-gap" id="brands">
+  <div class="wrap">
+    <div class="brands-header">
+      <div>
+        <span class="tag-pill">Client Portfolio</span>
+        <h2 class="headline sf">Brands We've<br />Worked With</h2>
+      </div>
+      <span class="brands-badge sf d1">★ 15+ Brands</span>
+    </div>
+    <p style="font-size:14px; color:var(--muted); margin-bottom:28px; max-width:560px;" class="sf d1">From luxury perfumery and F&amp;B to nightlife apps and real estate — click any brand to visit their live Instagram page.</p>
+    <div class="filter-row sf d2">
+      <button class="filter-btn active" onclick="filterBrands('all',this)">All Sectors</button>
+      <button class="filter-btn" onclick="filterBrands('fb',this)">Food &amp; Hospitality</button>
+      <button class="filter-btn" onclick="filterBrands('fashion',this)">Fashion &amp; Lifestyle</button>
+      <button class="filter-btn" onclick="filterBrands('interior',this)">Real Estate</button>
+      <button class="filter-btn" onclick="filterBrands('media',this)">Media &amp; Industry</button>
+    </div>
+
+    <div class="brands-grid sf d3" id="brands-container">
+
+      <a href="https://www.instagram.com/kakedahotel.noida104/" target="_blank" rel="noopener" class="brand-card" data-category="fb">
+        <div class="brand-card-top"><span class="brand-emoji">🍽️</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Kake Da Hotel 104</div>
+        <div class="brand-handle">@kakedahotel.noida104</div>
+        <div class="brand-sector">Food &amp; Hospitality</div>
+      </a>
+
+      <a href="https://www.instagram.com/meatstercafe/" target="_blank" rel="noopener" class="brand-card" data-category="fb">
+        <div class="brand-card-top"><span class="brand-emoji">🥩</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Meatster n Buffkinz</div>
+        <div class="brand-handle">@meatstercafe</div>
+        <div class="brand-sector">Food &amp; Hospitality</div>
+      </a>
+
+      <a href="https://www.instagram.com/ayazperfume/" target="_blank" rel="noopener" class="brand-card" data-category="fashion">
+        <div class="brand-card-top"><span class="brand-emoji">💎</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Ayaz Perfumes</div>
+        <div class="brand-handle">@ayazperfume</div>
+        <div class="brand-sector">Fashion &amp; Lifestyle</div>
+      </a>
+
+      <a href="https://www.instagram.com/dreamsmakerstudio/" target="_blank" rel="noopener" class="brand-card" data-category="fashion">
+        <div class="brand-card-top"><span class="brand-emoji">📸</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Dreams Maker Studio</div>
+        <div class="brand-handle">@dreamsmakerstudio</div>
+        <div class="brand-sector">Fashion &amp; Lifestyle</div>
+      </a>
+
+      <a href="https://www.instagram.com/plugged_founders/" target="_blank" rel="noopener" class="brand-card" data-category="interior">
+        <div class="brand-card-top"><span class="brand-emoji">🏢</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">The Plugged</div>
+        <div class="brand-handle">@plugged_founders</div>
+        <div class="brand-sector">Real Estate &amp; Coworking</div>
+      </a>
+
+      <a href="https://www.instagram.com/goldenspiritsmusic/" target="_blank" rel="noopener" class="brand-card" data-category="media">
+        <div class="brand-card-top"><span class="brand-emoji">🎵</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Golden Spirit</div>
+        <div class="brand-handle">@goldenspiritsmusic</div>
+        <div class="brand-sector">Music &amp; Media</div>
+      </a>
+
+      <a href="https://www.instagram.com/swayye.app/" target="_blank" rel="noopener" class="brand-card" data-category="media">
+        <div class="brand-card-top"><span class="brand-emoji">🌙</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Swayye</div>
+        <div class="brand-handle">@swayye.app</div>
+        <div class="brand-sector">Nightlife App</div>
+      </a>
+
+      <a href="https://www.instagram.com/hind.anaaj/" target="_blank" rel="noopener" class="brand-card" data-category="media">
+        <div class="brand-card-top"><span class="brand-emoji">🪔</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Hindanaaj</div>
+        <div class="brand-handle">@hind.anaaj</div>
+        <div class="brand-sector">Traditional &amp; Spiritual</div>
+      </a>
+
+      <a href="https://www.instagram.com/kajwamnutts/" target="_blank" rel="noopener" class="brand-card" data-category="media">
+        <div class="brand-card-top"><span class="brand-emoji">🌰</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Kajwam Industries</div>
+        <div class="brand-handle">@kajwamnutts</div>
+        <div class="brand-sector">D2C &amp; Industry</div>
+      </a>
+
+      <a href="https://www.instagram.com/urspace_in/" target="_blank" rel="noopener" class="brand-card" data-category="interior">
+        <div class="brand-card-top"><span class="brand-emoji">🏠</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">UrSpace.in</div>
+        <div class="brand-handle">@urspace_in</div>
+        <div class="brand-sector">Interior Design</div>
+      </a>
+
+      <a href="https://www.instagram.com/roseimportedfabric/" target="_blank" rel="noopener" class="brand-card" data-category="fashion">
+        <div class="brand-card-top"><span class="brand-emoji">👗</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Rose Imported Fabrics</div>
+        <div class="brand-handle">@roseimportedfabric</div>
+        <div class="brand-sector">Fashion &amp; Textiles</div>
+      </a>
+
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" class="brand-card" data-category="fb">
+        <div class="brand-card-top"><span class="brand-emoji">🎓</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">RJ Academia</div>
+        <div class="brand-handle">EdTech</div>
+        <div class="brand-sector">Education</div>
+      </a>
+
+      <a href="https://www.instagram.com" target="_blank" rel="noopener" class="brand-card" data-category="media">
+        <div class="brand-card-top"><span class="brand-emoji">🎬</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Value4Media (V4M)</div>
+        <div class="brand-handle">Media Studio</div>
+        <div class="brand-sector">Digital Media</div>
+      </a>
+
+      <a href="https://www.instagram.com/digiflare.media/" target="_blank" rel="noopener" class="brand-card" data-category="media">
+        <div class="brand-card-top"><span class="brand-emoji">⚡</span><span class="brand-arrow">↗</span></div>
+        <div class="brand-name">Digiflare Media</div>
+        <div class="brand-handle">@digiflare.media</div>
+        <div class="brand-sector">Agency</div>
+      </a>
+
+    </div>
   </div>
-  <p>&copy; 2026 Digiflare Media. All rights reserved. &middot; <a href="https://digiflaremedia.in" target="_blank" rel="noopener noreferrer" style="color:var(--muted); text-decoration:underline;">Official Site: digiflaremedia.in ↗</a></p>
-  <p style="font-size:12px; color:#777;">At DFM, we don't just market &mdash; we create movements.</p>
+</section>
+
+<!-- ═══════════════════════════════ CASE STUDIES ══════ -->
+<section class="cs-section section-gap" id="case-studies">
+  <div class="wrap">
+    <div class="cs-header">
+      <div>
+        <span class="tag-pill">Detailed Breakdowns</span>
+        <h2 class="headline sf">Featured<br />Case Studies</h2>
+      </div>
+      <p style="font-size:14px; color:var(--muted); max-width:340px; line-height:1.7;" class="sf d1">Three campaigns. Three industries. One replicable system that turns content into real-world revenue.</p>
+    </div>
+
+    <!-- Meatster -->
+    <div class="cs-card sf" id="meatster">
+      <div class="cs-card-header">
+        <div>
+          <div class="cs-label">Food &amp; Beverage · Aligarh</div>
+          <div class="cs-title">Meatster n Buffkinz</div>
+          <div class="cs-subtitle">Full-Stack Content Marketing — Organic Growth + Cultural Hacking</div>
+        </div>
+        <div class="cs-kpis">
+          <div class="kpi-box"><div class="kpi-num">3X</div><div class="kpi-label">Footfall</div></div>
+          <div class="kpi-box"><div class="kpi-num">₹3L+</div><div class="kpi-label">New Revenue</div></div>
+          <div class="kpi-box"><div class="kpi-num">184K</div><div class="kpi-label">Views</div></div>
+        </div>
+      </div>
+      <div class="cs-body">
+        <div class="cs-left">
+          <div class="cs-sec-label">The Challenge</div>
+          <p class="cs-text">Meatster — Aligarh's premier BBQ &amp; Chinese restaurant — needed to convert digital impressions into physical footfall and revenue, while launching new menu items and a catering service, without a big paid ad budget.</p>
+          <div class="cs-sec-label">Our Strategy</div>
+          <div class="cs-bullet"><span><strong>Viral Reels:</strong> Engineered high-retention food videography designed to trigger cravings and push local sharing among friends.</span></div>
+          <div class="cs-bullet"><span><strong>Meme-Style Ads:</strong> Custom motion graphics and bold static creatives keeping the brand top-of-feed daily.</span></div>
+          <div class="cs-bullet"><span><strong>Cultural Hacking:</strong> Launched a "Bring Your Own Raan" Bakra-Eid campaign tied to local festive culture, driving peak holiday footfall.</span></div>
+          <div class="cs-bullet"><span><strong>Product Launch:</strong> Aligarh's first Creamy Chicken Roll — "Mimi Chicken Hoot" reel clocked 30.8K targeted local views.</span></div>
+          <div class="cs-callout">🎯 <strong>95.2% of viewers were non-followers</strong> — the algorithm was aggressively pushing content to fresh potential customers. Multiple reels consistently broke 30K+ proving a repeatable growth system.</div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-stats-mini">
+            <div class="cs-stat-box"><div class="cs-stat-num">184K</div><div class="cs-stat-lbl">Total Views / 90 Days</div></div>
+            <div class="cs-stat-box"><div class="cs-stat-num">95.2%</div><div class="cs-stat-lbl">Non-Follower Reach</div></div>
+            <div class="cs-stat-box"><div class="cs-stat-num">30.8K</div><div class="cs-stat-lbl">Peak Reel Views</div></div>
+            <div class="cs-stat-box"><div class="cs-stat-num">3X</div><div class="cs-stat-lbl">Footfall Increase</div></div>
+          </div>
+          <div class="cs-images">
+            <img src="assets/meatster/Screenshot_2026-09-01_at_11.08.42_PM.png" class="wide" alt="Meatster case study" onclick="openLightbox(this.src)" />
+            <img src="assets/meatster/Screenshot_2026-09-01_at_11.08.54_PM.png" alt="Meatster reach" onclick="openLightbox(this.src)" />
+            <img src="assets/meatster/Screenshot_2026-09-01_at_11.09.09_PM.png" alt="Meatster metrics" onclick="openLightbox(this.src)" />
+            <img src="assets/meatster/IMG_9784.PNG" alt="Meatster grid" onclick="openLightbox(this.src)" />
+            <img src="assets/meatster/IMG_9778.PNG" alt="Meatster reel" onclick="openLightbox(this.src)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dreams Maker -->
+    <div class="cs-card sf" id="dms">
+      <div class="cs-card-header">
+        <div>
+          <div class="cs-label">Modeling Agency · Delhi, Chhatarpur</div>
+          <div class="cs-title">Dreams Maker Studio</div>
+          <div class="cs-subtitle">Lead Generation + Brand Authority + High-Converting Ad System</div>
+        </div>
+        <div class="cs-kpis">
+          <div class="kpi-box"><div class="kpi-num">100+</div><div class="kpi-label">Paying Clients</div></div>
+          <div class="kpi-box"><div class="kpi-num">4X</div><div class="kpi-label">ROAS on Ads</div></div>
+          <div class="kpi-box"><div class="kpi-num">2X</div><div class="kpi-label">Revenue</div></div>
+        </div>
+      </div>
+      <div class="cs-body">
+        <div class="cs-left">
+          <div class="cs-sec-label">The Challenge</div>
+          <p class="cs-text">Dreams Maker Studio needed to rapidly scale its paying client base for portfolio shoots and elevate brand authority in Delhi's highly competitive fashion market — converting digital followers into physical, in-studio paying clients.</p>
+          <div class="cs-sec-label">Our Strategy</div>
+          <div class="cs-bullet"><span><strong>Event-Driven Acquisition:</strong> Spearheaded a massive portfolio shoot featuring creator Yogesh Rawat — manufactured digital urgency driving 100+ paying offline clients in a single event.</span></div>
+          <div class="cs-bullet"><span><strong>Visual Direction:</strong> Directed 10+ independent shoots — framing, lighting, tight layouts, high-contrast palettes turning raw footage into premium assets.</span></div>
+          <div class="cs-bullet"><span><strong>High-Converting Ads:</strong> Custom ad creatives optimised for lead conversions, consistently achieving 4X ROAS.</span></div>
+          <div class="cs-bullet"><span><strong>Full-Funnel Content:</strong> Behind-the-scenes content and FOMO marketing keeping the inbound lead engine running non-stop.</span></div>
+          <div class="cs-callout">🏆 <strong>The Real Metric:</strong> 100+ offline clients from a single shoot, 4X ad returns, and 2X revenue — proving sustainable real-world cash flow independent of platform algorithms.</div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-stats-mini">
+            <div class="cs-stat-box"><div class="cs-stat-num">100+</div><div class="cs-stat-lbl">Clients / Single Shoot</div></div>
+            <div class="cs-stat-box"><div class="cs-stat-num">2X</div><div class="cs-stat-lbl">Agency Revenue</div></div>
+            <div class="cs-stat-box"><div class="cs-stat-num">3X</div><div class="cs-stat-lbl">Inbound Lead Volume</div></div>
+            <div class="cs-stat-box"><div class="cs-stat-num">17.2K</div><div class="cs-stat-lbl">Followers (from 10K)</div></div>
+          </div>
+          <div class="cs-images">
+            <img src="assets/dms/Screenshot_2026-09-01_at_11.14.44_PM.png" class="wide" alt="DMS case study" onclick="openLightbox(this.src)" />
+            <img src="assets/dms/IMG_3221.PNG" alt="DMS Instagram" onclick="openLightbox(this.src)" />
+            <img src="assets/dms/IMG_2755.jpg" alt="DMS profile" onclick="openLightbox(this.src)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- UrSpace -->
+    <div class="cs-card sf" id="yourspace">
+      <div class="cs-card-header">
+        <div>
+          <div class="cs-label">Interior Design · Gurugram</div>
+          <div class="cs-title">UrSpace.in</div>
+          <div class="cs-subtitle">Organic Reach Machine + WhatsApp Lead Funnel at Scale</div>
+        </div>
+        <div class="cs-kpis">
+          <div class="kpi-box"><div class="kpi-num">500K+</div><div class="kpi-label">Organic Views/Mo</div></div>
+          <div class="kpi-box"><div class="kpi-num">135K</div><div class="kpi-label">Peak Reel</div></div>
+          <div class="kpi-box"><div class="kpi-num">400+</div><div class="kpi-label">WA Leads</div></div>
+        </div>
+      </div>
+      <div class="cs-body">
+        <div class="cs-left">
+          <div class="cs-sec-label">The Challenge</div>
+          <p class="cs-text">UrSpace.in — a Gurugram premium interior design firm — needed to establish a dominant digital footprint from scratch, generate massive organic awareness for ₹599/sqft offers, and funnel qualified prospects into a WhatsApp lead-capture system.</p>
+          <div class="cs-sec-label">Our Strategy</div>
+          <div class="cs-bullet"><span><strong>Content Engine:</strong> 6-month organic strategy — high-quality real estate tours and interior showcases building a highly bingeable, aspirational feed.</span></div>
+          <div class="cs-bullet"><span><strong>Advanced Visual Direction:</strong> Directed framing, room layouts, and smooth transitions to maximise viewer retention on property tour reels.</span></div>
+          <div class="cs-bullet"><span><strong>Viral Organic Reach:</strong> Hook-driven reels ("Simple Bedroom Design") went entirely viral — 135K views organically.</span></div>
+          <div class="cs-bullet"><span><strong>Lead Synergy:</strong> Amplified top organic assets with targeted local ads, routing traffic directly into the sales team's WhatsApp pipeline.</span></div>
+          <div class="cs-callout">📲 <strong>400+ qualified local inquiries</strong> loaded into the WhatsApp system within the campaign window — converting social reach directly into booked projects.</div>
+        </div>
+        <div class="cs-right">
+          <div class="cs-stats-mini">
+            <div class="cs-stat-box"><div class="cs-stat-num">500K+</div><div class="cs-stat-lbl">Organic Views / Month</div></div>
+            <div class="cs-stat-box"><div class="cs-stat-num">2.7K</div><div class="cs-stat-lbl">Niche Followers</div></div>
+            <div class="cs-stat-box"><div class="cs-stat-num">135K</div><div class="cs-stat-lbl">Peak Reel Views</div></div>
+            <div class="cs-stat-box"><div class="cs-stat-num">400+</div><div class="cs-stat-lbl">WhatsApp Inquiries</div></div>
+          </div>
+          <div class="cs-images">
+            <img src="assets/urspace/Screenshot_2026-09-01_at_11.15.50_PM.png" class="wide" alt="UrSpace case study" onclick="openLightbox(this.src)" />
+            <img src="assets/urspace/Screenshot_2026-08-22_at_11.29.35_AM.png" alt="UrSpace followers" onclick="openLightbox(this.src)" />
+            <img src="assets/urspace/Screenshot_2026-08-22_at_11.28.47_AM.png" alt="UrSpace viral reel" onclick="openLightbox(this.src)" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ WHY US ════════════ -->
+<section class="why-section section-gap" id="why">
+  <div class="wrap">
+    <span class="tag-pill">Why Digiflare Media</span>
+    <h2 class="headline sf" style="font-size:clamp(32px,4vw,52px); max-width:540px; margin-bottom:0;">We Focus on What<br />Actually Moves the Needle.</h2>
+    <p style="font-size:14px; color:var(--muted); margin-top:16px; max-width:480px; line-height:1.7;" class="sf d1">Forget vanity metrics. Every strategy is engineered to drive footfall, leads, and revenue — not likes.</p>
+    <div class="why-grid">
+      <div class="why-card sf">
+        <div class="why-num">01</div>
+        <div class="why-title">Results-First Mindset</div>
+        <div class="why-desc">Every piece of content and every ad is evaluated by one standard: does it make the cash register ring? We obsess over ROI, not follower counts.</div>
+      </div>
+      <div class="why-card sf d1">
+        <div class="why-num">02</div>
+        <div class="why-title">Deep Local Intelligence</div>
+        <div class="why-desc">We understand Indian markets, local culture, and festive buying behavior. We hack cultural moments to make your brand the talk of the town when it matters most.</div>
+      </div>
+      <div class="why-card sf d2">
+        <div class="why-num">03</div>
+        <div class="why-title">Full Creative Control</div>
+        <div class="why-desc">From scripting to shooting to editing to publishing — we manage the entire pipeline. Premium output without managing ten different vendors.</div>
+      </div>
+      <div class="why-card sf d3">
+        <div class="why-num">04</div>
+        <div class="why-title">Proven Across Industries</div>
+        <div class="why-desc">Food, fashion, interior design, real estate, apps — our system adapts to any sector. Build authority, drive reach, convert into revenue. It scales.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ CONTACT ═══════════ -->
+<section class="contact-section" id="contact">
+  <div class="wrap">
+    <div class="contact-inner">
+      <div class="sf">
+        <span class="tag-pill">Get In Touch</span>
+        <h2 class="contact-heading">Ready to<br /><span class="hl">Scale</span><br />Your Brand?</h2>
+        <p class="contact-desc">Let's build something that actually moves the needle. Reach out on WhatsApp or Instagram and let's get to work.</p>
+      </div>
+      <div class="contact-actions sf d2">
+        <a href="https://wa.me/919520344932" target="_blank" rel="noopener" class="contact-wa-big">
+          <span>📲</span> WhatsApp Us Now
+        </a>
+        <a href="https://wa.me/919520344932" target="_blank" rel="noopener" class="contact-row">
+          <span class="contact-row-icon">📱</span>
+          <div class="contact-row-main">
+            <div class="contact-row-label">WhatsApp</div>
+            <div class="contact-row-val">+91 95203 44932</div>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://wa.me/917668620961" target="_blank" rel="noopener" class="contact-row">
+          <span class="contact-row-icon">📱</span>
+          <div class="contact-row-main">
+            <div class="contact-row-label">WhatsApp</div>
+            <div class="contact-row-val">+91 76686 20961</div>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://www.instagram.com/digiflare.media" target="_blank" rel="noopener" class="contact-row">
+          <span class="contact-row-icon">📸</span>
+          <div class="contact-row-main">
+            <div class="contact-row-label">Instagram</div>
+            <div class="contact-row-val">@digiflare.media</div>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+        <a href="https://digiflaremedia.in" target="_blank" rel="noopener" class="contact-row">
+          <span class="contact-row-icon">🌐</span>
+          <div class="contact-row-main">
+            <div class="contact-row-label">Official Website</div>
+            <div class="contact-row-val">digiflaremedia.in</div>
+          </div>
+          <span class="contact-arrow">→</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════ FOOTER ════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-inner">
+      <span class="footer-logo">DIGIFLAREMEDIA</span>
+      <span class="footer-copy">© 2026 Digiflare Media. All rights reserved.</span>
+      <a href="https://digiflaremedia.in" target="_blank" rel="noopener" class="footer-link">digiflaremedia.in ↗</a>
+    </div>
+  </div>
 </footer>
 
 <script>
-  // THEME SWITCHER
-  function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    document.querySelectorAll('.theme-dot').forEach(dot => dot.classList.remove('active'));
-    const activeDot = document.querySelector(`.theme-dot.t-${theme}`);
-    if (activeDot) activeDot.classList.add('active');
-    localStorage.setItem('dfm-theme', theme);
-  }
+// ── CURSOR DOT
+const cursor = document.getElementById('cursor');
+document.addEventListener('mousemove', e => {
+  cursor.style.opacity = 1;
+  cursor.style.left = e.clientX - 4 + 'px';
+  cursor.style.top  = e.clientY - 4 + 'px';
+});
 
-  // Restore Theme
-  const savedTheme = localStorage.getItem('dfm-theme');
-  if (savedTheme) { setTheme(savedTheme); }
+// ── THEME
+function setTheme(t) {
+  document.documentElement.setAttribute('data-theme', t);
+  document.querySelectorAll('.t-dot').forEach(d => d.classList.remove('active'));
+  const dot = document.querySelector(`.t-dot.t${t[0]}`);
+  if (dot) dot.classList.add('active');
+  localStorage.setItem('dfm-theme', t);
+}
+const saved = localStorage.getItem('dfm-theme');
+if (saved) setTheme(saved);
 
-  // BRANDS FILTER
-  function filterBrands(category, btn) {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    
-    const cards = document.querySelectorAll('.brand-card');
-    cards.forEach(card => {
-      if (category === 'all' || card.getAttribute('data-category') === category) {
-        card.style.display = 'flex';
-      } else {
-        card.style.display = 'none';
-      }
-    });
-  }
-
-  // LIGHTBOX
-  function openLightbox(src) {
-    document.getElementById('lightbox-img').src = src;
-    document.getElementById('lightbox').classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-  function closeLightbox() {
-    document.getElementById('lightbox').classList.remove('active');
-    document.body.style.overflow = '';
-  }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeLightbox();
+// ── SCROLL FADE
+const io = new IntersectionObserver((entries, obs) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); }
   });
-  // SMOOTH SCROLL FADE-IN OBSERVER
-  const scrollObserver = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {
-    threshold: 0.1,
-    rootMargin: '0px 0px -40px 0px'
-  });
+}, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+document.querySelectorAll('.sf').forEach(el => io.observe(el));
 
-  document.querySelectorAll('.fade-scroll').forEach(el => scrollObserver.observe(el));
+// ── BRANDS FILTER
+function filterBrands(cat, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.brand-card').forEach(card => {
+    card.style.display = (cat === 'all' || card.dataset.category === cat) ? 'flex' : 'none';
+  });
+}
+
+// ── LIGHTBOX
+function openLightbox(src) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ── NAV SCROLL OPACITY
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', () => {
+  nav.style.borderBottomColor = window.scrollY > 20 ? 'var(--line2)' : 'var(--line)';
+});
 </script>
 </body>
 </html>
