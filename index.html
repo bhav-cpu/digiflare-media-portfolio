@@ -382,7 +382,7 @@ footer{border-top:1px solid var(--line);padding:28px 0}
             <div class="orb-dot"></div>
             <div class="orb-dot"></div>
           </div>
-          <div class="orb-label">Digiflare Media ◆ 2026</div>
+          <div class="orb-label">DIGIFLARE MEDIA ◆ PERFORMANCE &amp; CREATIVE</div>
         </div>
       </div>
     </div>
@@ -851,7 +851,7 @@ footer{border-top:1px solid var(--line);padding:28px 0}
   <div class="wrap">
     <div class="ft-in">
       <span class="ft-logo">DIGIFLAREMEDIA</span>
-      <span class="ft-copy">© 2026 Digiflare Media. All rights reserved.</span>
+      <span class="ft-copy">&copy; <span id="cr-yr"></span> Digiflare Media. All rights reserved.</span>
       <a href="https://digiflaremedia.in" target="_blank" rel="noopener" class="ft-link">digiflaremedia.in ↗</a>
     </div>
   </div>
@@ -873,6 +873,7 @@ Cal.config.forwardQueryParams = true;
 <!-- Cal inline embed code ends -->
 
 <script>
+document.getElementById('cr-yr').textContent = new Date().getFullYear();
 /* ── CUSTOM CURSOR ── */
 const cur=document.getElementById('cur');
 const ring=document.getElementById('cur-ring');
