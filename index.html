@@ -12,7 +12,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 /* ── THEMES ─────────────────────────────────────────── */
-:root{
+:root, [data-theme="dark"]{
   --bg:#0a0a0a;--s1:#111111;--s2:#1c1c1c;--s3:#242424;
   --line:rgba(255,255,255,0.08);--line2:rgba(255,255,255,0.16);
   --text:#f8f8f8;--muted:#888888;--faint:#444444;
@@ -903,8 +903,8 @@ function setTheme(t){
   // Update Cal theme
   try{Cal("ui",{theme:t==='light'?'light':'dark',styles:{branding:{brandColor:getComputedStyle(document.documentElement).getPropertyValue('--acc').trim()}}})}catch(e){}
 }
-const st=localStorage.getItem('dfm-t');
-if(st)setTheme(st);
+const st=localStorage.getItem('dfm-t') || 'dark';
+setTheme(st);
 
 /* ── SCROLL OBSERVER ── */
 const io=new IntersectionObserver((entries,obs)=>{
