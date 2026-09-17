@@ -13,27 +13,30 @@
 
 /* ── THEMES ─────────────────────────────────────────── */
 :root{
-  --bg:#080810;--s1:#0f0f1a;--s2:#16162a;--s3:#1e1e38;
-  --line:rgba(255,255,255,0.07);--line2:rgba(255,255,255,0.13);
-  --text:#f2f2ff;--muted:#8b8ba8;--faint:#3e3e5a;
-  --acc:#c8ff00;--acc-dk:#9fcc00;
+  --bg:#0a0a0a;--s1:#111111;--s2:#1c1c1c;--s3:#242424;
+  --line:rgba(255,255,255,0.08);--line2:rgba(255,255,255,0.16);
+  --text:#f8f8f8;--muted:#888888;--faint:#444444;
+  --acc:#ffffff;--acc-dk:#e0e0e0;--btn-text:#000;
   --r:14px;--nav:64px;
   --ff: 'Inter',-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 [data-theme="light"]{
-  --bg:#fafafa;--s1:#f3f3f3;--s2:#ebebeb;--s3:#e0e0e0;
-  --line:rgba(0,0,0,0.07);--line2:rgba(0,0,0,0.13);
-  --text:#0a0a14;--muted:#5a5a78;--faint:#b0b0c8;--acc:#111;--acc-dk:#333;
+  --bg:#ffffff;--s1:#f5f5f5;--s2:#ebebeb;--s3:#dedede;
+  --line:rgba(0,0,0,0.07);--line2:rgba(0,0,0,0.14);
+  --text:#0a0a0a;--muted:#555555;--faint:#aaaaaa;
+  --acc:#0a0a0a;--acc-dk:#333;--btn-text:#ffffff;
 }
 [data-theme="violet"]{
-  --bg:#07050f;--s1:#0f0a1f;--s2:#180f30;--s3:#22163f;
-  --line:rgba(150,100,255,0.1);--line2:rgba(150,100,255,0.2);
-  --text:#f0eaff;--muted:#9080bb;--acc:#a78bfa;--acc-dk:#7c3aed;
+  --bg:#020a1a;--s1:#061428;--s2:#0a1f3a;--s3:#0d2848;
+  --line:rgba(0,120,255,0.1);--line2:rgba(0,120,255,0.22);
+  --text:#e8f4ff;--muted:#6a9fd8;--faint:#2a4a6a;
+  --acc:#3b82f6;--acc-dk:#2563eb;--btn-text:#ffffff;
 }
 [data-theme="red"]{
-  --bg:#0f0808;--s1:#1a0f0e;--s2:#241613;--s3:#2e1d19;
-  --line:rgba(255,80,60,0.09);--line2:rgba(255,80,60,0.18);
-  --text:#fff0ee;--muted:#c09090;--acc:#ff5c47;--acc-dk:#e03020;
+  --bg:#0e0a02;--s1:#1a1404;--s2:#241c06;--s3:#2e2408;
+  --line:rgba(245,158,11,0.1);--line2:rgba(245,158,11,0.2);
+  --text:#fef9e7;--muted:#b89a50;--faint:#5a4a20;
+  --acc:#f59e0b;--acc-dk:#d97706;--btn-text:#000;
 }
 
 /* ── BASE ────────────────────────────────────────────── */
@@ -69,11 +72,11 @@ nav{
 .tdot{width:14px;height:14px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s,border-color .2s}
 .tdot:hover{transform:scale(1.2)}
 .tdot.on{border-color:var(--text)}
-.td{background:#c8ff00;border-color:#555}
-.tl{background:#f0f0f0;border-color:#ccc}
-.tv{background:#a78bfa}
-.tr{background:#ff5c47}
-.nav-btn{font-size:13px;font-weight:700;padding:9px 22px;background:var(--acc);color:#000;border-radius:100px;letter-spacing:.01em;transition:transform .2s,opacity .2s}
+.td{background:#ffffff;border:2px solid #444}
+.tl{background:#0a0a0a;border:2px solid #888}
+.tv{background:#3b82f6}
+.tr{background:#f59e0b}
+.nav-btn{font-size:13px;font-weight:700;padding:9px 22px;background:var(--acc);color:var(--btn-text,#000);border-radius:100px;letter-spacing:.01em;transition:transform .2s,opacity .2s}
 .nav-btn:hover{transform:translateY(-2px);opacity:.9}
 
 /* ── HERO ─────────────────────────────────────────────── */
@@ -90,7 +93,7 @@ nav{
 .hero-desc.in{opacity:1;transform:none}
 .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:0;opacity:0;transform:translateY(12px);transition:opacity .8s .35s cubic-bezier(.22,1,.36,1),transform .8s .35s cubic-bezier(.22,1,.36,1)}
 .hero-actions.in{opacity:1;transform:none}
-.btn-acc{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--acc);color:#000;border-radius:100px;font-size:14px;font-weight:800;letter-spacing:.01em;transition:transform .22s,box-shadow .22s}
+.btn-acc{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--acc);color:var(--btn-text,#000);border-radius:100px;font-size:14px;font-weight:800;letter-spacing:.01em;transition:transform .22s,box-shadow .22s}
 .btn-acc:hover{transform:translateY(-3px);box-shadow:0 12px 32px rgba(200,255,0,.22)}
 [data-theme="light"] .btn-acc:hover,[data-theme="violet"] .btn-acc:hover,[data-theme="red"] .btn-acc:hover{box-shadow:0 12px 32px rgba(0,0,0,.18)}
 .btn-ghost{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;border:1px solid var(--line2);color:var(--text);border-radius:100px;font-size:14px;font-weight:600;letter-spacing:.01em;transition:border-color .2s,background .2s}
@@ -165,11 +168,11 @@ nav{
 /* ── BRANDS ───────────────────────────────────────────── */
 .brands-sec{padding:96px 0;border-bottom:1px solid var(--line)}
 .brands-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:36px;flex-wrap:wrap;gap:16px}
-.brands-badge{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;background:var(--acc);color:#000;border-radius:100px;font-size:12px;font-weight:800;letter-spacing:.05em}
+.brands-badge{display:inline-flex;align-items:center;gap:7px;padding:8px 18px;background:var(--acc);color:var(--btn-text,#000);border-radius:100px;font-size:12px;font-weight:800;letter-spacing:.05em}
 .filter-bar{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:28px}
 .fbtn{font-size:12px;font-weight:600;padding:8px 18px;border-radius:100px;border:1px solid var(--line2);background:transparent;color:var(--muted);cursor:pointer;font-family:var(--ff);transition:all .2s;letter-spacing:.01em}
 .fbtn:hover{border-color:var(--text);color:var(--text)}
-.fbtn.on{background:var(--acc);color:#000;border-color:var(--acc)}
+.fbtn.on{background:var(--acc);color:var(--btn-text,#000);border-color:var(--acc)}
 .brands-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-radius:var(--r);}
 .bc{background:var(--s1);border:1px solid var(--line2);border-radius:calc(var(--r) - 2px);padding:20px 18px;display:flex;flex-direction:column;gap:8px;transition:background .2s,border-color .2s,transform .2s;position:relative}
 .bc:hover{background:var(--s2);border-color:var(--acc);transform:translateY(-2px)}
@@ -211,12 +214,29 @@ nav{
 
 /* ── WHY US ───────────────────────────────────────────── */
 .why-sec{padding:96px 0;border-bottom:1px solid var(--line)}
+/* WHY US INTERACTIVE CARDS */
 .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-radius:var(--r);margin-top:52px}
-.wc{background:var(--s1);border:1px solid var(--line2);border-radius:calc(var(--r) - 2px);padding:36px 28px;display:flex;flex-direction:column;gap:10px;transition:background .2s,border-color .2s}
-.wc:hover{background:var(--s2);border-color:var(--acc)}
+.wc{background:var(--s1);border:1px solid var(--line2);border-radius:calc(var(--r) - 2px);padding:36px 28px;display:flex;flex-direction:column;gap:10px;transition:background .2s,border-color .2s,transform .2s;cursor:pointer;position:relative;overflow:hidden;user-select:none}
+.wc:hover{background:var(--s2);border-color:var(--acc);transform:translateY(-4px)}
+.wc:active{transform:translateY(-1px)}
 .wc-n{font-size:11px;font-weight:900;letter-spacing:.14em;color:var(--acc);text-transform:uppercase}
 .wc-t{font-size:16px;font-weight:800;letter-spacing:-.02em;color:var(--text)}
 .wc-d{font-size:13px;color:var(--muted);line-height:1.7}
+.wc-hint{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--faint);margin-top:auto;padding-top:12px;border-top:1px solid var(--line);transition:color .2s}
+.wc:hover .wc-hint{color:var(--acc)}
+/* WHY US EXPAND OVERLAY */
+.why-overlay{position:fixed;inset:0;z-index:2000;background:rgba(0,0,0,0);display:flex;align-items:center;justify-content:center;padding:24px;pointer-events:none;opacity:0;transition:opacity .35s,background .35s}
+.why-overlay.open{opacity:1;background:rgba(0,0,0,.82);pointer-events:all;backdrop-filter:blur(12px)}
+.why-modal{background:var(--s1);border:1px solid var(--line2);border-radius:24px;max-width:640px;width:100%;padding:48px;position:relative;transform:translateY(24px) scale(.96);transition:transform .4s cubic-bezier(.22,1,.36,1);overflow:hidden}
+.why-overlay.open .why-modal{transform:none}
+.why-modal::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--acc)}
+.why-modal-num{font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--acc);margin-bottom:14px}
+.why-modal-title{font-size:clamp(28px,5vw,48px);font-weight:900;letter-spacing:-.04em;line-height:1.0;color:var(--text);margin-bottom:24px}
+.why-modal-body{font-size:16px;color:var(--muted);line-height:1.8}
+.why-modal-close{position:absolute;top:20px;right:24px;width:36px;height:36px;border-radius:50%;background:var(--s2);border:1px solid var(--line2);display:flex;align-items:center;justify-content:center;cursor:pointer;font-size:18px;color:var(--text);transition:background .2s,transform .2s}
+.why-modal-close:hover{background:var(--s3);transform:rotate(90deg)}
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;border-radius:var(--r);margin-top:52px}
+/* wc styles moved to .why-sec block above */
 
 /* ── CONTACT ──────────────────────────────────────────── */
 .ct-sec{padding:96px 0}
@@ -236,14 +256,14 @@ nav{
 .ct-title{font-size:20px;font-weight:900;letter-spacing:-.03em;color:var(--text)}
 .ct-desc{font-size:13px;color:var(--muted);line-height:1.7;flex:1;padding-bottom:12px}
 .ct-btn{display:flex;align-items:center;justify-content:center;padding:13px 20px;border-radius:10px;font-size:13px;font-weight:800;letter-spacing:.01em;transition:all .2s;font-family:var(--ff)}
-.ct-btn.fill{background:var(--acc);color:#000}
-.ct-btn.fill:hover{opacity:.85;transform:translateY(-1px)}
+.ct-btn.fill{background:var(--acc);color:var(--btn-text,#000)}
+.ct-btn.fill:hover{opacity:.85;transform:translateY(-1px);box-shadow:0 8px 24px rgba(0,0,0,.18)}
 .ct-btn.line{border:1px solid var(--line2);color:var(--text);background:transparent;margin-top:6px}
 .ct-btn.line:hover{border-color:var(--acc);color:var(--acc)}
 .ct-note{font-size:11px;color:var(--faint);margin-top:6px;font-weight:500}
 
 /* cal embed */
-.cal-wrap{background:var(--s1);border:1px solid var(--line2);border-radius:18px;overflow:hidden}
+.cal-wrap{background:var(--s1);border:1px solid var(--line2);border-radius:18px;overflow:hidden;isolation:isolate}
 .cal-top{display:flex;align-items:center;justify-content:space-between;padding:20px 26px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:14px}
 .cal-hd{font-size:15px;font-weight:800;letter-spacing:-.02em;color:var(--text)}
 .cal-sd{font-size:12px;color:var(--muted);margin-top:3px}
@@ -319,10 +339,10 @@ footer{border-top:1px solid var(--line);padding:28px 0}
     </ul>
     <div class="nav-r">
       <div class="themes">
-        <span class="tdot td on" onclick="setTheme('dark')" title="Dark"></span>
-        <span class="tdot tl" onclick="setTheme('light')" title="Light"></span>
-        <span class="tdot tv" onclick="setTheme('violet')" title="Violet"></span>
-        <span class="tdot tr" onclick="setTheme('red')" title="Red"></span>
+        <span class="tdot td on" onclick="setTheme('dark')" title="Black &amp; White"></span>
+        <span class="tdot tl" onclick="setTheme('light')" title="White &amp; Black"></span>
+        <span class="tdot tv" onclick="setTheme('violet')" title="Electric Blue"></span>
+        <span class="tdot tr" onclick="setTheme('red')" title="Warm Amber"></span>
       </div>
       <a href="#contact" class="nav-btn">Let's Talk →</a>
     </div>
@@ -737,25 +757,39 @@ footer{border-top:1px solid var(--line);padding:28px 0}
     <h2 class="sec-h2 sf d1" style="max-width:540px">We Focus on What<br/>Actually Moves the Needle.</h2>
     <p class="sec-sub sf d2" style="margin-top:14px">Forget vanity metrics. Every strategy is engineered to drive footfall, leads, and revenue — not likes.</p>
     <div class="why-grid">
-      <div class="wc sf">
+      <div class="wc sf" onclick="openWhy(0)">
         <div class="wc-n">01</div>
         <div class="wc-t">Results-First Mindset</div>
-        <div class="wc-d">Every piece of content and every ad is evaluated by one standard: does it make the cash register ring? We obsess over ROI, not follower counts.</div>
+        <div class="wc-d">Every piece of content is measured against one standard: does it make the cash register ring?</div>
+        <div class="wc-hint">Tap to read more →</div>
       </div>
-      <div class="wc sf d1">
+      <div class="wc sf d1" onclick="openWhy(1)">
         <div class="wc-n">02</div>
         <div class="wc-t">Deep Local Intelligence</div>
-        <div class="wc-d">We understand Indian markets, local culture, and festive buying behavior. We hack cultural moments to make your brand the talk of the town when it matters most.</div>
+        <div class="wc-d">We understand Indian markets, local culture, and festive buying behavior like no other.</div>
+        <div class="wc-hint">Tap to read more →</div>
       </div>
-      <div class="wc sf d2">
+      <div class="wc sf d2" onclick="openWhy(2)">
         <div class="wc-n">03</div>
         <div class="wc-t">Full Creative Control</div>
-        <div class="wc-d">Scripting to shooting to editing to publishing — we manage the entire pipeline. Premium output without managing ten different vendors.</div>
+        <div class="wc-d">From scripting to publishing — we own the entire creative pipeline, end-to-end.</div>
+        <div class="wc-hint">Tap to read more →</div>
       </div>
-      <div class="wc sf d3">
+      <div class="wc sf d3" onclick="openWhy(3)">
         <div class="wc-n">04</div>
         <div class="wc-t">Proven Across Industries</div>
-        <div class="wc-d">Food, fashion, interior design, real estate, apps — our system adapts to any sector and scales reliably.</div>
+        <div class="wc-d">Food, fashion, real estate, apps — our system adapts to any sector and scales reliably.</div>
+        <div class="wc-hint">Tap to read more →</div>
+      </div>
+    </div>
+
+    <!-- WHY US Expand Overlay -->
+    <div class="why-overlay" id="whyOverlay" onclick="closeWhy(event)">
+      <div class="why-modal">
+        <div class="why-modal-close" onclick="closeWhy()">✕</div>
+        <div class="why-modal-num" id="wm-num"></div>
+        <div class="why-modal-title" id="wm-title"></div>
+        <div class="why-modal-body" id="wm-body"></div>
       </div>
     </div>
   </div>
@@ -885,6 +919,45 @@ setTimeout(()=>{
   document.getElementById('hero-actions').classList.add('in');
   document.getElementById('hero-orb').classList.add('in');
 },120);
+
+/* ── WHY US EXPAND ── */
+const whyData = [
+  {
+    num:"01",
+    title:"Results-First Mindset",
+    body:"Every piece of content and every ad is evaluated by one standard: does it make the cash register ring? We don't celebrate reach, we celebrate revenue. We obsess over ROI, conversion rates, and real footfall — not follower counts or vanity metrics that don't pay your bills."
+  },
+  {
+    num:"02",
+    title:"Deep Local Intelligence",
+    body:"We understand Indian markets, local culture, and festive buying behavior at a granular level. We hack cultural moments — Eid, Diwali, Republic Day, exam season — to make your brand feel genuinely native to the community. This isn't mass marketing. It's hyper-local storytelling that converts."
+  },
+  {
+    num:"03",
+    title:"Full Creative Control",
+    body:"From scripting and shooting to editing, motion graphics, and publishing — we manage the entire creative pipeline in-house. You get premium output without the chaos of coordinating five different vendors. One brief. One team. One seamless result delivered on time, every time."
+  },
+  {
+    num:"04",
+    title:"Proven Across Industries",
+    body:"We've scaled restaurants, modeling studios, interior designers, real estate firms, nightlife apps, perfumeries, fabric stores, and spiritual goods brands. Our methodology is not industry-specific — it's fundamentally about human psychology, platform algorithms, and buyer intent. It adapts. It scales. It works."
+  }
+];
+function openWhy(idx){
+  const d=whyData[idx];
+  document.getElementById('wm-num').textContent=d.num;
+  document.getElementById('wm-title').textContent=d.title;
+  document.getElementById('wm-body').textContent=d.body;
+  const ov=document.getElementById('whyOverlay');
+  ov.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeWhy(e){
+  if(e&&e.target!==document.getElementById('whyOverlay')&&!e.target.classList.contains('why-modal-close'))return;
+  document.getElementById('whyOverlay').classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeWhy({target:document.getElementById('whyOverlay')});closeLB();}});
 
 /* ── NUMBER COUNTER ── */
 function animateCount(el){
